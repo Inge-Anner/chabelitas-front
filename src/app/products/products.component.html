@@ -1,0 +1,16 @@
+<p>products works!</p>
+<button type="button" class="btn btn-primary">Primary</button>
+<button *ngIf="this.mostrar == false" type="button" class="btn btn-warning">Secundary</button>
+<h4>Con indice y default si es el primero</h4>
+<li *ngFor="let persona of repetir; index as i; first as isFirst">
+  {{i}}-{{persona.nombre}} {{persona.apellido}} <span *ngIf="isFirst">default</span>
+</li>
+<h4>Solo ngFor a arreglo de objetos</h4>
+<li *ngFor="let persona of repetir">
+  {{persona.nombre}} {{persona.apellido}}
+</li>
+
+<h4>Solo ngFor a arreglo Strings</h4>
+<li *ngFor="let dato of repetir2">
+  {{dato}}
+</li>
