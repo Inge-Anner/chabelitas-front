@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ProductServices } from './products.service'
+import { productsModel } from '../models/products.model'
 
 @Component({
   selector: 'app-products',
@@ -9,8 +9,9 @@ import { ProductServices } from './products.service'
 })
 export class ProductsComponent implements OnInit {
 
-  constructor( /*private productServices: ProductServices*/ ) { }
-  mostrar: boolean = true;
+  constructor( private productServices: ProductServices ) { }
+  products: productsModel[] = [];
+  mostrar: boolean = false;
   mostrar2: string = '';
   repetir = [
     {
@@ -40,8 +41,12 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  enviarPedido(): void {
-    //const productos = this.productServices.cargarProductos()
+  ObtenerProductos(valor: string): void {
+    console.log(valor)
+    this.productServices.cargarProductos().subscribe((res: any) => {
+      this.products = res.data;
+      this.mostrar = true;
+    });
   }
 
 }

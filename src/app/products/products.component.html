@@ -1,6 +1,6 @@
 <p>products works!</p>
 <button type="button" class="btn btn-primary">Primary</button>
-<button *ngIf="this.mostrar == false" type="button" class="btn btn-warning">Secundary</button>
+<button *ngIf="this.mostrar == true" type="button" class="btn btn-warning">Secundary</button>
 <h4>Con indice y default si es el primero</h4>
 <li *ngFor="let persona of repetir; index as i; first as isFirst">
   {{i}}-{{persona.nombre}} {{persona.apellido}} <span *ngIf="isFirst">default</span>
@@ -14,3 +14,14 @@
 <li *ngFor="let dato of repetir2">
   {{dato}}
 </li>
+
+<input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar2">
+
+<button *ngIf="this.mostrar2 == 'hola'" type="button" (click)="ObtenerProductos(this.mostrar2)" class="btn btn-warning">Mostrar 2</button>
+
+<div *ngIf="this.mostrar == true">
+  <li *ngFor="let product of products">
+    {{product.productId}} - {{product.categoryId}} - {{product.productDescription}} - {{product.productName}} - {{product.productPrice}} - {{product.seasonId}} - {{product.statusId}}
+    <img src="{{product.productImage}}" style="width: 100px; height: 100px;">
+  </li>
+</div>
