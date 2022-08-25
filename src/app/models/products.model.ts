@@ -1,7 +1,7 @@
 export interface productsModel {
   categoryId: number;
   productDescription?: string;
-  productId: number;
+  productId?: number;
   productImage?: string;
   productName?: string;
   productPrice: number;

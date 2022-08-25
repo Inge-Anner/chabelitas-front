@@ -17,7 +17,7 @@
 
 <input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar2">
 
-<button *ngIf="this.mostrar2 == 'hola'" type="button" (click)="ObtenerProductos(this.mostrar2)" class="btn btn-warning">Mostrar 2</button>
+<button *ngIf="this.mostrar2 == 'hola'" type="button" (click)="ObtenerProductos()" class="btn btn-warning">Mostrar 2</button>
 
 <div *ngIf="this.mostrar == true">
   <li *ngFor="let product of products">
@@ -25,3 +25,14 @@
     <img src="{{product.productImage}}" style="width: 100px; height: 100px;">
   </li>
 </div>
+
+
+<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.categoryId">
+<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productDescription">
+<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productImage">
+<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productName">
+<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productPrice">
+<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.seasonId">
+<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.statusId">
+
+<button type="button" (click)="CrearProducto()" class="btn btn-warning">Crear Producto</button>

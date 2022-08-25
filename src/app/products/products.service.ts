@@ -3,6 +3,7 @@ import { catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
+import { productsModel } from '../models/products.model'
 
 const base_url = environment.url;
 
@@ -21,6 +22,10 @@ export class ProductServices {
 
   cargarProductos(){
     return this.http.get<any>(`${ base_url }/product`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  ingresarProducto(data: productsModel){
+    return this.http.post<any>(`${ base_url }/product`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }
