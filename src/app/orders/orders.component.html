@@ -1,0 +1,11 @@
+<p>orders works!</p>
+
+<input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar2">
+
+<button *ngIf="this.mostrar2 == 'hola'" type="button" (click)="ObtenerOrder()" class="btn btn-warning">Mostrar 2</button>
+
+<div *ngIf="this.mostrar == true">
+  <li *ngFor="let orders of orders">
+    {{orders.orderId}} - {{orders.statusOrderId}} - {{orders.phoneOrder}} - {{orders.ticketOrder}} - {{orders.nameOrder}} - {{orders.lastNameOrder}}  - {{orders.adressDeliver}} - {{orders.dateCreated}} - {{orders.dateConfirmed}} - {{orders.dateDeliver}} - {{orders.totalOrder}}
+  </li>
+</div>
