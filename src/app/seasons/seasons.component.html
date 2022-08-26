@@ -1,0 +1,11 @@
+<p>seasons works!</p>
+<input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar3">
+
+<button *ngIf="this.mostrar3 == 'hola'" type="button" (click)="ObtenerSeasons()" class="btn btn-warning">Mostrar 2</button>
+
+<div *ngIf="this.mostrar == true">
+  <li *ngFor="let season of seasons">
+    {{season.statusId}} - {{season.seasonName}}
+  </li>
+</div>
+
