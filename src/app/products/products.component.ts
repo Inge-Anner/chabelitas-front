@@ -48,6 +48,9 @@ export class ProductsComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.ObtenerProductos();
+    },500)
   }
 
   ObtenerProductos(): void {
