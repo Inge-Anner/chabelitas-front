@@ -8,13 +8,15 @@ import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './orders/cart/cart.component';
 import { PayComponent } from './orders/pay/pay.component';
 import { FormsModule } from '@angular/forms';
+import { SeasonsComponent } from './seasons/seasons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     CartComponent,
-    PayComponent
+    PayComponent,
+    SeasonsComponent
   ],
   imports: [
     HttpClientModule,
