@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export interface ordersModel {
     orderId: number;
     statusOrderId?: number;
@@ -5,10 +7,10 @@ export interface ordersModel {
     ticketOrder: string;
     nameOrder: string;
     lastNameOrder: string;
-    dateCreated: Date;
-    dateConfirmed: Date;
-    dateDeliver: Date;
     adressDeliver: string;
-    totalOrder: number;
+    dateCreated: any;
+    dateConfirmed?: any;
+    dateDeliver?: any;
+    totalOrder: any;
   }
   
