@@ -19,17 +19,17 @@ export class OrdersComponent implements OnInit {
     nameOrder: '',
     lastNameOrder: '',
     adressDeliver: '',
-    dateCreated: 0-0-0,
-    dateConfirmed: 0-0-0,
-    dateDeliver: 0-0-0,
-    totalOrder: 0.00,
+    dateCreated: '',
+    dateConfirmed: '',
+    dateDeliver: '',
+    totalOrder: 0,
   }
   mostrar: boolean = false;
   mostrar2: string = '';
 
   ngOnInit(): void {
   }
-
+ 
   ObtenerOrder(): void {
     this.orderServices.cargarOrders().subscribe((res: any) => {
       this.orders = res.data;
