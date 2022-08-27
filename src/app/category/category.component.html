@@ -1,4 +1,4 @@
-<p>category works!</p>
+<!--<p>category works!</p>
 <input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar3">
 
 <button *ngIf="this.mostrar3 == 'hola'" type="button" (click)="ObtenerCategory()" class="btn btn-warning">Mostrar 2</button>
@@ -7,4 +7,11 @@
   <li *ngFor="let category of category">
     {{category.categoryId}} - {{category.statusId}} -{{category.categoryName}}
   </li>
+</div>-->
+
+<div class="col-lg-3">
+  <div class="row mt-4" style="padding: 2% 5% 2% 5%; flex:0 0 auto; width: auto;" *ngFor="let category of category">
+    <!--<div class="col-md-5 col-lg-4" style="padding: 0.5%;" *ngFor="let category of category"></div>-->
+     <button class="btn btn-secondary" style="padding: 15% 25% 15% 25%;; text-align: center; "><h5>{{category.categoryName}}</h5></button>
+  </div> 
 </div>

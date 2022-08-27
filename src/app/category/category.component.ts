@@ -22,6 +22,9 @@ export class CategoryComponent implements OnInit {
   mostrar3: string = '';
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.ObtenerCategory();
+    },500)
   }
 
   ObtenerCategory(): void {
@@ -36,6 +39,6 @@ export class CategoryComponent implements OnInit {
       this.ObtenerCategory();
     });
   }
-
+//
 
 }
