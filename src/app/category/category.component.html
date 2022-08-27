@@ -9,10 +9,9 @@
   </li>
 </div>-->
 
-
-<div class="row mt-4" style="padding: 10% 5% 2% 8%;">
-  <div class="col-md-5 col-lg-4" *ngFor="let category of category">
-      <button class="card text-white bg-danger mb-3"><h5>{{category.categoryName}}</h5> </button>
-      </div>   
-        </div>
-    <br>
+<div class="col-lg-3">
+  <div class="row mt-4" style="padding: 2% 5% 2% 5%; flex:0 0 auto; width: auto;" *ngFor="let category of category">
+    <!--<div class="col-md-5 col-lg-4" style="padding: 0.5%;" *ngFor="let category of category"></div>-->
+     <button class="btn btn-secondary" style="padding: 15% 25% 15% 25%;; text-align: center; "><h5>{{category.categoryName}}</h5></button>
+  </div> 
+</div>
