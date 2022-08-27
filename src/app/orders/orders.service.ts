@@ -23,11 +23,11 @@ export class OrderServices {
   
 
   cargarOrders(){
-    return this.http.get<any>(`${ base_url }/order`).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.get<any>(`${ base_url }/orders`).pipe(catchError((e) => this.manejarError(e)));
   }
 
   ingresarOrders(data: ordersModel){
-    return this.http.post<any>(`${ base_url }/order`, data).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.post<any>(`${ base_url }/orders`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }
