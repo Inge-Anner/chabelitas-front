@@ -27,7 +27,7 @@ export class OrderServices {
   }
 
   ingresarOrders(data: ordersModel){
-    return this.http.post<any>(`${ base_url }/orders`, data).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.post<any>(`${ base_url }/order`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }
