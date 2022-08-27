@@ -1,6 +1,6 @@
 export interface usersModel {
-    statusId: number;
-    userName?: string;
-    userCode?: string;
-    seasonId: number;
-  }
+    userId?: number;
+    statusId?: number;
+    userName: string;
+    userCode: string;
+}

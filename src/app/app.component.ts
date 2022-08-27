@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CategoryComponent } from './category/category.component';
 // import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -9,3 +10,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'chabelitas-front';
 }
+
+export class category extends CategoryComponent {
+  override ObtenerCategory(): void {
+    
+  }
+}//
