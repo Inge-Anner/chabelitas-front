@@ -10,8 +10,7 @@
 </div>
 -->
 
-<form style="padding: 2% 15% 2% 15%;">
-  <fieldset>
+  <fieldset style="padding: 2% 15% 2% 15%;">
     <legend>Ingrese la información para realizar su pedido</legend>
     <!--<div class="form-orders row">
     </div>
@@ -42,7 +41,7 @@
 
     <div class="form-orders">
       <label class="form-label mt-4">Ingrese su fecha de entrega</label>
-      <input type="date" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newOrder.dateDeliver" >
+      <input type="date" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newOrder.dateDeliver" [(ngModel)]="this.newOrder.dateConfirmed">
     </div>
 
     <div class="form-orders">
@@ -54,7 +53,7 @@
     <button type="submit" (click)="CrearOrder()" class="btn btn-warning">Ingresar</button>
     <br><br>
     <small id="telHelp" class="form-text text-muted">Toda información ingresada sera de uso reservado.</small>
- 
+
     <!--<div class="form-orders">
       <label for="MetodoDePago" class="form-label mt-4">Seleccione su metodo de pago</label>
       <select class="form-select" id="pagoselect">
@@ -83,7 +82,7 @@
       <label for="formFile" class="form-label mt-4">Default file input example</label>
       <input class="form-control" type="file" id="formFile">
     </div>
-    
+
       <div class="form-check disabled">
         <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
         <label class="form-check-label" for="optionsRadios3">
@@ -117,7 +116,7 @@
         <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
       </div>
     </fieldset>
-    
+
     <button type="submit" class="btn btn-primary">Submit</button>
-  
+
 </form>-->

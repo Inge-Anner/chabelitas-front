@@ -1,12 +1,12 @@
 export interface ordersModel {
-  orderId: number;
+  orderId?: number;
   statusOrderId: number;
   phoneOrder: string;
   ticketOrder?: string;
   nameOrder?: string;
   lastNameOrder?: string;
   adressDeliver?: string;
-  dateCreated: any;
+  dateCreated?: any;
   dateConfirmed?: any;
   dateDeliver?: any;
   totalOrder: number;

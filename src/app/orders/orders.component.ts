@@ -12,14 +12,12 @@ export class OrdersComponent implements OnInit {
   constructor( private orderServices: OrderServices ) { }
   orders: ordersModel[] = [];
   newOrder: ordersModel = {
-    orderId: 0,
     statusOrderId: 0,
     phoneOrder: '',
     ticketOrder: '',
     nameOrder: '',
     lastNameOrder: '',
     adressDeliver: '',
-    dateCreated: '',
     dateConfirmed: '',
     dateDeliver: '',
     totalOrder: 0,
@@ -29,7 +27,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
   }
- 
+
   ObtenerOrder(): void {
     this.orderServices.cargarOrders().subscribe((res: any) => {
       this.orders = res.data;
@@ -40,9 +38,19 @@ export class OrdersComponent implements OnInit {
   CrearOrder(): void {
     this.orderServices.ingresarOrders(this.newOrder).subscribe((res: any) => {
       this.ObtenerOrder();
+      // Inserta en Local Storage
+      localStorage.setItem('order', JSON.stringify(res));
+      // Obtiene del local Storage
+      const getOrder = JSON.parse(localStorage.getItem('order')!);
+      console.log('LA ORDEN CREADA ES:');
+      console.log(getOrder);
+      // Borra un objeto del local Storage
+      localStorage.removeItem('order');
+      // Limpia todo el local Storage
+      localStorage.clear();
     });
   }
- 
+
 
 
 }
