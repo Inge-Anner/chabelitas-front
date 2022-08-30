@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServices } from './products.service'
+import { CategoryServices } from '../category/category.service'
 import { productsModel } from '../models/products.model'
+import { categoryModel } from '../models/category.model'
 
 @Component({
   selector: 'app-products',
@@ -9,8 +11,12 @@ import { productsModel } from '../models/products.model'
 })
 export class ProductsComponent implements OnInit {
 
-  constructor( private productServices: ProductServices ) { }
+  constructor( private productServices: ProductServices, private categoryServices: CategoryServices ) { }
   products: productsModel[] = [];
+  categories: categoryModel[] = [];
+  whereProducts: any = {
+    categoryId: 0,
+  }
   newProduct: productsModel = {
     categoryId: 0,
     productDescription: "",
@@ -49,10 +55,18 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
       this.ObtenerProductos();
+      this.ObtenerCategorias();
+  }
+
+  ObtenerCategorias(): void {
+    this.categoryServices.cargarCategory().subscribe((res: any) => {
+      this.categories = res.data;
+      this.mostrar = true;
+    });
   }
 
   ObtenerProductos(): void {
-    this.productServices.cargarProductos().subscribe((res: any) => {
+    this.productServices.cargarProductos(this.whereProducts).subscribe((res: any) => {
       this.products = res.data;
       this.mostrar = true;
     });

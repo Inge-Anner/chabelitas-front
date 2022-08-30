@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import { productsModel } from '../models/products.model'
@@ -20,8 +20,8 @@ export class ProductServices {
     return throwError('Ha ocurrido un error');
   }
 
-  cargarProductos(){
-    return this.http.get<any>(`${ base_url }/product`).pipe(catchError((e) => this.manejarError(e)));
+  cargarProductos(where: any){
+    return this.http.get<any>(`${ base_url }/product?categoryId=${where.categoryId}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
   ingresarProducto(data: productsModel){
