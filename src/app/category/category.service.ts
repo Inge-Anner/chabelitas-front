@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { categoryModel } from '../models/category.model'
 
 const base_url = environment.url;
