@@ -1,4 +1,4 @@
 export interface visualizationsModel {
-    productId: number;
-    dateVisualization: Date;
-  }
+  productId: number;
+  dateVisualization: Date;
+}

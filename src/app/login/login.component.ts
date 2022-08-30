@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginServices } from './login.service';
 import { usersModel } from '../models/users.model';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +11,19 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private loginServices: LoginServices ) { }
-  users: usersModel[] = [];
+  constructor( private router: Router,
+              private loginServices: LoginServices ) { }
+  user: usersModel = {
+    userName: '',
+    userCode: '',
+  };
 
-  ngOnInit(): void {
-  }
-  
-  login(form:NgForm){
-    const email = form.value.userEmail;
-    const password = form.value.userPass;
-  }
+  ngOnInit(): void {}
 
-
-  obtenerUsuarios(): void {
-    this.loginServices.getUsuarios().subscribe((res: any) => {
-      this.users = res.data;
+  loginUsuario(): void {
+    this.loginServices.loginUser(this.user).subscribe((res: any) => {
+      this.user = res.data;
+      this.router.navigateByUrl('/products');
     })
   }
 //

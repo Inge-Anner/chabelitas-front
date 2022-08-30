@@ -1,5 +1,4 @@
 export interface seasonsModel {
-    statusId: number;
-    seasonName?: string;
-  }
-  
+  statusId: number;
+  seasonName?: string;
+}
