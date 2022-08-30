@@ -78,4 +78,10 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  seleccionarCategoria(category: any): void {
+    console.log(`category ${JSON.stringify(category)}`)
+    this.whereProducts.categoryId = category
+    this.ObtenerProductos();
+  }
+
 }
