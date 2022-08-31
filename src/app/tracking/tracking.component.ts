@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrackingServices } from './tracking.service';
-import { ordersModel } from '../models/orders.model'
+import { ordersModel } from '../models/orders.model';
+import { OrderServices } from '../orders/orders.service';
 
 @Component({
   selector: 'app-tracking',
@@ -10,20 +11,34 @@ import { ordersModel } from '../models/orders.model'
 
 export class TrackingComponent implements OnInit {
 
-  constructor( private TrackingServices: TrackingServices ) { }
-  orders: ordersModel[] = [];
-  
-  mostrar: boolean = false;
+  constructor( private OrderServices: OrderServices ) { }
+  orders: ordersModel = {
+    statusOrderId: 0,
+    phoneOrder: '',
+    ticketOrder: '',
+    nameOrder: '',
+    lastNameOrder: '',
+    adressDeliver: '',
+    dateConfirmed: '',
+    dateDeliver: '',
+    totalOrder: 0,
+  };
+
+  estados: string[] = ['Creado','Pago Enviado','Pago Confirmado','Pedido Enviado','Eliminado'];
+  orderId: Number = 0;
+  telOrder: Number = 0;
 
   ngOnInit(): void {
   }
-  
 
   ObtenerTracking(): void {
-    this.TrackingServices.cargarTracking().subscribe((res: any) => {
+    this.OrderServices.buscarOrderById(this.orderId).subscribe((res: any) => {
       this.orders = res.data;
-      this.mostrar = true;
+      localStorage.setItem('order', JSON.stringify(res));
+      const getOrder = JSON.parse(localStorage.getItem('order')!);
+      console.log('LA ORDEN CREADA ES:');
+      console.log(getOrder);
     });
   }
-
+  
 }

@@ -3,6 +3,7 @@ import { catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
+//import { ordersModel } from '../models/orders.model';
 
 const base_url = environment.url;
 
@@ -21,6 +22,10 @@ export class TrackingServices {
 
   cargarTracking(){
     return this.http.get<any>(`${ base_url }/orders`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  buscarOrderById(order: any){
+    return this.http.get<any>(`${ base_url }/order/${order}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }

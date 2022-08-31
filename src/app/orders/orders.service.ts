@@ -3,7 +3,7 @@ import { catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
-import { ordersModel } from '../models/orders.model'
+import { ordersModel } from '../models/orders.model';
 
 const base_url = environment.url;
 
@@ -28,6 +28,10 @@ export class OrderServices {
 
   ingresarOrders(data: ordersModel){
     return this.http.post<any>(`${ base_url }/order`, data).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  buscarOrderById(order: any){
+    return this.http.get<any>(`${ base_url }/order/${order}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }

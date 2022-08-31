@@ -1,9 +1,14 @@
 <p>Rastreo de pedidos</p>
 <div class="input-group mb-3" style="padding: 2% 10% 2% 10%;">
-  <input type="text" class="form-control" placeholder="Ingrese ID de pedido" aria-label="Ingrese ID de pedido"
-    aria-describedby="button-addon2">
-  <button class="btn btn-primary" type="button" id="button-addon2">Rastrear</button>
+  <input type="text" class="form-control" placeholder="Ingrese ID de pedido" aria-label="Ingrese ID de pedido" aria-describedby="btTracking" [(ngModel)]="this.orderId">
+  <button class="btn btn-primary" (click)="ObtenerTracking()" type="sumbit" id="btTracking">Rastrear</button>
 </div>
+
+<div *ngFor="let status of estados; index as i">
+  <h4 *ngIf="this.orders.statusOrderId == i+1">{{status}}</h4>
+</div>
+
+
 <br><br><br>
 <div class="progress" style="padding: 0.1% 15% 0.1% 15%;">
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10"
@@ -175,4 +180,4 @@
       <div class="wpb_wrapper"></div>
     </div>
   </div>
-</div>
+</div>//
