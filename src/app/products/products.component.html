@@ -25,10 +25,11 @@
     {{product.productId}} - {{product.categoryId}} - {{product.productDescription}} - {{product.productName}} - {{product.productPrice}} - {{product.seasonId}} - {{product.statusId}}
     <img src="{{product.productImage}}" style="width: 100px; height: 100px;">
   </li>
-</div> -->
+</div>-->
+
+
 <div class="row mt-4" style="padding: 1% 1% 1% 1%;">
   <div class="col-md-5 col-lg-4" style="padding: 1% 1% 1% 1%; flex:0 0 auto; width: auto;" *ngFor="let category of categories">
-    <!--<div class="col-md-5 col-lg-4" style="padding: 0.5%;" *ngFor="let category of category"></div>-->
      <button class="btn btn-secondary" style="text-align: center;" (click)="seleccionarCategoria(category.categoryId)">{{category.categoryName}}</button>
   </div>
 </div>
