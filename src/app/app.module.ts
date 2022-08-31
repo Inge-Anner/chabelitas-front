@@ -10,6 +10,7 @@ import { SeasonsComponent } from './seasons/seasons.component';
 import { CategoryComponent } from './category/category.component';
 import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
+import { TrackingComponent } from './tracking/tracking.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './login/login.component';
     SeasonsComponent,
     CategoryComponent,
     OrdersComponent,
-    LoginComponent
+    LoginComponent,
+    TrackingComponent
   ],
   imports: [
     HttpClientModule,

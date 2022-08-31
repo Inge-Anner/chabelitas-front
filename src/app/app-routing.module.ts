@@ -6,13 +6,15 @@ import { SeasonsComponent } from './seasons/seasons.component';
 import { CategoryComponent } from './category/category.component';
 import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
+import { TrackingComponent } from './tracking/tracking.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'seasons', component: SeasonsComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'tracking', component: TrackingComponent}
 ];
 
 @NgModule({
