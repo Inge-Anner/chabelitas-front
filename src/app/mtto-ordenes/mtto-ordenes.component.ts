@@ -11,7 +11,7 @@ export class MttoOrdenesComponent implements OnInit {
 
   constructor(private orderServices: OrderServices) { }
   orders: ordersModel[] = [];
-  
+  estado: any;
   mostrar: boolean = false;
 
   ngOnInit(): void {
@@ -26,11 +26,22 @@ export class MttoOrdenesComponent implements OnInit {
   aux4: string = '';
 
 
-ObtenerOrder(): void {
+  ObtenerOrder(): void {
     this.orderServices.cargarOrders().subscribe((res: any) => {
       this.orders = res.data;
       this.mostrar = true;
     });
   }
+
+  indicarStatus(statusId: any): void {
+    for(let status of this.estados){
+      if (statusId == status+1){
+        console.log(status);
+        this.estado = this.estados;
+      }
+    }
+    console.log(this.estado);
+  }
+
 }
   

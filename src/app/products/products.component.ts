@@ -53,6 +53,8 @@ export class ProductsComponent implements OnInit {
     "cuatro",
   ]
 
+  idProd: any;
+
   ngOnInit(): void {
       this.ObtenerProductos();
       this.ObtenerCategorias();
@@ -76,6 +78,16 @@ export class ProductsComponent implements OnInit {
     this.productServices.ingresarProducto(this.newProduct).subscribe((res: any) => {
       this.ObtenerProductos();
     });
+  }
+
+  EliminarProducto(): void{
+    this.productServices.eliminarProducto(this.idProd).subscribe((res: any) => {
+      console.log(res)
+    })
+  }
+
+  darValor(id: any): void{
+    this.idProd = +id;
   }
 
   seleccionarCategoria(category: any): void {
