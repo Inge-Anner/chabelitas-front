@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   loginUsuario(): void {
     this.loginServices.loginUser(this.user).subscribe((res: any) => {
       this.user = res.data;
-      this.router.navigateByUrl('/products');
+      this.router.navigateByUrl('/admin');
     })
   }
 //
