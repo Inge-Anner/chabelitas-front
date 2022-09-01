@@ -47,12 +47,56 @@
           <div class="mt-2 d-flex justify-content-center align-items-center">
             <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ver Imagen"><span class="material-icons">shopping_cart</span></button>
             <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" title="Editar Imagen"><span class="material-icons">visibility</span></button>
-            <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"><span class="material-icons">delete</span></button>
+            <button class="btn btn-danger ml-2" data-toggle="modal" data-placement="top" data-target="#exampleModal" title="Borrar"><span class="material-icons">delete</span></button>
           </div>
         </div>
       </div>
     </div>
     <br>
+  </div>
+</div>
+
+<div class="row">
+  <button class="btn btn-primary sombra" data-toggle="modal" data-target="#exampleModal">Crear nuevo album</button>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-white">
+      <div class="modal-header bg-success">
+        <h5 class="modal-title" id="exampleModalLabel">Nuevo Album</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form (ngSubmit)="CrearProducto()">
+        <div class="modal-body bg-dark">
+          <div class="form-group">
+            <label for="">Nombre</label>
+            <input type="text"
+             class="form-control" 
+             name="nombre" 
+             [(ngModel)]="newProduct.productName" 
+             #nombre="ngModel"
+             [ngClass]="{'is-invalid': nombre.invalid && nombre.touched}"
+             required>
+
+            <div *ngIf="nombre.invalid && nombre.touched" class="alerta">
+              Debes completar el nombre.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Descripción</label>
+            <textarea cols="30" rows="10" class="form-control" name="description" [(ngModel)]="newProduct.productDescription"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer bg-dark">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="CrearProducto()">Guardar</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

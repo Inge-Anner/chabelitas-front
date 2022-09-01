@@ -21,7 +21,7 @@ export class ProductServices {
   }
 
   cargarProductos(){
-    return this.http.get<any>(`${ base_url }/product`).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.get<any>(`${ base_url }/product?categoryId=0`).pipe(catchError((e) => this.manejarError(e)));
   }
 
   ingresarProducto(data: productsModel){
