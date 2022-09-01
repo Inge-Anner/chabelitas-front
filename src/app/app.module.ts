@@ -12,6 +12,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
 import { TrackingComponent } from './tracking/tracking.component';
 import { AdminComponent } from './admin/admin.component';
+import { MttoProductosComponent } from './mtto-productos/mtto-productos.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdminComponent } from './admin/admin.component';
     OrdersComponent,
     LoginComponent,
     TrackingComponent,
-    AdminComponent
+    AdminComponent,
+    MttoProductosComponent
   ],
   imports: [
     HttpClientModule,
