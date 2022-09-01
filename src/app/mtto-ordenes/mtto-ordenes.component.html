@@ -24,7 +24,8 @@
         <tbody style="text-align: left;">
             <tr class="table-light" *ngFor="let orders of orders">
                 <th scope="row">{{orders.orderId}}</th>
-                <td >{{orders.statusOrderId}}</td>
+                <!-- <td (mousedown)="indicarStatus(orders.statusOrderId)">{{this.estado}}</td> -->
+                <td>{{orders.statusOrderId}}</td>
                 <td>{{orders.phoneOrder}}</td>
                 <td>{{orders.ticketOrder}}</td>
                 <td>{{orders.nameOrder}}</td>

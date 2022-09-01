@@ -35,11 +35,12 @@
 </div>
 
 <div class="row mt-4" style="padding: 2% 5% 2% 8%;">
+
   <div class="col-md-5 col-lg-4" *ngFor="let product of products">
     <div class="card sombra" style="width: 301px; height: 550px;">
       <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
       <div class="card-body">
-        <h5>{{product.productName}}</h5>
+        <h5>{{product.productId}}: {{product.productName}}</h5>
         <p>{{product.productDescription}}</p>
       </div>
       <div class="card-footer" style="width: 300px; height: 100px;">
@@ -47,55 +48,29 @@
           <div class="mt-2 d-flex justify-content-center align-items-center">
             <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ver Imagen"><span class="material-icons">shopping_cart</span></button>
             <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" title="Editar Imagen"><span class="material-icons">visibility</span></button>
-            <button class="btn btn-danger ml-2" data-toggle="modal" data-placement="top" data-target="#exampleModal" title="Borrar"><span class="material-icons">delete</span></button>
+            <button class="btn btn-danger ml-2"  data-toggle="tooltip" data-placement="top" title="Borrar" data-bs-toggle="modal" data-bs-target="#modalId" (click)="darValor(product.productId)"><span class="material-icons">delete</span></button>
           </div>
         </div>
       </div>
     </div>
     <br>
   </div>
+
 </div>
 
-<div class="row">
-  <button class="btn btn-primary sombra" data-toggle="modal" data-target="#exampleModal">Crear nuevo album</button>
-</div>
+<!--  -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content text-white">
-      <div class="modal-header bg-success">
-        <h5 class="modal-title" id="exampleModalLabel">Nuevo Album</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Esta seguro de eliminar el producto? </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form (ngSubmit)="CrearProducto()">
-        <div class="modal-body bg-dark">
-          <div class="form-group">
-            <label for="">Nombre</label>
-            <input type="text"
-             class="form-control" 
-             name="nombre" 
-             [(ngModel)]="newProduct.productName" 
-             #nombre="ngModel"
-             [ngClass]="{'is-invalid': nombre.invalid && nombre.touched}"
-             required>
-
-            <div *ngIf="nombre.invalid && nombre.touched" class="alerta">
-              Debes completar el nombre.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="">Descripción</label>
-            <textarea cols="30" rows="10" class="form-control" name="description" [(ngModel)]="newProduct.productDescription"></textarea>
-          </div>
-        </div>
-
-        <div class="modal-footer bg-dark">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="CrearProducto()">Guardar</button>
-        </div>
-      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="EliminarProducto()">Eliminar</button>
+      </div>
     </div>
   </div>
 </div>

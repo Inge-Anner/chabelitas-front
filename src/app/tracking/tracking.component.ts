@@ -37,6 +37,7 @@ export class TrackingComponent implements OnInit {
   ObtenerTracking(): void {
     this.OrderServices.buscarOrderById(this.orderId).subscribe((res: any) => {
       this.orders = res.data;
+      console.log(res)
       localStorage.setItem('order', JSON.stringify(res));
       const getOrder = JSON.parse(localStorage.getItem('order')!);
       console.log('LA ORDEN CREADA ES:');

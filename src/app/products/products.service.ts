@@ -28,4 +28,8 @@ export class ProductServices {
     return this.http.post<any>(`${ base_url }/product`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
+  eliminarProducto(id: any){
+    return this.http.delete<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
 }
