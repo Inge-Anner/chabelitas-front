@@ -1,0 +1,75 @@
+<h2 style="text-align: center; padding: 3%;">Mantenimiento de Órdenes</h2>
+
+<!--<div *ngFor="let status of estados; index as i">
+    <h4 *ngIf="this.orders.statusOrderId == i+1" >{{status}}</h4>
+  </div>-->
+
+<div style="padding: 1% 5% 1% 5%; font-size: small; ">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">status Orden</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">ticketOrder</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Fecha creación</th>
+                <th scope="col">Fecha confirmación</th>
+                <th scope="col">Fecha entrega</th>
+                <th scope="col"> Total</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: left;">
+            <tr class="table-light" *ngFor="let orders of orders">
+                <th scope="row">{{orders.orderId}}</th>
+                <td >{{orders.statusOrderId}}</td>
+                <td>{{orders.phoneOrder}}</td>
+                <td>{{orders.ticketOrder}}</td>
+                <td>{{orders.nameOrder}}</td>
+                <td>{{orders.lastNameOrder}}</td>
+                <td>{{orders.adressDeliver}}</td>
+                <td>{{orders.dateCreated}}</td>
+                <td>{{orders.dateConfirmed}}</td>
+                <td>{{orders.dateDeliver}}</td>
+                <td>Q. {{orders.totalOrder}}</td>
+                <td><button type="button" data-bs-toggle="modal" data-bs-target="#modalId"
+                        class="btn btn-outline-secondary">Cambiar status</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+    aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Cambiar estado de orden</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exampleSelect1" class="form-label mt-4">Status</label>
+                    <select class="form-select" id="exampleSelect1">
+                        <option>Pago Enviado</option>
+                        <option>Pago Confirmado</option>
+                        <option>Pedido Enviado</option>
+                        <option>Eliminado</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
