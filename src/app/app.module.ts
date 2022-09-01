@@ -11,6 +11,7 @@ import { CategoryComponent } from './category/category.component';
 import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
 import { TrackingComponent } from './tracking/tracking.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TrackingComponent } from './tracking/tracking.component';
     CategoryComponent,
     OrdersComponent,
     LoginComponent,
-    TrackingComponent
+    TrackingComponent,
+    AdminComponent
   ],
   imports: [
     HttpClientModule,
