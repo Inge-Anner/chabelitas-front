@@ -26,7 +26,10 @@ export class TrackingComponent implements OnInit {
 
   estados: string[] = ['Creado','Pago Enviado','Pago Confirmado','Pedido Enviado','Eliminado'];
   orderId: Number = 0;
-  telOrder: Number = 0;
+  aux1: string = '';
+  aux2: string = '';
+  aux3: string = '';
+  aux4: string = '';
 
   ngOnInit(): void {
   }
@@ -41,4 +44,16 @@ export class TrackingComponent implements OnInit {
     });
   }
   
+  creado(): void{
+    this.aux1 = 'active';
+  }
+  enviado(): void{
+    this.aux2 = 'active';
+  }
+  confirmado(): void{
+    this.aux3 = 'active';
+  }
+  pedEnviado(): void{
+    this.aux4 = 'active';
+  }
 }
