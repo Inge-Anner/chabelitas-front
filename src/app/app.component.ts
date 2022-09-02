@@ -11,8 +11,8 @@ export class AppComponent {
   title = 'chabelitas-front';
 }
 
-export class category extends CategoryComponent {
+export class category extends CategoryComponent{
   override ObtenerCategory(): void {
-    
+
   }
 }//

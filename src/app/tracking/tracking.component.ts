@@ -6,12 +6,10 @@ import { OrderServices } from '../orders/orders.service';
 @Component({
   selector: 'app-tracking',
   templateUrl: './tracking.component.html',
-  styleUrls: ['./tracking.component.scss']
+  styleUrls: ['./tracking.component.scss'],
 })
-
 export class TrackingComponent implements OnInit {
-
-  constructor( private OrderServices: OrderServices ) { }
+  constructor(private OrderServices: OrderServices) {}
   orders: ordersModel = {
     statusOrderId: 0,
     phoneOrder: '',
@@ -24,37 +22,59 @@ export class TrackingComponent implements OnInit {
     totalOrder: 0,
   };
 
-  estados: string[] = ['Creado','Pago Enviado','Pago Confirmado','Pedido Enviado','Eliminado'];
+  estados: string[] = [
+    'Creado',
+    'Pago Enviado',
+    'Pago Confirmado',
+    'Pedido Enviado',
+    'Eliminado',
+  ];
   orderId: Number = 0;
   aux1: string = '';
   aux2: string = '';
   aux3: string = '';
   aux4: string = '';
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ObtenerTracking(): void {
     this.OrderServices.buscarOrderById(this.orderId).subscribe((res: any) => {
       this.orders = res.data;
-      console.log(res)
+      console.log(res);
       localStorage.setItem('order', JSON.stringify(res));
       const getOrder = JSON.parse(localStorage.getItem('order')!);
       console.log('LA ORDEN CREADA ES:');
       console.log(getOrder);
+      this.aux1 = '';
+      this.aux2 = '';
+      this.aux3 = '';
+      this.aux4 = '';
+      switch (getOrder.data.statusOrderId) {
+        case 1:
+          this.aux1 = 'active';
+          break;
+        case 2:
+          this.aux1 = 'active';
+          this.aux2 = 'active';
+          break;
+        case 3:
+          this.aux1 = 'active';
+          this.aux2 = 'active';
+          this.aux3 = 'active';
+          break;
+        case 4:
+          this.aux1 = 'active';
+          this.aux2 = 'active';
+          this.aux3 = 'active';
+          this.aux4 = 'active';
+          break;
+        default:
+          this.aux1 = '';
+          this.aux2 = '';
+          this.aux3 = '';
+          this.aux4 = '';
+          break;
+      }
     });
-  }
-  
-  creado(): void{
-    this.aux1 = 'active';
-  }
-  enviado(): void{
-    this.aux2 = 'active';
-  }
-  confirmado(): void{
-    this.aux3 = 'active';
-  }
-  pedEnviado(): void{
-    this.aux4 = 'active';
   }
 }

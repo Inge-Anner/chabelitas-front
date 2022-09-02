@@ -22,20 +22,20 @@
             </tr>
         </thead>
         <tbody style="text-align: left;">
-            <tr class="table-light" *ngFor="let orders of orders">
-                <th scope="row">{{orders.orderId}}</th>
+            <tr class="table-light" *ngFor="let order of orders">
+                <th scope="row">{{order.orderId}}</th>
                 <!-- <td (mousedown)="indicarStatus(orders.statusOrderId)">{{this.estado}}</td> -->
-                <td>{{orders.statusOrderId}}</td>
-                <td>{{orders.phoneOrder}}</td>
-                <td>{{orders.ticketOrder}}</td>
-                <td>{{orders.nameOrder}}</td>
-                <td>{{orders.lastNameOrder}}</td>
-                <td>{{orders.adressDeliver}}</td>
-                <td>{{orders.dateCreated}}</td>
-                <td>{{orders.dateConfirmed}}</td>
-                <td>{{orders.dateDeliver}}</td>
-                <td>Q. {{orders.totalOrder}}</td>
-                <td><button type="button" data-bs-toggle="modal" data-bs-target="#modalId"
+                <td>{{order.statusOrderId}}</td>
+                <td>{{order.phoneOrder}}</td>
+                <td>{{order.ticketOrder}}</td>
+                <td>{{order.nameOrder}}</td>
+                <td>{{order.lastNameOrder}}</td>
+                <td>{{order.adressDeliver}}</td>
+                <td>{{order.dateCreated}}</td>
+                <td>{{order.dateConfirmed}}</td>
+                <td>{{order.dateDeliver}}</td>
+                <td>Q. {{order.totalOrder}}</td>
+                <td><button type="button" data-bs-toggle="modal" data-bs-target="#modalId" (click)="llenarOrden(order)"
                         class="btn btn-outline-secondary">Cambiar status</button></td>
             </tr>
         </tbody>
@@ -58,7 +58,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleSelect1" class="form-label mt-4">Status</label>
-                    <select class="form-select" id="exampleSelect1">
+                    <select class="form-select" id="exampleSelect1" [(ngModel)]="this.estado">
                         <option>Pago Enviado</option>
                         <option>Pago Confirmado</option>
                         <option>Pedido Enviado</option>
@@ -69,7 +69,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary" (click)="cambiarStatus()">Save</button>
             </div>
         </div>
     </div>

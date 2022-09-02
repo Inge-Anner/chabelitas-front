@@ -1,6 +1,6 @@
 export interface ordersModel {
   orderId?: number;
-  statusOrderId: number;
+  statusOrderId: number | string;
   phoneOrder: string;
   ticketOrder?: string;
   nameOrder?: string;

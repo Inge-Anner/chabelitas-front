@@ -14,7 +14,7 @@
       <div class="row d-flex justify-content-center">
           <div class="col-12">
           <ul id="progressbar" class="text-center">
-              <li class="{{aux1}} step0" (mousemove)="creado()"></li>
+              <li class="{{aux1}} step0"></li>
               <li class="{{aux2}} step0"></li>
               <li class="{{aux3}} step0"></li>
               <li class="{{aux4}} step0"></li>
@@ -53,7 +53,7 @@
 <!-- <div class="container px-1 px-md-4 py-5 mx-auto">
   <div class="card">
       <div class="row d-flex justify-content-between px-3 top">
-          
+
           <div class="d-flex flex-column text-sm-right">
             <div *ngFor="let status of estados; index as i">
               <h4 *ngIf="this.orders.statusOrderId == i+1">{{status}}</h4>
