@@ -2,7 +2,7 @@ body {
     color: #000;
     overflow-x: hidden;
     height: 100%;
-    background-color: #8C9EFF;
+    background-color: #fbcdff;
     background-repeat: no-repeat;
 }
 
@@ -25,7 +25,7 @@ body {
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
-    color: #455A64;
+    color: #f1d2f4;
     padding-left: 0px;
     margin-top: 30px;
 } 
@@ -99,7 +99,7 @@ body {
 
 /*Color number of the step and the connector before it*/
 #progressbar li.active:before, #progressbar li.active:after {
-    background: #651FFF;
+    background: #f38bd0;
 }
 
 #progressbar li.active:before {
