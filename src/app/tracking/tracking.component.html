@@ -1,55 +1,66 @@
 <h2 style="text-align: center; padding: 2% 10% 2% 10%;">Rastreo de pedidos</h2>
-<div class="input-group mb-3" style="padding: 2% 10% 2% 10%;">
-  <input [defaultValue]="0" type="text" class="form-control" placeholder="Ingrese ID de pedido" aria-label="Ingrese ID de pedido" aria-describedby="btTracking" [(ngModel)]="this.orderId">
-  <button class="btn btn-primary" (click)="ObtenerTracking()" type="sumbit" id="btTracking">Rastrear</button>
+<div class="input-group mb-3" style="padding: 2% 10% 1% 10%;">
+    <input type="text" class="form-control" placeholder="Ingrese ID de pedido" aria-label="Ingrese ID de pedido"
+        aria-describedby="btTracking" [(ngModel)]="this.orderId">
+    <button class="btn btn-primary" (click)="ObtenerTracking()" type="sumbit" id="btTracking">Rastrear</button>
 </div>
-
 
 
 <div class="container px-1 px-md-4 py-5 mx-auto">
-  <div class="card" >
-      <!-- Add class 'active' to progress -->
-      <div class="row d-flex justify-content-center">
-          <div class="col-12">
-          <ul id="progressbar" class="text-center">
-              <li class="{{aux1}} step0"></li>
-              <li class="{{aux2}} step0"></li>
-              <li class="{{aux3}} step0"></li>
-              <li class="{{aux4}} step0"></li>
-          </ul>
-          </div>
-      </div>
-      <div class="row justify-content-between top">
-          <div class="row d-flex icon-content">
-              <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
-              <div class="d-flex flex-column">
-                  <p class="font-weight-bold">Orden<BR>Creada</p>
-              </div>
-          </div>
-          <div class="row d-flex icon-content">
-              <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
-              <div class="d-flex flex-column">
-                  <p class="font-weight-bold">Pago<BR>Enviado</p>
-              </div>
-          </div>
-          <div class="row d-flex icon-content">
-              <img class="icon" src="https://i.imgur.com/TkPm63y.png">
-              <div class="d-flex flex-column">
-                  <p class="font-weight-bold">Pago<BR>Confirmado</p>
-              </div>
-          </div>
-          <div class="row d-flex icon-content">
-              <img class="icon" src="https://i.imgur.com/HdsziHP.png">
-              <div class="d-flex flex-column">
-                  <p class="font-weight-bold">Pedido<br>Enviado</p>
-              </div>
-              <div *ngFor="let status of estados; index as i">
-                <h3 style="text-align:center;" *ngIf="this.orders.statusOrderId == i+1" >{{status}}</h3>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+    <div class="card">
+        <!-- Add class 'active' to progress -->
+        <div class="row d-flex justify-content-center">
+            <div class="col-12">
+                <ul id="progressbar" class="text-center">
+                    <li class="{{aux1}} step0"></li>
+                    <li class="{{aux2}} step0"></li>
+                    <li class="{{aux3}} step0"></li>
+                    <li class="{{aux4}} step0"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="item">
+
+                    <div class="row d-flex icon-content">
+                        <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Orden<BR>Creada</p>
+                        </div>
+                    </div>
+                
+            </div>    
+                <div class="item">
+                    <div class="row d-flex icon-content">
+                        <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Pago<BR>Enviado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row d-flex icon-content">
+                        <img class="icon" src="https://i.imgur.com/TkPm63y.png">
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Pago<BR>Confirmado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="row d-flex icon-content">
+                        <img class="icon" src="https://i.imgur.com/HdsziHP.png">
+                        <div class="d-flex flex-column">
+                            <p class="font-weight-bold">Pedido<br>Enviado</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let status of estados; index as i">
+                    <h3 style="text-align:center;" *ngIf="this.orders.statusOrderId == i+1">{{status}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <!-- <div class="container px-1 px-md-4 py-5 mx-auto">
   <div class="card">
