@@ -10,6 +10,8 @@ import { TrackingComponent } from './tracking/tracking.component';
 import { AdminComponent } from './admin/admin.component';
 import { MttoProductosComponent } from './mtto-productos/mtto-productos.component';
 import { MttoOrdenesComponent } from './mtto-ordenes/mtto-ordenes.component';
+import { MttoTemporadasComponent } from './mtto-temporadas/mtto-temporadas.component';
+import { MttoCategoriaComponent } from './mtto-categoria/mtto-categoria.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'tracking', component: TrackingComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'mtto-productos', component: MttoProductosComponent},
-  { path: 'mtto-ordenes', component: MttoOrdenesComponent}
+  { path: 'mtto-ordenes', component: MttoOrdenesComponent},
+  { path: 'mtto-temporadas', component: MttoTemporadasComponent},
+  { path: 'mtto-categoria', component: MttoCategoriaComponent}
 ];
 
 @NgModule({
