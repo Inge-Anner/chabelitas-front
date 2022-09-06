@@ -28,6 +28,11 @@ export class MttoProductosComponent implements OnInit {
     this.ObtenerProductos();
   }
   
+  cierraSesion(): void{
+    localStorage.removeItem('sesion');
+    this.router.navigateByUrl('/login');
+  }
+
   validaSesion(): void {
     const getProducts = localStorage.getItem('sesion');
     if (!getProducts) {

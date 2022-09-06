@@ -30,6 +30,12 @@ export class MttoTemporadasComponent implements OnInit {
       this.router.navigateByUrl('/login');
     }
   }
+
+  cierraSesion(): void{
+    localStorage.removeItem('sesion');
+    this.router.navigateByUrl('/login');
+  }
+
   ObtenerSeasons(): void {
     this.seasonsServices.cargarSeason().subscribe((res: any) => {
       this.seasons = res.data;

@@ -27,6 +27,11 @@ export class MttoCategoriaComponent implements OnInit {
     this.ObtenerCategory();
   }
 
+  cierraSesion(): void{
+    localStorage.removeItem('sesion');
+    this.router.navigateByUrl('/login');
+  }
+
   validaSesion(): void {
     const getCategory = localStorage.getItem('sesion');
     if (!getCategory) {
