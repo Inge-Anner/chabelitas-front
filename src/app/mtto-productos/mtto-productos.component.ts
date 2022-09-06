@@ -22,10 +22,15 @@ export class MttoProductosComponent implements OnInit {
     statusId: 0,
   }
   mostrar: boolean = false;
+  idProd: any;
 
   ngOnInit(): void {
     this.validaSesion();
     this.ObtenerProductos();
+  }
+
+  darValor(id: any): void{
+    this.idProd = +id;
   }
   
   cierraSesion(): void{
@@ -51,6 +56,13 @@ export class MttoProductosComponent implements OnInit {
     this.productServices.ingresarProducto(this.newProduct).subscribe((res: any) => {
       this.ObtenerProductos();
     });
+  }
+
+  EliminarProducto(): void{
+    this.productServices.eliminarProducto(this.idProd).subscribe((res: any) => {
+      console.log(res)
+    });
+    this.ObtenerProductos();
   }
 
 }
