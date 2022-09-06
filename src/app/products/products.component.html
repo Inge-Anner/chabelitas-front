@@ -29,47 +29,49 @@
 
 
 <div class="row mt-3" style="padding: 1% 1% 1% 2%;">
-  <div class="col-md-5 col-lg-4" style="padding: 1% 0.1% 1% 0.1%; flex:0 0 auto; width: auto;" *ngFor="let category of categories">
-     <button class="btn btn-secondary" style="text-align: center;" (click)="seleccionarCategoria(category.categoryId)">{{category.categoryName}}</button>
+  <div class="col-md-5 col-lg-4" style="padding: 1% 0.1% 1% 0.1%; flex:0 0 auto; width: auto;"
+    *ngFor="let category of categories">
+    <button class="btn btn-secondary" style="text-align: center;"
+      (click)="seleccionarCategoria(category.categoryId)">{{category.categoryName}}</button>
   </div>
 </div>
 
 <div class="row mt-4" style="padding: 2% 5% 2% 8%;">
-
   <div class="col-md-5 col-lg-4" *ngFor="let product of products">
-    <div class="card sombra" style="width: 301px; height: 550px;">
+    <div class="card sombra" style="width: 301px; height: 480px;">
       <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
       <div class="card-body">
-        <h5>{{product.productId}}: {{product.productName}}</h5>
-        <p>{{product.productDescription}}</p>
+        <h5>{{product.productName}}</h5>
       </div>
-      <div class="card-footer" style="width: 300px; height: 100px;">
+      <div class="card-footer" style="width: 300px; height: 80px;">
         <div class="row justify-content-between">
           <div class="mt-2 d-flex justify-content-center align-items-center">
-            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ver Imagen"><span class="material-icons">shopping_cart</span></button>
-            <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" title="Editar Imagen"><span class="material-icons">visibility</span></button>
-            <button class="btn btn-danger ml-2"  data-toggle="tooltip" data-placement="top" title="Borrar" data-bs-toggle="modal" data-bs-target="#modalId" (click)="darValor(product.productId)"><span class="material-icons">delete</span></button>
+            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ver Imagen"><span
+                class="material-icons">shopping_cart</span></button>
+            <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" data-bs-toggle="modal" data-bs-target="#visualization" title="Editar Imagen"><span
+                class="material-icons" (click)="productView(product)">visibility</span></button>
           </div>
         </div>
       </div>
     </div>
     <br>
   </div>
-
 </div>
 
-<!--  -->
-
-<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade" id="visualization" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+  role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalTitleId">Esta seguro de eliminar el producto? </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header justify-content-center align-items-center">
+        <img [src]="this.productVisualization.productImage" style="width: 280px; height: 200px;">
+      </div>
+      <div class="modal-body justify-content-between">
+        <h5>{{this.productVisualization.productName}}</h5>
+        <p>{{this.productVisualization.productDescription}}</p>
+        <p>Su precio es de Q.{{this.productVisualization.productPrice}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="EliminarProducto()">Eliminar</button>
       </div>
     </div>
   </div>

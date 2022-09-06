@@ -18,8 +18,9 @@
           <div class="mt-2 d-flex justify-content-center align-items-center">
             <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" title="Editar Imagen"><span
                 class="material-icons">edit</span></button>
-            <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"><span
-                class="material-icons">delete</span></button>
+                <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"
+                data-bs-toggle="modal" data-bs-target="#modalId" (click)="darValor(product.productId)"><span
+                  class="material-icons">delete</span></button>
           </div>
         </div>
       </div>
@@ -43,4 +44,21 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+  aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Esta seguro de eliminar el producto? </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="EliminarProducto()">Eliminar</button>
+      </div>
+    </div>
+  </div>
 </div>
