@@ -14,6 +14,8 @@ import { TrackingComponent } from './tracking/tracking.component';
 import { AdminComponent } from './admin/admin.component';
 import { MttoProductosComponent } from './mtto-productos/mtto-productos.component';
 import { MttoOrdenesComponent } from './mtto-ordenes/mtto-ordenes.component';
+import { MttoTemporadasComponent } from './mtto-temporadas/mtto-temporadas.component';
+import { MttoCategoriaComponent } from './mtto-categoria/mtto-categoria.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { MttoOrdenesComponent } from './mtto-ordenes/mtto-ordenes.component';
     TrackingComponent,
     AdminComponent,
     MttoProductosComponent,
-    MttoOrdenesComponent
+    MttoOrdenesComponent,
+    MttoTemporadasComponent,
+    MttoCategoriaComponent
   ],
   imports: [
     HttpClientModule,

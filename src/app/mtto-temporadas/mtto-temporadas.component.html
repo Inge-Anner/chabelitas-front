@@ -1,0 +1,41 @@
+<h2 style="text-align: center; padding: 2%">Mantenimiento de temporadas</h2>
+
+
+<!--<div class="form-check form-switch" style="padding: 5%; float: left;">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="" >
+  <label>1 - Navidad</label>
+</div>-->
+
+<div class="form-check form-switch" style="padding: 5%; float: left;" *ngFor="let season of seasons">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="" >
+  <label>{{season.seasonId}} - {{season.seasonName}}</label>
+</div>
+
+<div class="input-group mb-3" style="padding: 2% 40% 2% 15%;">
+  <input type="text" class="form-control" placeholder="Ingrese id de temporada" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+</div>
+
+
+<fieldset style="padding: 2% 15% 2% 15%;">
+  <div class="form-group">
+    <fieldset disabled="">
+      <label class="form-label">Id de temporada</label>
+      <input class="form-control" id="disabledInput" type="text" placeholder="" disabled="">
+    </fieldset>
+  </div>
+  <!--<div class="form-seasons">
+    <label class="form-label mt-4">statusID</label>
+    <input type="text" class="form-control" id="statusID" placeholder="" [(ngModel)]="this.newSeason.statusId">
+  </div>
+  <small id="telHelp" class="form-text text-muted">1 activo 2 desactivado</small>-->
+  <div class="form-seasons">
+    <label class="form-label mt-4">Nombre temporada</label>
+    <input type="text" class="form-control" id="Nombre"  placeholder="" [(ngModel)]="this.newSeason.seasonName">
+  </div>
+  <br><br>
+  <button type="submit" (click)="CrearSeasons()" class="btn btn-warning">Crear temporada</button>
+  <button type="submit" class="btn btn-info">Editar temporada</button>
+  <button type="submit" class="btn btn-danger">Eliminar temporada</button>
+  <br><br>
+  <small id="telHelp" class="form-text text-muted"></small>

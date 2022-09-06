@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('sesion', 'active');
       this.router.navigateByUrl('/admin');
     })
-  }
+    }
+
+  
 //
 }
