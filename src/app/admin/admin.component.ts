@@ -12,4 +12,8 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cierraSesion(): void{
+    localStorage.removeItem('sesion');
+    this.router.navigateByUrl('/login');
+  }
 }

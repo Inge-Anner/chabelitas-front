@@ -1,23 +1,46 @@
 <h2 style="text-align: center; padding: 2%">Mantenimiento de productos</h2>
 
+<div style="padding: 5% 10% 5% 20%;">
+  <button type="button" class="btn btn-danger" style="padding: 2% 5% 2% 5%;" data-bs-toggle="modal"
+      data-bs-target="#cierraSesion"><span class="material-icons">logout</span></button>
+</div>
 
 <div class="row mt-4" style="padding: 2% 5% 2% 8%;">
-    <div class="col-md-5 col-lg-4" *ngFor="let product of products">
-      <div class="card sombra" style="width: 301px; height: 550px;">
-        <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
-        <div class="card-body">
-          <h5>Id Producto:{{product.productId}} Nombre Producto:{{product.productName}}</h5>
-          <p>{{product.productDescription}}</p>
-        </div>
-        <div class="card-footer" style="width: 300px; height: 100px;">
-          <div class="row justify-content-between">
-            <div class="mt-2 d-flex justify-content-center align-items-center">
-              <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" title="Editar Imagen"><span class="material-icons">edit</span></button>
-              <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"><span class="material-icons">delete</span></button>
-            </div>
+  <div class="col-md-5 col-lg-4" *ngFor="let product of products">
+    <div class="card sombra" style="width: 301px; height: 550px;">
+      <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
+      <div class="card-body">
+        <h5>Id Producto:{{product.productId}} Nombre Producto:{{product.productName}}</h5>
+        <p>{{product.productDescription}}</p>
+      </div>
+      <div class="card-footer" style="width: 300px; height: 100px;">
+        <div class="row justify-content-between">
+          <div class="mt-2 d-flex justify-content-center align-items-center">
+            <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" title="Editar Imagen"><span
+                class="material-icons">edit</span></button>
+            <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"><span
+                class="material-icons">delete</span></button>
           </div>
         </div>
       </div>
-      <br>
     </div>
+    <br>
   </div>
+</div>
+
+<div class="modal fade" id="cierraSesion" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+    aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Esta seguro de cerrar sesion? </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cierraSesion()">Cerrar
+                    Sesion</button>
+            </div>
+        </div>
+    </div>
+</div>

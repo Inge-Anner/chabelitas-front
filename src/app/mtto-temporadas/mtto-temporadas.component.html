@@ -1,21 +1,37 @@
 <h2 style="text-align: center; padding: 2%">Mantenimiento de temporadas</h2>
 
-
-<!--<div class="form-check form-switch" style="padding: 5%; float: left;">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="" >
-  <label>1 - Navidad</label>
-</div>-->
+<div style="padding: 5% 10% 5% 20%;">
+  <button type="button" class="btn btn-danger" style="padding: 2% 5% 2% 5%;" data-bs-toggle="modal"
+    data-bs-target="#cierraSesion"><span class="material-icons">logout</span></button>
+</div>
 
 <div class="form-check form-switch" style="padding: 5%; float: left;" *ngFor="let season of seasons">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="" >
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
   <label>{{season.seasonId}} - {{season.seasonName}}</label>
 </div>
 
 <div class="input-group mb-3" style="padding: 2% 40% 2% 15%;">
-  <input type="text" class="form-control" placeholder="Ingrese id de temporada" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <input type="text" class="form-control" placeholder="Ingrese id de temporada" aria-label="Recipient's username"
+    aria-describedby="button-addon2">
   <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
 </div>
 
+<div class="modal fade" id="cierraSesion" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+    aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Esta seguro de cerrar sesion? </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cierraSesion()">Cerrar
+                    Sesion</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <fieldset style="padding: 2% 15% 2% 15%;">
   <div class="form-group">
@@ -31,7 +47,7 @@
   <small id="telHelp" class="form-text text-muted">1 activo 2 desactivado</small>-->
   <div class="form-seasons">
     <label class="form-label mt-4">Nombre temporada</label>
-    <input type="text" class="form-control" id="Nombre"  placeholder="" [(ngModel)]="this.newSeason.seasonName">
+    <input type="text" class="form-control" id="Nombre" placeholder="" [(ngModel)]="this.newSeason.seasonName">
   </div>
   <br><br>
   <button type="submit" (click)="CrearSeasons()" class="btn btn-warning">Crear temporada</button>
@@ -39,3 +55,4 @@
   <button type="submit" class="btn btn-danger">Eliminar temporada</button>
   <br><br>
   <small id="telHelp" class="form-text text-muted"></small>
+
