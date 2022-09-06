@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryServices } from './mtto-categoria.service';
 import { categoryModel } from '../models/category.model'
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { categoryModel } from '../models/category.model'
 })
 export class MttoCategoriaComponent implements OnInit {
 
-  constructor(private CategoryServices: CategoryServices) { }
+  constructor(private router: Router, private CategoryServices: CategoryServices) { }
 
   category: categoryModel[] = [];
   newcategory: categoryModel = {
@@ -23,9 +23,16 @@ export class MttoCategoriaComponent implements OnInit {
   mostrar3: string = '';
 
   ngOnInit(): void {
+    this.validaSesion();
     this.ObtenerCategory();
   }
 
+  validaSesion(): void {
+    const getCategory = localStorage.getItem('sesion');
+    if (!getCategory) {
+      this.router.navigateByUrl('/login');
+    }
+  }
   ObtenerCategory(): void {
     this.CategoryServices.cargarCategory().subscribe((res: any) => {
       this.category = res.data;

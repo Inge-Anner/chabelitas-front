@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SeasonsServices } from './mtto-temporadas.service';
 import { seasonsModel } from '../models/seasons.model'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mtto-temporadas',
@@ -9,7 +10,7 @@ import { seasonsModel } from '../models/seasons.model'
 })
 export class MttoTemporadasComponent implements OnInit {
 
-  constructor(private seasonsServices: SeasonsServices) { }
+  constructor(private router: Router, private seasonsServices: SeasonsServices) { }
 
   seasons: seasonsModel[] = [];
   newSeason: seasonsModel = {
@@ -19,9 +20,16 @@ export class MttoTemporadasComponent implements OnInit {
   mostrar: boolean = false;
 
   ngOnInit(): void {
+    this.validaSesion();
     this.ObtenerSeasons();
   }
 
+  validaSesion(): void {
+    const getSeasons = localStorage.getItem('sesion');
+    if (!getSeasons) {
+      this.router.navigateByUrl('/login');
+    }
+  }
   ObtenerSeasons(): void {
     this.seasonsServices.cargarSeason().subscribe((res: any) => {
       this.seasons = res.data;
