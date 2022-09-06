@@ -1,8 +1,8 @@
 <h2 style="text-align: center; padding: 3%;">Mantenimiento de Órdenes</h2>
-
-<!--<div *ngFor="let status of estados; index as i">
-    <h4 *ngIf="this.orders.statusOrderId == i+1" >{{status}}</h4>
-  </div>-->
+<div style="padding: 5% 10% 5% 20%;">
+    <button type="button" class="btn btn-danger" style="padding: 2% 5% 2% 5%;" data-bs-toggle="modal"
+        data-bs-target="#cierraSesion"><span class="material-icons">logout</span></button>
+</div>
 
 <div style="padding: 1% 5% 1% 5%; font-size: small; ">
     <table class="table table-hover">
@@ -24,7 +24,6 @@
         <tbody style="text-align: left;">
             <tr class="table-light" *ngFor="let order of orders">
                 <th scope="row">{{order.orderId}}</th>
-                <!-- <td (mousedown)="indicarStatus(orders.statusOrderId)">{{this.estado}}</td> -->
                 <td>{{order.statusOrderId}}</td>
                 <td>{{order.phoneOrder}}</td>
                 <td>{{order.ticketOrder}}</td>
@@ -43,10 +42,6 @@
 </div>
 
 
-
-
-<!-- Modal Body -->
-<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
 <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
     aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
@@ -70,6 +65,23 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" (click)="cambiarStatus()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cierraSesion" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+    aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Esta seguro de cerrar sesion? </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cierraSesion()">Cerrar
+                    Sesion</button>
             </div>
         </div>
     </div>

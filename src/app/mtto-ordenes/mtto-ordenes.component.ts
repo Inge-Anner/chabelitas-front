@@ -53,6 +53,11 @@ export class MttoOrdenesComponent implements OnInit {
     }
   }
 
+  cierraSesion(): void{
+    localStorage.removeItem('sesion');
+    this.router.navigateByUrl('/login');
+  }
+
   ObtenerOrder(): void {
     this.orderServices.cargarOrders().subscribe((res: any) => {
       this.orders = res.data.map((order: ordersModel) => {
