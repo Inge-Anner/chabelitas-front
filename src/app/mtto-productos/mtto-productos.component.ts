@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServices } from './mtto-productos.service'
 import { productsModel } from '../models/products.model'
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mtto-productos',
@@ -10,7 +10,7 @@ import { productsModel } from '../models/products.model'
 })
 export class MttoProductosComponent implements OnInit {
 
-  constructor(private productServices: ProductServices) { }
+  constructor(private router: Router, private productServices: ProductServices) { }
   products: productsModel[] = [];
   newProduct: productsModel = {
     categoryId: 0,
@@ -24,9 +24,17 @@ export class MttoProductosComponent implements OnInit {
   mostrar: boolean = false;
 
   ngOnInit(): void {
+    this.validaSesion();
     this.ObtenerProductos();
   }
   
+  validaSesion(): void {
+    const getProducts = localStorage.getItem('sesion');
+    if (!getProducts) {
+      this.router.navigateByUrl('/login');
+    }
+  }
+
   ObtenerProductos(): void {
     this.productServices.cargarProductos().subscribe((res: any) => {
       this.products = res.data;
