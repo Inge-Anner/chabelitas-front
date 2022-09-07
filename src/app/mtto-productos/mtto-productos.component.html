@@ -81,23 +81,23 @@
       <div class="modal-body">
         <div class="form-product">
           <label class="form-label mt-4">Id Categoria</label>
-          <input type="text" class="form-control" id="IdCategoria" placeholder="">
+          <input type="text" class="form-control" id="IdCategoria">[(ngModel)]="this.IdCategoria"
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Descripcion</label>
-          <input type="text" class="form-control" id="Description" placeholder="">
+          <input type="text" class="form-control" id="Description">[(ngModel)]="this.productDescription"
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Nombre</label>
-          <input type="text" class="form-control" id="Nombre" placeholder="">
+          <input type="text" class="form-control" id="Nombre">[(ngModel)]="this.productName"
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Precio</label>
-          <input type="text" class="form-control" id="Precio" placeholder="">
+          <input type="text" class="form-control" id="Precio">[(ngModel)]="this.productPrice"
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Id Temporada</label>
-          <input type="text" class="form-control" id="IdTemporada" placeholder="">
+          <input type="text" class="form-control" id="IdTemporada">[(ngModel)]="this.seasonId"
         </div>
       </div>
       <div class="modal-footer">
