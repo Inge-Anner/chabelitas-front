@@ -9,7 +9,7 @@ import { ordersModel } from '../models/orders.model'
 })
 export class OrdersComponent implements OnInit {
 
-  constructor( private orderServices: OrderServices ) { }
+  constructor(private orderServices: OrderServices) { }
   orders: ordersModel[] = [];
   newOrder: ordersModel = {
     statusOrderId: 0,
@@ -26,6 +26,7 @@ export class OrdersComponent implements OnInit {
   mostrar2: string = '';
 
   ngOnInit(): void {
+    this.obtenerCarrito();
   }
 
   ObtenerOrder(): void {
@@ -51,6 +52,25 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-
-
+  carrito: any[] = [];
+  cantidad: number = 1;
+  obtenerCarrito(): void {
+    if (localStorage.getItem('carrito') != null) {
+      let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
+      for (let i of getCarrito) {
+        this.carrito.push(i);
+      }
+    }
+  }
+  mas(num: number): void{
+    this.cantidad = num;
+    this.cantidad = num + 1;
+  }
+  menos(num: number): void{
+    this.cantidad = num;
+    const min: number = 1;
+    if(this.cantidad > min){
+      this.cantidad = this.cantidad - 1;
+    }
+  }
 }

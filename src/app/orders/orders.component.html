@@ -1,4 +1,3 @@
-
 <!--<input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar2">
 
 <button *ngIf="this.mostrar2 == 'hola'" type="button" (click)="ObtenerOrder()" class="btn btn-warning">Mostrar 2</button>
@@ -10,9 +9,38 @@
 </div>
 -->
 
-  <fieldset style="padding: 2% 15% 2% 15%;">
-    <legend>Ingrese la información para realizar su pedido</legend>
-    <!--<div class="form-orders row">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" colspan="3">Producto</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-light" *ngFor="let item of carrito">
+      <td><button type="button" class="btn btn-danger"><span class="material-icons">delete</span></button></td>
+      <td><img [src]="item.productImage" style="width: 280px; height: 200px;"></td>
+      <td>{{item.productName}}</td>
+      <td>{{item.productName}}</td>
+      <td>
+        <div class="input-group mb-3" id="div-cant">
+          <button class="btn btn-info" data-toggle="tooltip" (click)="menos(item.detailOrderQuantity)"><span
+              class="material-icons">remove</span></button>
+          <input type="text" class="form-control" [value]="item.detailOrderQuantity">
+          <button class="btn btn-info" data-toggle="tooltip" (click)="mas(item.detailOrderQuantity)"><span
+              class="material-icons">add</span></button>
+        </div>
+      </td>
+      <td>Q. {{item.orderDetailSubtotal}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<fieldset style="padding: 2% 15% 2% 15%;" *ngIf="this.mostrar == true">
+  <legend>Ingrese la información para realizar su pedido</legend>
+  <!--<div class="form-orders row">
     </div>
     <div class="form-orders">
       <label for="idorden" class="form-label mt-4">idorden</label>
@@ -22,35 +50,40 @@
       <label for="idordenstatus" class="form-label mt-4">idordenstatus</label>
       <input type="number" class="form-control" id="idordenstatus" placeholder="Ingresa tu id status" [(ngModel)]="this.newOrder.statusOrderId">
     </div>-->
-    <div class="form-orders">
-      <label class="form-label mt-4">Telefono/Celular</label>
-      <input type="tel" class="form-control" id="telefono" pattern="{[0-9]{8}}" maxlength="8" placeholder="Ingresa tu número" [(ngModel)]="this.newOrder.phoneOrder">
-    </div>
-    <div class="form-orders">
-      <label class="form-label mt-4">Nombre</label>
-      <input type="text" class="form-control" id="Nombre"  placeholder="Ingresa tu nombre" [(ngModel)]="this.newOrder.nameOrder">
-    </div>
-    <div class="form-orders">
-      <label class="form-label mt-4">Apellido</label>
-      <input type="text" class="form-control" id="Apellido"  placeholder="Ingresa tu apellido" [(ngModel)]="this.newOrder.lastNameOrder">
-    </div>
-    <div class="form-orders">
-      <label class="form-label mt-4">Dirección de entrega</label>
-      <textarea class="form-control" id="direccion" [(ngModel)]="this.newOrder.adressDeliver" rows="3"> </textarea>
-    </div>
+  <div class="form-orders">
+    <label class="form-label mt-4">Telefono/Celular</label>
+    <input type="tel" class="form-control" id="telefono" pattern="{[0-9]{8}}" maxlength="8"
+      placeholder="Ingresa tu número" [(ngModel)]="this.newOrder.phoneOrder">
+  </div>
+  <div class="form-orders">
+    <label class="form-label mt-4">Nombre</label>
+    <input type="text" class="form-control" id="Nombre" placeholder="Ingresa tu nombre"
+      [(ngModel)]="this.newOrder.nameOrder">
+  </div>
+  <div class="form-orders">
+    <label class="form-label mt-4">Apellido</label>
+    <input type="text" class="form-control" id="Apellido" placeholder="Ingresa tu apellido"
+      [(ngModel)]="this.newOrder.lastNameOrder">
+  </div>
+  <div class="form-orders">
+    <label class="form-label mt-4">Dirección de entrega</label>
+    <textarea class="form-control" id="direccion" [(ngModel)]="this.newOrder.adressDeliver" rows="3"> </textarea>
+  </div>
 
-    <div class="form-orders">
-      <label class="form-label mt-4">Ingrese su fecha de entrega</label>
-      <input type="date" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newOrder.dateDeliver" [(ngModel)]="this.newOrder.dateConfirmed">
-    </div>
+  <div class="form-orders">
+    <label class="form-label mt-4">Ingrese su fecha de entrega</label>
+    <input type="date" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newOrder.dateDeliver"
+      [(ngModel)]="this.newOrder.dateConfirmed">
+  </div>
 
-    <div class="form-orders">
-      <label class="form-label mt-4">Ingrese el codigo del comprobante del deposito</label>
-      <input type="text" class="form-control" id="TicketOrden"  placeholder="Ingresa el codigo" [(ngModel)]="this.newOrder.ticketOrder">
-    </div>
-    <br>
+  <div class="form-orders">
+    <label class="form-label mt-4">Ingrese el codigo del comprobante del deposito</label>
+    <input type="text" class="form-control" id="TicketOrden" placeholder="Ingresa el codigo"
+      [(ngModel)]="this.newOrder.ticketOrder">
+  </div>
+  <br>
 
-    <button type="submit" (click)="CrearOrder()" class="btn btn-warning">Ingresar</button>
-    <br><br>
-    <small id="telHelp" class="form-text text-muted">Toda información ingresada sera de uso reservado.</small>
-
+  <button type="submit" (click)="CrearOrder()" class="btn btn-warning">Ingresar</button>
+  <br><br>
+  <small id="telHelp" class="form-text text-muted">Toda información ingresada sera de uso reservado.</small>
+</fieldset>

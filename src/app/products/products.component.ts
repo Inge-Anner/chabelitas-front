@@ -4,8 +4,8 @@ import { CategoryServices } from '../category/category.service';
 import { productsModel } from '../models/products.model';
 import { categoryModel } from '../models/category.model';
 import { visualizationsModel } from '../models/visualizations.model';
-import * as moment from 'moment-timezone';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -14,10 +14,11 @@ import { formatDate } from '@angular/common';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor( private productServices: ProductServices, private categoryServices: CategoryServices ) { }
+  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, private router: Router ) { }
   products: productsModel[] = [];
   categories: categoryModel[] = [];
   visualization: visualizationsModel[] = [];
+  
   whereProducts: any = {
     categoryId: 0,
   }
@@ -49,31 +50,31 @@ export class ProductsComponent implements OnInit {
 
   mostrar: boolean = false;
   mostrar2: string = '';
-  repetir = [
-    {
-      nombre: 'Marco',
-      apellido: 'Mohr'
-    },
-    {
-      nombre: 'Angel',
-      apellido: 'Velasquez'
-    },
-    {
-      nombre: 'Anner',
-      apellido: 'Gordillo'
-    },
-    {
-      nombre: 'Camilo',
-      apellido: 'Galindo'
-    }
-  ]
-  repetir2 = [
-    "uno",
-    "dos",
-    "tres",
-    "cuatro",
-  ]
-
+  // repetir = [
+  //   {
+  //     nombre: 'Marco',
+  //     apellido: 'Mohr'
+  //   },
+  //   {
+  //     nombre: 'Angel',
+  //     apellido: 'Velasquez'
+  //   },
+  //   {
+  //     nombre: 'Anner',
+  //     apellido: 'Gordillo'
+  //   },
+  //   {
+  //     nombre: 'Camilo',
+  //     apellido: 'Galindo'
+  //   }
+  // ]
+  // repetir2 = [
+  //   "uno",
+  //   "dos",
+  //   "tres",
+  //   "cuatro",
+  // ]
+  cantidad: number = 1;
   idProd: any;
 
   ngOnInit(): void {
@@ -111,5 +112,52 @@ export class ProductsComponent implements OnInit {
   productView(product: productsModel): void{
     this.productVisualization = product;
     this.visualizacion(product.productId);
+  }
+
+  productCart(product: productsModel): void{
+    this.productVisualization = product;
+  }
+
+  carrito: any[] = [];
+  newCarrito: any = {
+    productId: 0,
+    orderId: 0,
+    detailOrderQuantity: 0,
+    orderDetailSubtotal: 0,
+    productName: '',
+    productImage: ''
+  }
+
+  agregarProductoCarrito(): void{
+    if (localStorage.getItem('carrito') == null){
+      this.newCarrito.productId = this.productVisualization.productId;
+      this.newCarrito.detailOrderQuantity = this.cantidad;
+      this.newCarrito.orderDetailSubtotal = this.productVisualization.productPrice * this.cantidad;
+      this.newCarrito.productName = this.productVisualization.productName;
+      this.newCarrito.productImage = this.productVisualization.productImage;
+      this.carrito.push(this.newCarrito);
+      localStorage.setItem('carrito', JSON.stringify(this.carrito));
+      this.router.navigateByUrl('/orders');
+    }else if (localStorage.getItem('carrito') != null){
+      let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
+      this.newCarrito.productId = this.productVisualization.productId;
+      this.newCarrito.detailOrderQuantity = this.cantidad;
+      this.newCarrito.orderDetailSubtotal = this.productVisualization.productPrice * this.cantidad;
+      this.newCarrito.productName = this.productVisualization.productName;
+      this.newCarrito.productImage = this.productVisualization.productImage;
+      getCarrito.push(this.newCarrito);
+      localStorage.setItem('carrito', JSON.stringify(getCarrito));
+      this.router.navigateByUrl('/orders');
+    }
+  }
+
+  mas(): void{
+    this.cantidad = this.cantidad + 1;
+  }
+  menos(): void{
+    const min: number = 1;
+    if(this.cantidad > min){
+      this.cantidad = this.cantidad - 1;
+    }
   }
 }
