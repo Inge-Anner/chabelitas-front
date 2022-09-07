@@ -32,4 +32,8 @@ export class ProductServices {
     return this.http.delete<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
+  buscarProductoById(id: any){
+    return this.http.get<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
 }

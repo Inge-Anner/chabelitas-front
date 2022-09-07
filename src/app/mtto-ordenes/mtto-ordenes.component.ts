@@ -10,7 +10,7 @@ import * as moment from 'moment-timezone';
   styleUrls: ['./mtto-ordenes.component.scss'],
 })
 export class MttoOrdenesComponent implements OnInit {
-  constructor(private router: Router,
+  constructor(public router: Router,
               private orderServices: OrderServices) {}
   orders: ordersModel[] = [];
   currentOrder: ordersModel = {

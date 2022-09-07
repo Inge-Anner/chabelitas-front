@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MttoProductosComponent implements OnInit {
 
-  constructor(private router: Router, private productServices: ProductServices) { }
+  constructor(public router: Router, private productServices: ProductServices) { }
   products: productsModel[] = [];
   newProduct: productsModel = {
     categoryId: 0,
@@ -51,7 +51,12 @@ export class MttoProductosComponent implements OnInit {
       this.mostrar = true;
     });
   }
-
+  ObtenerProductosById(idproduct : any): void {
+    this.productServices.buscarProductoById(idproduct).subscribe((res: any) => {
+      this.products = res.data;
+      this.mostrar = true;
+    });
+  }
   CrearProducto(): void {
     this.productServices.ingresarProducto(this.newProduct).subscribe((res: any) => {
       this.ObtenerProductos();

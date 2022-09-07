@@ -1,6 +1,8 @@
 <div style="float: right;">
-  <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-      data-bs-target="#cierraSesion"><span class="material-icons">logout</span></button>
+  <button type="button" class="btn btn-secondary" (click)="router.navigate(['/admin']);"><span
+      class="material-icons">keyboard_backspace</span></button>
+  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cierraSesion"><span
+      class="material-icons">logout</span></button>
 </div>
 
 <h2 style="text-align: center; padding: 2%">Mantenimiento de productos</h2>
@@ -10,17 +12,18 @@
     <div class="card sombra" style="width: 301px; height: 550px;">
       <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
       <div class="card-body">
-        <h5>Id Producto:{{product.productId}} Nombre Producto:{{product.productName}}</h5>
+        <h5>Id: {{product.productId}} <BR> Nombre: {{product.productName}}</h5>
         <p>{{product.productDescription}}</p>
       </div>
       <div class="card-footer" style="width: 300px; height: 100px;">
         <div class="row justify-content-between">
           <div class="mt-2 d-flex justify-content-center align-items-center">
-            <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" title="Editar Imagen"><span
-                class="material-icons">edit</span></button>
-                <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"
-                data-bs-toggle="modal" data-bs-target="#modalId" (click)="darValor(product.productId)"><span
-                  class="material-icons">delete</span></button>
+            <button class="btn btn-warning ml-2" data-bs-toggle="modal" data-bs-target="#modalIdEdit"
+              (click)="ObtenerProductosById(product.productId)"><span class="material-icons">edit</span></button>
+
+            <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"
+              data-bs-toggle="modal" data-bs-target="#modalId" (click)="darValor(product.productId)"><span
+                class="material-icons">delete</span></button>
           </div>
         </div>
       </div>
@@ -30,21 +33,23 @@
 </div>
 
 <div class="modal fade" id="cierraSesion" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-    aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">Esta seguro de cerrar sesion? </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cierraSesion()">Cerrar
-                    Sesion</button>
-            </div>
-        </div>
+  aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Esta seguro de cerrar sesion? </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="cierraSesion()">Cerrar
+          Sesion</button>
+      </div>
     </div>
+  </div>
 </div>
+
+<!-- Modal para Eliminar -->
 
 <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
   aria-labelledby="modalTitleId" aria-hidden="true">
@@ -58,6 +63,46 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
           (click)="EliminarProducto()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para editar -->
+
+<div class="modal fade" id="modalIdEdit" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+  aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Editar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-product">
+          <label class="form-label mt-4">Id Categoria</label>
+          <input type="text" class="form-control" id="IdCategoria" placeholder="">
+        </div>
+        <div class="form-product">
+          <label class="form-label mt-4">Descripcion</label>
+          <input type="text" class="form-control" id="Description" placeholder="">
+        </div>
+        <div class="form-product">
+          <label class="form-label mt-4">Nombre</label>
+          <input type="text" class="form-control" id="Nombre" placeholder="">
+        </div>
+        <div class="form-product">
+          <label class="form-label mt-4">Precio</label>
+          <input type="text" class="form-control" id="Precio" placeholder="">
+        </div>
+        <div class="form-product">
+          <label class="form-label mt-4">Id Temporada</label>
+          <input type="text" class="form-control" id="IdTemporada" placeholder="">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>

@@ -1,11 +1,13 @@
 <div style="float: right; ">
+    <button type="button" class="btn btn-secondary" (click)="router.navigate(['/admin']);"><span
+        class="material-icons">keyboard_backspace</span></button>
     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
         data-bs-target="#cierraSesion"><span class="material-icons">logout</span></button>
 </div>
 
-<h2 style="text-align: center; padding: 2%; "> Mantenimiento Categorias</h2>
+<h2 style="text-align: center; padding: 2%;"> Mantenimiento Categorias</h2>
 
-<div style="padding: 1% 5% 1% 15%; float: left;">
+<div style="padding: 1% 5% 1% 15%; float: left; overflow: hidden;">
     <div style="width: 150; font-size: small; ">
         <table class="table table-hover">
             <thead>
@@ -25,7 +27,7 @@
         </table>
     </div>
 </div>
-<div style="float: left; padding: 2% 5% 1% 10%;">
+<div style="float: left; padding: 2% 5% 1% 10%; overflow: hidden;">
 <div class="input-group mb-3" style="padding: 3% 1% 2% 15%;">
     <input type="text" class="form-control" placeholder="Ingrese id de categoria" aria-label="Recipient's username"
       aria-describedby="button-addon2">

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MttoTemporadasComponent implements OnInit {
 
-  constructor(private router: Router, private seasonsServices: SeasonsServices) { }
+  constructor(public router: Router, private seasonsServices: SeasonsServices) { }
 
   seasons: seasonsModel[] = [];
   newSeason: seasonsModel = {
