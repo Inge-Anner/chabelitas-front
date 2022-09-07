@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MttoCategoriaComponent implements OnInit {
 
-  constructor(private router: Router, private CategoryServices: CategoryServices) { }
+  constructor(public router: Router, private CategoryServices: CategoryServices) { }
 
   category: categoryModel[] = [];
   newcategory: categoryModel = {
