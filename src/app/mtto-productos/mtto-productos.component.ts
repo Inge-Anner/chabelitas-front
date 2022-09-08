@@ -67,6 +67,7 @@ export class MttoProductosComponent implements OnInit {
 
   seteoProducto(item: productsModel): void{
     this.newProduct = item;
+    
     console.log(this.newProduct);
   }
 
