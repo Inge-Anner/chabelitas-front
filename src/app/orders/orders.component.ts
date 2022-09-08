@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderServices } from './orders.service';
 import { ordersModel } from '../models/orders.model';
 import { detailordersModel } from '../models/detailorders.model';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -10,7 +10,7 @@ import { detailordersModel } from '../models/detailorders.model';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor(private orderServices: OrderServices) { }
+  constructor(private orderServices: OrderServices, private router: Router) { }
   orders: ordersModel[] = [];
   newOrder: ordersModel = {
     statusOrderId: 0,
@@ -73,6 +73,7 @@ export class OrdersComponent implements OnInit {
       // Limpia todo el local Storage
       localStorage.clear();
     });
+    this.router.navigateByUrl('/orders');
   }
 
   obtenerCarrito(): void {
