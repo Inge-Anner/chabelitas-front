@@ -1,5 +1,5 @@
 export interface categoryModel {
-  categoryId: number;
+  categoryId?: number;
   statusId?: number;
   categoryName: string;
 }

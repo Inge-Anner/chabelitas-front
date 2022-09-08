@@ -15,10 +15,10 @@ export class MttoCategoriaComponent implements OnInit {
 
   category: categoryModel[] = [];
   newcategory: categoryModel = {
-    categoryId: 0,
-    statusId: 0,
+    statusId: 1,
     categoryName: '',
   }
+  searchCategory: number = 0;
   mostrar: boolean = false;
   mostrar3: string = '';
 
@@ -47,6 +47,24 @@ export class MttoCategoriaComponent implements OnInit {
 
   CrearCategory(): void {
     this.CategoryServices.ingresarCategory(this.newcategory).subscribe((res: any) => {
+      this.ObtenerCategory();
+    });
+  }
+
+  ObtenerCategoryById(): void {
+    this.CategoryServices.buscarCategoryById(this.searchCategory).subscribe((res: any) => {
+      this.newcategory = res.data
+    });
+  }
+
+  UpdateCategoryById(): void {
+    this.CategoryServices.actualizarCategory(this.searchCategory, this.newcategory).subscribe((res: any) => {
+      this.ObtenerCategory();
+    });
+  }
+
+  DeleteCategoryById(): void {
+    this.CategoryServices.eliminarCategory(this.searchCategory).subscribe((res: any) => {
       this.ObtenerCategory();
     });
   }

@@ -15,6 +15,7 @@ import { MttoCategoriaComponent } from './mtto-categoria/mtto-categoria.componen
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
+  { path: '', component: ProductsComponent },
   { path: 'seasons', component: SeasonsComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'orders', component: OrdersComponent },

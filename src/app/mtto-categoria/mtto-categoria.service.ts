@@ -28,4 +28,16 @@ export class CategoryServices {
     return this.http.post<any>(`${ base_url }/category`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
+  eliminarCategory(id: any){
+    return this.http.delete<any>(`${ base_url }/category/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  buscarCategoryById(id: any){
+    return this.http.get<any>(`${ base_url }/category/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  actualizarCategory(categoryId: number | undefined, data: categoryModel){
+    return this.http.put<any>(`${ base_url }/category/${categoryId}`, data).pipe(catchError((e) => this.manejarError(e)));
+  }
+
 }

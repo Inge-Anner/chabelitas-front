@@ -18,10 +18,10 @@
                     </tr>
                 </thead>
                 <tbody style="text-align: left;">
-                    <tr class="table-light" *ngFor="let category of category">
-                        <th scope="row">{{category.categoryId}}</th>
-                        <td>{{category.statusId}}</td>
-                        <td>{{category.categoryName}}</td>
+                    <tr class="table-light" *ngFor="let cat of category">
+                        <th scope="row">{{cat.categoryId}}</th>
+                        <td>{{cat.statusId}}</td>
+                        <td>{{cat.categoryName}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -29,9 +29,9 @@
     </div>
     <div style=" padding: 2% 5% 1% 10%; float: left;">
         <div class="input-group mb-3" style="padding: 3% 1% 2% 15%; float: left;">
-            <input type="text" class="form-control" placeholder="Ingrese id de categoria"
+            <input type="text" class="form-control" placeholder="Ingrese id de categoria" [(ngModel)]="this.searchCategory"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+            <button class="btn btn-primary" type="button" (click)="ObtenerCategoryById()" id="button-addon2">Buscar</button>
         </div>
         <fieldset style="padding: 2% 15% 2% 15%;">
             <div class="form-group">
@@ -55,10 +55,10 @@
                 <button type="submit" (click)="CrearCategory()" class="btn btn-warning">Crear</button>
             </div>
             <div style="padding: 1%; float: left;">
-                <button type="submit" class="btn btn-info">Editar</button>
+                <button type="submit" (click)="UpdateCategoryById()" class="btn btn-info">Editar</button>
             </div>
             <div style="padding: 1%; float: left;">
-                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <button type="submit" (click)="DeleteCategoryById()" class="btn btn-danger">Eliminar</button>
             </div>
             <br><br>
             <small id="telHelp" class="form-text text-muted"></small>

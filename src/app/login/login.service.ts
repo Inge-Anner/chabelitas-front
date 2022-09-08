@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { LoginComponent } from './login.component';
 import { environment } from '../../environments/environment';
 import { usersModel } from '../models/users.model';
 
@@ -17,6 +17,7 @@ export class LoginServices {
   private manejarError(e: any) {
     console.log(e);
     console.log(e.error.message);
+    alert('El usuario o contraseña son incorrectos!')
     return throwError('Ha ocurrido un error');
   }
 

@@ -23,6 +23,7 @@ export class MttoOrdenesComponent implements OnInit {
     adressDeliver: '',
     dateCreated: '',
     dateConfirmed: '',
+    dateDeliver: null,
     totalOrder: 0,
   };
   estado: string = '';
