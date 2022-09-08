@@ -37,7 +37,13 @@
         <td>Q. {{item.orderDetailSubtotal}}</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th scope="col" colspan="6">Total: Q. {{total}}</th>
+      </tr>
+    </tfoot>
   </table>
+  <button type="button" class="btn btn-info">Confirmar carrito</button>
 </div>
 
 <fieldset style="padding: 2% 15% 2% 15%;" *ngIf="this.mostrar == true">
