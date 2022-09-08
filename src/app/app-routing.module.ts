@@ -14,8 +14,8 @@ import { MttoTemporadasComponent } from './mtto-temporadas/mtto-temporadas.compo
 import { MttoCategoriaComponent } from './mtto-categoria/mtto-categoria.component';
 
 const routes: Routes = [
-  { path: 'products', component: ProductsComponent },
   { path: '', component: ProductsComponent },
+  { path: 'products', component: ProductsComponent },
   { path: 'seasons', component: SeasonsComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'orders', component: OrdersComponent },
