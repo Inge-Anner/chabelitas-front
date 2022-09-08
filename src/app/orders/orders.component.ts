@@ -27,6 +27,7 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerCarrito();
+    this.sumarTotal();
   }
 
   ObtenerOrder(): void {
@@ -54,6 +55,7 @@ export class OrdersComponent implements OnInit {
 
   carrito: any[] = [];
   cantidad: number = 1;
+  total: number = 0;
   obtenerCarrito(): void {
     if (localStorage.getItem('carrito') != null) {
       let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
@@ -71,6 +73,11 @@ export class OrdersComponent implements OnInit {
     const min: number = 1;
     if(this.cantidad > min){
       this.cantidad = this.cantidad - 1;
+    }
+  }
+  sumarTotal(): void {
+    for(let item of this.carrito){
+      this.total = this.total + item.orderDetailSubtotal;
     }
   }
 }
