@@ -125,7 +125,8 @@ export class ProductsComponent implements OnInit {
     detailOrderQuantity: 0,
     orderDetailSubtotal: 0,
     productName: '',
-    productImage: ''
+    productImage: '',
+    productPrice: 0
   }
 
   agregarProductoCarrito(): void{
@@ -135,6 +136,7 @@ export class ProductsComponent implements OnInit {
       this.newCarrito.orderDetailSubtotal = this.productVisualization.productPrice * this.cantidad;
       this.newCarrito.productName = this.productVisualization.productName;
       this.newCarrito.productImage = this.productVisualization.productImage;
+      this.newCarrito.productPrice = this.productVisualization.productPrice;
       this.carrito.push(this.newCarrito);
       localStorage.setItem('carrito', JSON.stringify(this.carrito));
       this.router.navigateByUrl('/orders');
@@ -145,6 +147,7 @@ export class ProductsComponent implements OnInit {
       this.newCarrito.orderDetailSubtotal = this.productVisualization.productPrice * this.cantidad;
       this.newCarrito.productName = this.productVisualization.productName;
       this.newCarrito.productImage = this.productVisualization.productImage;
+      this.newCarrito.productPrice = this.productVisualization.productPrice;
       getCarrito.push(this.newCarrito);
       localStorage.setItem('carrito', JSON.stringify(getCarrito));
       this.router.navigateByUrl('/orders');
