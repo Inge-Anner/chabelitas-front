@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 import { ordersModel } from '../models/orders.model';
+import { detailordersModel } from '../models/detailorders.model';
 
 const base_url = environment.url;
 
@@ -28,6 +29,9 @@ export class OrderServices {
 
   ingresarOrders(data: ordersModel){
     return this.http.post<any>(`${ base_url }/order`, data).pipe(catchError((e) => this.manejarError(e)));
+  }
+  insertarDetailOrders(data: detailordersModel){
+    return this.http.post<any>(`${ base_url }/detailorder`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
   buscarOrderById(order: any){
