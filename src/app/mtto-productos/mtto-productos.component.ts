@@ -51,12 +51,7 @@ export class MttoProductosComponent implements OnInit {
       this.mostrar = true;
     });
   }
-  ObtenerProductosById(idproduct : any): void {
-    this.productServices.buscarProductoById(idproduct).subscribe((res: any) => {
-      this.products = res.data;
-      this.mostrar = true;
-    });
-  }
+  
   CrearProducto(): void {
     this.productServices.ingresarProducto(this.newProduct).subscribe((res: any) => {
       this.ObtenerProductos();
@@ -68,6 +63,12 @@ export class MttoProductosComponent implements OnInit {
       console.log(res)
     });
     this.ObtenerProductos();
+  }
+
+  seteoProducto(item: productsModel): void{
+    this.newProduct = item;
+    
+    console.log(this.newProduct);
   }
 
 }

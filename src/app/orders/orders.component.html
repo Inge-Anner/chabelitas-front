@@ -43,10 +43,10 @@
       </tr>
     </tfoot>
   </table>
-  <button type="button" class="btn btn-info">Confirmar carrito</button>
+  <button type="button" class="btn btn-info" (click)="confirmar()">Confirmar carrito</button>
 </div>
 
-<fieldset style="padding: 2% 15% 2% 15%;" *ngIf="this.mostrar == true">
+<fieldset style="padding: 0% 15% 2% 15%;" *ngIf="this.mostrar == true">
   <legend>Ingrese la información para realizar su pedido</legend>
   <!--<div class="form-orders row">
     </div>
@@ -83,7 +83,10 @@
     <input type="date" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newOrder.dateDeliver"
       [(ngModel)]="this.newOrder.dateConfirmed">
   </div>
-
+  <div class="form-orders">
+    <label class="form-label mt-4">Total del pedido</label>
+    <input type="text" class="form-control" id="FechaDeEntrega" readonly="" [value]="this.total">
+  </div>
   <div class="form-orders">
     <label class="form-label mt-4">Ingrese el codigo del comprobante del deposito</label>
     <input type="text" class="form-control" id="TicketOrden" placeholder="Ingresa el codigo"
