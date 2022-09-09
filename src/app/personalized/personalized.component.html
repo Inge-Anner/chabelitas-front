@@ -1,0 +1,47 @@
+
+<h2 style="text-align: center; padding: 3%;">¡Manos a la obra!</h2>
+
+<fieldset style="padding: 0% 15% 2% 15%;">
+    <legend>Escoja sus ingredientes</legend>
+    
+    <div class="form-orders">
+        <label class="form-label mt-4">Que tipo de postre quiere?</label>
+        <select class="form-select" id="category">
+          <option>Pastel</option>
+          <option>Cupcake</option>
+          
+        </select>
+    </div>
+    <div class="form-orders">
+        <label class="form-label mt-4">Que sabor quiere?</label>
+        <select class="form-select" id="sabor">
+          <option>Chocolate</option>
+          <option>Fresa</option>
+          <option>Vainilla</option>
+          
+        </select>
+    </div>
+    
+    <div class="form-orders">
+        <label class="form-label mt-4">Que topping quiere?</label>
+        <select class="form-select" id="topping">
+          <option>Chispas de chocolate</option>
+          <option>Jalea de fresa</option>
+          <option>Anicillos</option>
+          
+        </select>
+    </div>
+    <div class="form-orders">
+      <label class="form-label mt-4">Breve descripcion</label>
+      <textarea class="form-control" id="descripcion"  rows="3"> </textarea>
+    </div>
+    <div class="form-orders">
+      <label class="form-label mt-4">Total del pedido</label>
+      <input type="text" class="form-control" id="FechaDeEntrega" readonly="" >
+    </div>
+    
+    <br>
+    <button type="submit" class="btn btn-warning">Ingresar</button>
+    <br><br>
+    <small id="telHelp" class="form-text text-muted">Toda información ingresada sera de uso reservado.</small>
+  </fieldset>
