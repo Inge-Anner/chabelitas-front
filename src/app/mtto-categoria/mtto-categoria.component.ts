@@ -68,4 +68,7 @@ export class MttoCategoriaComponent implements OnInit {
       this.ObtenerCategory();
     });
   }
+  LimpiarBusqueda() {
+    window.location.reload()
+  }
 }

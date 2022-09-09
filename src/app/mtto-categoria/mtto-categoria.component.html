@@ -37,7 +37,7 @@
             <div class="form-group">
                 <fieldset disabled="">
                     <label class="form-label">Id Categoria</label>
-                    <input class="form-control" id="disabledInput" type="text" placeholder="" disabled="">
+                    <input class="form-control" id="disabledInput" type="text" placeholder="" [(ngModel)]="this.newcategory.categoryId" disabled="">
                 </fieldset>
             </div>
             <!--<div class="form-seasons">
@@ -60,7 +60,9 @@
             <div style="padding: 1%; float: left;">
                 <button type="submit" (click)="DeleteCategoryById()" class="btn btn-danger">Eliminar</button>
             </div>
-            <br><br>
+            <div style="padding: 1%; float: left;">
+                <button type="submit" (click)="LimpiarBusqueda()" class="btn btn-light">Limpiar</button>
+              </div>
             <small id="telHelp" class="form-text text-muted"></small>
 
 

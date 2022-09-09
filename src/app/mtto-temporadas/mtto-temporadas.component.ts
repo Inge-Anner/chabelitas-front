@@ -17,7 +17,9 @@ export class MttoTemporadasComponent implements OnInit {
     statusId: 0,
     seasonName: "",
   }
+  searchSeason: number = 0;
   mostrar: boolean = false;
+  Clean: string = "";
 
   ngOnInit(): void {
     this.validaSesion();
@@ -31,7 +33,7 @@ export class MttoTemporadasComponent implements OnInit {
     }
   }
 
-  cierraSesion(): void{
+  cierraSesion(): void {
     localStorage.removeItem('sesion');
     this.router.navigateByUrl('/login');
   }
@@ -49,4 +51,25 @@ export class MttoTemporadasComponent implements OnInit {
     });
   }
 
+  ObtenerSeasonById(): void {
+    this.seasonsServices.buscarSeasonById(this.searchSeason).subscribe((res: any) => {
+      this.newSeason = res.data
+    });
+  }
+
+  UpdateSeasonById(): void {
+    this.seasonsServices.actualizarSeason(this.searchSeason, this.newSeason).subscribe((res: any) => {
+      this.ObtenerSeasons();
+    });
+  }
+
+  DeleteSeasonById(): void {
+    this.seasonsServices.eliminarSeason(this.searchSeason).subscribe((res: any) => {
+      this.ObtenerSeasons();
+    });
+  }
+
+  LimpiarBusqueda() {
+    window.location.reload()
+  }
 }

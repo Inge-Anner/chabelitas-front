@@ -21,11 +21,22 @@ export class SeasonsServices {
   }
 
   cargarSeason(){
-    return this.http.get<any>(`${ base_url }/seasons`).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.get<any>(`${ base_url }/season`).pipe(catchError((e) => this.manejarError(e)));
   }
 
   ingresarSeason(data: seasonsModel){
     return this.http.post<any>(`${ base_url }/seasons`, data).pipe(catchError((e) => this.manejarError(e)));
+  }
+  eliminarSeason(id: any){
+    return this.http.delete<any>(`${ base_url }/seasons/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  buscarSeasonById(id: any){
+    return this.http.get<any>(`${ base_url }/seasons/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  actualizarSeason(seasonId: number | undefined, data: seasonsModel){
+    return this.http.put<any>(`${ base_url }/seasons/${seasonId}`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }
