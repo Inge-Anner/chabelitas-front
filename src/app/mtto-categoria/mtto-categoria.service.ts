@@ -21,7 +21,7 @@ export class CategoryServices {
   }
 
   cargarCategory(){
-    return this.http.get<any>(`${ base_url }/categories`).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.get<any>(`${ base_url }/categories/Admin`).pipe(catchError((e) => this.manejarError(e)));
   }
 
   ingresarCategory(data: categoryModel){
