@@ -21,7 +21,7 @@ export class SeasonsServices {
   }
 
   cargarSeason(){
-    return this.http.get<any>(`${ base_url }/season`).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.get<any>(`${ base_url }/seasons/Admin`).pipe(catchError((e) => this.manejarError(e)));
   }
 
   ingresarSeason(data: seasonsModel){
