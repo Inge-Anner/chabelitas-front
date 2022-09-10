@@ -9,7 +9,7 @@
 </div>
 -->
 <h2 style="text-align: left; padding: 2%">Carrito</h2>
-<div style="padding: 1% 20% 10% 10%;">
+<div style="padding: 1% 20% 20% 10%;">
   <table class="table table-hover">
     <thead>
       <tr>
@@ -21,19 +21,11 @@
     </thead>
     <tbody>
       <tr class="table-light" *ngFor="let item of carrito">
-        <td><button type="button" class="btn btn-danger"><span class="material-icons">delete</span></button></td>
+        <td><button type="button" class="btn btn-danger" (click)="remover(item)"><span class="material-icons">delete</span></button></td>
         <td><img [src]="item.productImage" style="width: 90px; height: 70px;"></td>
         <td>{{item.productName}}</td>
         <td>Q. {{item.productPrice}}</td>
-        <td>
-          <div class="input-group mb-3" id="div-cant">
-            <button class="btn btn-info" data-toggle="tooltip" (click)="menos(item.detailOrderQuantity)"><span
-                class="material-icons">remove</span></button>
-            <input type="text" class="form-control" [value]="item.detailOrderQuantity" style="width: 1px;">
-            <button class="btn btn-info" data-toggle="tooltip" (click)="mas(item.detailOrderQuantity)"><span
-                class="material-icons">add</span></button>
-          </div>
-        </td>
+        <td>{{item.detailOrderQuantity}}</td>
         <td>Q. {{item.orderDetailSubtotal}}</td>
       </tr>
     </tbody>
@@ -96,5 +88,5 @@
 
   <button type="submit" (click)="CrearOrder()" class="btn btn-warning">Ingresar</button>
   <br><br>
-  <small id="telHelp" class="form-text text-muted">Toda información ingresada será de uso reservado.</small>
+  <small id="telHelp" class="form-text text-muted">Toda información ingresada sera de uso reservado.</small>
 </fieldset>
