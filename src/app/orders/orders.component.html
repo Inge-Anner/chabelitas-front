@@ -21,19 +21,11 @@
     </thead>
     <tbody>
       <tr class="table-light" *ngFor="let item of carrito">
-        <td><button type="button" class="btn btn-danger"><span class="material-icons">delete</span></button></td>
+        <td><button type="button" class="btn btn-danger" (click)="remover(item)"><span class="material-icons">delete</span></button></td>
         <td><img [src]="item.productImage" style="width: 90px; height: 70px;"></td>
         <td>{{item.productName}}</td>
         <td>Q. {{item.productPrice}}</td>
-        <td>
-          <div class="input-group mb-3" id="div-cant">
-            <button class="btn btn-info" data-toggle="tooltip" (click)="menos(item.detailOrderQuantity)"><span
-                class="material-icons">remove</span></button>
-            <input type="text" class="form-control" [value]="item.detailOrderQuantity" style="width: 1px;">
-            <button class="btn btn-info" data-toggle="tooltip" (click)="mas(item.detailOrderQuantity)"><span
-                class="material-icons">add</span></button>
-          </div>
-        </td>
+        <td>{{item.detailOrderQuantity}}</td>
         <td>Q. {{item.orderDetailSubtotal}}</td>
       </tr>
     </tbody>
@@ -46,7 +38,7 @@
   <button type="button" class="btn btn-info" (click)="confirmar()">Confirmar carrito</button>
 </div>
 
-<fieldset style="padding: 0% 15% 2% 15%;" *ngIf="this.mostrar == true">
+<fieldset style="margin: 0% 10% 2% 15%; padding: 1%; background:#d6d6e0; border-radius: 3%;" *ngIf="this.mostrar == true">
   <legend>Ingrese la información para realizar su pedido</legend>
   <!--<div class="form-orders row">
     </div>
