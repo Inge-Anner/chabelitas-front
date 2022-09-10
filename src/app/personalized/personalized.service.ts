@@ -21,19 +21,7 @@ export class ProductServices {
   }
 
   cargarProductos(){
-    return this.http.get<any>(`${ base_url }/product?categoryId=0`).pipe(catchError((e) => this.manejarError(e)));
-  }
-
-  ingresarProducto(data: productsModel){
-    return this.http.post<any>(`${ base_url }/product`, data).pipe(catchError((e) => this.manejarError(e)));
-  }
-
-  eliminarProducto(id: any){
-    return this.http.delete<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
-  }
-
-  buscarProductoById(id: any){
-    return this.http.get<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
+    return this.http.get<any>(`${ base_url }/product/personalized`).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }
