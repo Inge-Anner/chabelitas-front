@@ -23,7 +23,7 @@ export class OrdersComponent implements OnInit {
     dateDeliver: '',
     totalOrder: 0,
   }
-  
+
   newDetailOrder: detailordersModel = {
     productId: 0,
     orderId: 0,
@@ -43,23 +43,34 @@ export class OrdersComponent implements OnInit {
     this.sumarTotal();
   }
 
-  ObtenerOrder(): void {
-    this.orderServices.cargarOrders().subscribe((res: any) => {
-      this.orders = res.data;
-      this.mostrar = true;
+  // ObtenerOrder(): void {
+  //   this.orderServices.cargarOrders().subscribe((res: any) => {
+  //     this.orders = res.data;
+  //     this.mostrar = true;
+  //   });
+  // }
+
+  remover(item: any){
+    this.carrito = this.carrito.filter((obj) => {
+      return obj != item;
     });
+    localStorage.setItem('carrito', JSON.stringify(this.carrito));
+    this.sumarTotal();
+    window.location.reload();
   }
 
   CrearOrder(): void {
     this.newOrder.statusOrderId = 1;
     this.newOrder.totalOrder = this.total;
+    if (this.newOrder.ticketOrder == '') {
+      this.newOrder.ticketOrder = '0';
+    }
     this.orderServices.ingresarOrders(this.newOrder).subscribe((res: any) => {
-      this.ObtenerOrder();
       // Inserta en Local Storage
       localStorage.setItem('order', JSON.stringify(res));
       // Obtiene del local Storage
       const getOrder = JSON.parse(localStorage.getItem('order')!);
-      for(let item of this.carrito){
+      for (let item of this.carrito) {
         this.newDetailOrder.orderId = getOrder.data.orderId;
         this.newDetailOrder.productId = item.productId;
         this.newDetailOrder.detailOrderQuantity = item.detailOrderQuantity;
@@ -73,9 +84,10 @@ export class OrdersComponent implements OnInit {
       // Limpia todo el local Storage
       localStorage.clear();
     });
-    this.router.navigateByUrl('/orders');
+    setTimeout(function () {
+      window.location.reload();
+    }, 2500);
   }
-
   obtenerCarrito(): void {
     if (localStorage.getItem('carrito') != null) {
       let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
@@ -84,24 +96,12 @@ export class OrdersComponent implements OnInit {
       }
     }
   }
-  mas(num: number): void{
-    this.cantidad = num;
-    this.cantidad = num + 1;
-  }
-  menos(num: number): void{
-    this.cantidad = num;
-    const min: number = 1;
-    if(this.cantidad > min){
-      this.cantidad = this.cantidad - 1;
-    }
-  }
   sumarTotal(): void {
-    for(let item of this.carrito){
+    for (let item of this.carrito) {
       this.total = this.total + item.orderDetailSubtotal;
     }
   }
-
-  confirmar(): void{
-    this.mostrar = true; 
+  confirmar(): void {
+    this.mostrar = true;
   }
 }

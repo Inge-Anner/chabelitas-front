@@ -23,6 +23,7 @@ export class MttoProductosComponent implements OnInit {
   }
   mostrar: boolean = false;
   idProd: any;
+  searchProduct: number = 0;
 
   ngOnInit(): void {
     this.validaSesion();
@@ -59,12 +60,29 @@ export class MttoProductosComponent implements OnInit {
   }
 
   EliminarProducto(): void{
-    this.productServices.eliminarProducto(this.idProd).subscribe((res: any) => {
+    this.productServices.eliminarProducto(this.searchProduct).subscribe((res: any) => {
       console.log(res)
     });
     this.ObtenerProductos();
   }
 
+  ObtenerProductoById(): void {
+    this.productServices.buscarProductById(this.searchProduct).subscribe((res: any) => {
+      this.newProduct = res.data
+    });
+  }
+
+  UpdateProductById(): void {
+    this.productServices.actualizarProducto(this.searchProduct, this.newProduct).subscribe((res: any) => {
+      this.ObtenerProductos();
+    });
+  }
+
+  DeleteProductById(): void {
+    this.productServices.eliminarProducto(this.searchProduct).subscribe((res: any) => {
+      this.ObtenerProductos();
+    });
+  }
   seteoProducto(item: productsModel): void{
     this.newProduct = item;
     
