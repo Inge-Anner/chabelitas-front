@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ProductServices } from './personalized.service'
+import { productsModel } from '../models/products.model'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-personalized',
   templateUrl: './personalized.component.html',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalizedComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, private productServices: ProductServices) { }
+
+  products: productsModel[] = [];
+  newProduct: productsModel = {
+    categoryId: 0,
+    productDescription: "",
+    productImage: "",
+    productName: "",
+    productPrice: 0,
+    seasonId: 0,
+    statusId: 0,
+  }
+  mostrar: boolean = false;
+  idProd: any;
 
   ngOnInit(): void {
+    this.ObtenerProductos();
   }
 
+ObtenerProductos(): void {
+    this.productServices.cargarProductos().subscribe((res: any) => {
+      this.products = res.data;
+      this.mostrar = true;
+    });
+  }
 }

@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, private router: Router ) { }
+  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, public router: Router ) { }
   products: productsModel[] = [];
   categories: categoryModel[] = [];
   visualization: visualizationsModel[] = [];

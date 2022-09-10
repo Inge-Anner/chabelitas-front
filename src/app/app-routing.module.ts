@@ -13,6 +13,7 @@ import { MttoOrdenesComponent } from './mtto-ordenes/mtto-ordenes.component';
 import { MttoTemporadasComponent } from './mtto-temporadas/mtto-temporadas.component';
 import { MttoCategoriaComponent } from './mtto-categoria/mtto-categoria.component';
 import { PersonalizedComponent } from './personalized/personalized.component';
+import { ToppingsComponent } from './toppings/toppings.component';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'mtto-temporadas', component: MttoTemporadasComponent},
   { path: 'mtto-categoria', component: MttoCategoriaComponent},
   { path: 'personalized', component: PersonalizedComponent },
+  { path: 'toppings', component: ToppingsComponent }
 ];
 
 @NgModule({
