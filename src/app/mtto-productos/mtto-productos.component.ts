@@ -19,7 +19,7 @@ export class MttoProductosComponent implements OnInit {
     productName: "",
     productPrice: 0,
     seasonId: 0,
-    statusId: 0,
+    statusId: 1,
   }
   mostrar: boolean = false;
   idProd: any;
