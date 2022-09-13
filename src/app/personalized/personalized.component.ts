@@ -12,6 +12,7 @@ export class PersonalizedComponent implements OnInit {
   constructor(public router: Router, private productServices: ProductServices) { }
   cantidad: number = 1;
   products: productsModel[] = [];
+  toppings: productsModel[] = [];
   newProduct: productsModel = {
     categoryId: 0,
     productDescription: "",
@@ -28,7 +29,7 @@ export class PersonalizedComponent implements OnInit {
     this.ObtenerProductos();
   }
 
-ObtenerProductos(): void {
+  ObtenerProductos(): void {
     this.productServices.cargarProductos().subscribe((res: any) => {
       this.products = res.data;
       this.mostrar = true;
@@ -37,17 +38,17 @@ ObtenerProductos(): void {
 
   ObtenerToppings(): void {
     this.productServices.cargarToppings().subscribe((res: any) => {
-      this.products = res.data;
+      this.toppings = res.data;
       this.mostrar = true;
     });
   }
 
-  mas(): void{
+  mas(): void {
     this.cantidad = this.cantidad + 1;
   }
-  menos(): void{
+  menos(): void {
     const min: number = 1;
-    if(this.cantidad > min){
+    if (this.cantidad > min) {
       this.cantidad = this.cantidad - 1;
     }
   }
