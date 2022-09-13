@@ -60,7 +60,7 @@ export class MttoProductosComponent implements OnInit {
   }
 
   EliminarProducto(): void{
-    this.productServices.eliminarProducto(this.searchProduct).subscribe((res: any) => {
+    this.productServices.eliminarProducto(this.idProd).subscribe((res: any) => {
       console.log(res)
     });
     this.ObtenerProductos();
@@ -88,5 +88,4 @@ export class MttoProductosComponent implements OnInit {
     
     console.log(this.newProduct);
   }
-
 }
