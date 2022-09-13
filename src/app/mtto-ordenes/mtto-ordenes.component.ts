@@ -63,7 +63,7 @@ export class MttoOrdenesComponent implements OnInit {
     this.orderServices.cargarOrders().subscribe((res: any) => {
       this.orders = res.data.map((order: ordersModel) => {
         order.dateCreated = moment(order.dateCreated).tz('America/Guatemala').format('DD-MM-YYYY HH:mm:ss');
-        order.dateConfirmed = moment(order.dateConfirmed).tz('America/Guatemala').format('DD-MM-YYYY HH:mm:ss');
+        order.dateConfirmed = order.dateConfirmed !== null ? moment(order.dateConfirmed).tz('America/Guatemala').format('DD-MM-YYYY HH:mm:ss') : '';
         order.dateDeliver = order.dateDeliver !== null ? moment(order.dateDeliver).tz('America/Guatemala').format('DD-MM-YYYY HH:mm:ss') : '';
         switch (order.statusOrderId) {
           case 1:
@@ -95,29 +95,47 @@ export class MttoOrdenesComponent implements OnInit {
     this.currentOrder = order;
   }
 
+  cambioOrden2: any = {
+    orderId: 0,
+    statusOrderId: 0,
+  }
+
   cambiarStatus(): void {
-    switch (this.estado) {
-      case 'Pago Enviado':
-        this.currentOrder.statusOrderId = 2;
-        break;
-      case 'Pago Confirmado':
-        this.currentOrder.statusOrderId = 3;
-        break;
-      case 'Pedido Enviado':
-        this.currentOrder.statusOrderId = 4;
-        break;
-      case 'Eliminado':
-        this.currentOrder.statusOrderId = 5;
-        break;
-      default:
-        break;
-    }
-    this.orderServices
-      .actualizarOrden(this.currentOrder?.orderId, this.currentOrder)
-      .subscribe((res: any) => {
+    this.cambioOrden2.orderId = this.currentOrder.orderId;
+      switch (this.estado) {
+        case 'Pago Enviado':
+          this.cambioOrden2.statusOrderId = 2;
+          break;
+        case 'Pago Confirmado':
+          this.cambioOrden2.statusOrderId = 3;
+          break;
+        case 'Pedido Enviado':
+          this.cambioOrden2.statusOrderId = 4;
+          break;
+        case 'Eliminado':
+          this.cambioOrden2.statusOrderId = 5;
+          break;
+        default:
+          break;
+      }
+      this.orderServices.actualizarOrden(this.cambioOrden2.orderId, this.cambioOrden2).subscribe((res: any) => {
         this.orders = res.data;
-        this.mostrar = true;
         this.ObtenerOrder();
       });
+
+    // const aux = formatDate(this.currentOrder.dateConfirmed, 'yyyy-MM-dd hh:mm:ss', '0530');
+    // console.log(aux);
+    // console.log(this.currentOrder.dateConfirmed);
+    // console.log(this.cambioOrden);
+
+    // this.orderServices.actualizarOrden(this.currentOrder.orderId, this.currentOrder).subscribe((res: any) => {
+    //     this.orders = res.data;
+    //     this.ObtenerOrder();
+    //   });
+
+      // setTimeout(function () {
+      //   window.location.reload();
+      // }, 1500);
   }
+
 }
