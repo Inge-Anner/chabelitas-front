@@ -40,9 +40,9 @@
         </div>
         <p>Active todos los toppings que quiera</p>
         <div class="form-check form-switch" style="width: 0.1% 5% 2% 5%;"
-          *ngFor="let product of products ">
+          *ngFor="let topping of toppings ">
           <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-          <label>{{product.productName}} - Q.{{product.productPrice}}</label>
+          <label>{{topping.productName}} - Q.{{topping.productPrice}}</label>
         </div>
       </div>
     </div>

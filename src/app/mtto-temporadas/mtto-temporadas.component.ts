@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SeasonsServices } from './mtto-temporadas.service';
-import { seasonsModel } from '../models/seasons.model'
+import { seasonsModel } from '../models/seasons.model';
 import { Router } from '@angular/router';
 
 @Component({
