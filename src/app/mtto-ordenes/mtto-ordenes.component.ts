@@ -132,7 +132,6 @@ export class MttoOrdenesComponent implements OnInit {
     //     this.orders = res.data;
     //     this.ObtenerOrder();
     //   });
-
       // setTimeout(function () {
       //   window.location.reload();
       // }, 1500);
