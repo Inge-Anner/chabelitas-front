@@ -29,15 +29,17 @@
     </div>
     <div style=" padding: 2% 5% 1% 10%; float: left;">
         <div class="input-group mb-3" style="padding: 3% 1% 2% 15%; float: left;">
-            <input type="text" class="form-control" placeholder="Ingrese id de categoria" [(ngModel)]="this.searchCategory"
-                aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-primary" type="button" (click)="ObtenerCategoryById()" id="button-addon2">Buscar</button>
+            <input type="text" class="form-control" placeholder="Ingrese id de categoria"
+                [(ngModel)]="this.searchCategory" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-primary" type="button" (click)="ObtenerCategoryById()"
+                id="button-addon2">Buscar</button>
         </div>
         <fieldset style="padding: 2% 15% 2% 15%;">
             <div class="form-group">
                 <fieldset disabled="">
                     <label class="form-label">Id Categoria</label>
-                    <input class="form-control" id="disabledInput" type="text" placeholder="" [(ngModel)]="this.newcategory.categoryId" disabled="">
+                    <input class="form-control" id="disabledInput" type="text" placeholder=""
+                        [(ngModel)]="this.newcategory.categoryId" disabled="">
                 </fieldset>
             </div>
             <!--<div class="form-seasons">
@@ -62,7 +64,7 @@
             </div>
             <div style="padding: 1%; float: left;">
                 <button type="submit" (click)="LimpiarBusqueda()" class="btn btn-light">Limpiar</button>
-              </div>
+            </div>
             <small id="telHelp" class="form-text text-muted"></small>
 
 
