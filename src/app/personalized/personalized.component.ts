@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class PersonalizedComponent implements OnInit {
 
   constructor(public router: Router, private productServices: ProductServices) { }
-
+  cantidad: number = 1;
   products: productsModel[] = [];
   newProduct: productsModel = {
     categoryId: 0,
@@ -33,5 +33,15 @@ ObtenerProductos(): void {
       this.products = res.data;
       this.mostrar = true;
     });
+  }
+
+  mas(): void{
+    this.cantidad = this.cantidad + 1;
+  }
+  menos(): void{
+    const min: number = 1;
+    if(this.cantidad > min){
+      this.cantidad = this.cantidad - 1;
+    }
   }
 }
