@@ -6,5 +6,5 @@ export interface productsModel {
   productName?: string;
   productPrice: number;
   seasonId: number | undefined | string;
-  statusId: number;
+  statusId: number | string;
 }

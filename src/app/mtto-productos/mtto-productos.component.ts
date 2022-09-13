@@ -19,6 +19,16 @@ export class MttoProductosComponent implements OnInit {
   products: productsModel[] = [];
   categories: categoryModel[] = [];
   seasons: seasonsModel[] = [];
+  estados: string[] = ['Activo', 'Inactivo'];
+  editProduct: productsModel = {
+    categoryId: 0,
+    productDescription: "",
+    productImage: "",
+    productName: "",
+    productPrice: 0,
+    seasonId: 0,
+    statusId: 0,
+  }
 
   newProduct: productsModel = {
     categoryId: 0,
@@ -67,18 +77,26 @@ export class MttoProductosComponent implements OnInit {
   ObtenerCategorias(): void {
     this.categoryServices.cargarCategory().subscribe((res: any) => {
       this.categories = res.data;
-      console.log(this.categories);
     });
   }
 
   ObtenerTemporadas(): void {
     this.seasonsServices.cargarSeason().subscribe((res: any) => {
       this.seasons = res.data;
-      console.log(this.seasons);
     });
   }
   
   CrearProducto(): void {
+    this.categories.forEach(element => {
+      if(this.newProduct.categoryId == element.categoryName){
+        this.newProduct.categoryId = element.categoryId;
+      }
+    });
+    this.seasons.forEach(element => {
+      if(this.newProduct.seasonId == element.seasonName){
+        this.newProduct.seasonId = element.seasonId;
+      }
+    });
     this.productServices.ingresarProducto(this.newProduct).subscribe((res: any) => {
       this.ObtenerProductos();
     });
@@ -86,36 +104,36 @@ export class MttoProductosComponent implements OnInit {
 
   EliminarProducto(): void{
     this.productServices.eliminarProducto(this.idProd).subscribe((res: any) => {
-      console.log(res)
+      console.log(res);
+      this.ObtenerProductos();
     });
-    this.ObtenerProductos();
   }
 
   ObtenerProductoById(): void {
     this.productServices.buscarProductById(this.searchProduct).subscribe((res: any) => {
-      this.newProduct = res.data
+      this.editProduct = res.data
     });
   }
 
   UpdateProductById(): void {
     this.categories.forEach(element => {
-      if(this.newProduct.categoryId == element.categoryName){
-        this.newProduct.categoryId = element.categoryId;
-        console.log(this.newProduct.categoryId);
+      if(this.editProduct.categoryId == element.categoryName){
+        this.editProduct.categoryId = element.categoryId;
       }
     });
     this.seasons.forEach(element => {
-      if(this.newProduct.seasonId == element.seasonName){
-        this.newProduct.seasonId = element.seasonId;
-        console.log(this.newProduct.seasonId);
+      if(this.editProduct.seasonId == element.seasonName){
+        this.editProduct.seasonId = element.seasonId;
       }
     });
-    this.productServices.actualizarProducto(this.searchProduct, this.newProduct).subscribe((res: any) => {
+    if(this.editProduct.statusId == 'Activo'){
+      this.editProduct.statusId = 1;
+    }else if(this.editProduct.statusId == 'Inactivo'){
+      this.editProduct.statusId = 2;
+    }
+    this.productServices.actualizarProducto(this.searchProduct, this.editProduct).subscribe((res: any) => {
       this.ObtenerProductos();
     });
-    // setTimeout(function () {
-    //   window.location.reload();
-    // }, 1500);
   }
 
   DeleteProductById(): void {
@@ -125,6 +143,11 @@ export class MttoProductosComponent implements OnInit {
   }
   
   seteoProducto(item: productsModel): void{
+    if(item.statusId == 1){
+      item.statusId = "Activo";
+    }else if(item.statusId == 2){
+      item.statusId = "Inactivo";
+    }
     this.categories.forEach(element => {
       if(element.categoryId == item.categoryId){
         item.categoryId = element.categoryName;
@@ -135,7 +158,8 @@ export class MttoProductosComponent implements OnInit {
         item.seasonId = element.seasonName
       }
     });
-    this.newProduct = item;
+    this.editProduct = item;
     this.searchProduct = item.productId;
   }
+
 }

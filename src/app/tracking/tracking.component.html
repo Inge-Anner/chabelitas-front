@@ -22,43 +22,41 @@
         <div class="container">
             <div class="item">
 
-                    <div class="row d-flex icon-content">
-                        <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
-                        <div class="d-flex flex-column">
-                            <p class="font-weight-bold">Orden<BR>Creada</p>
-                        </div>
-                    </div>
-                
-            </div>    
-                <div class="item">
-                    <div class="row d-flex icon-content">
-                        <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
-                        <div class="d-flex flex-column">
-                            <p class="font-weight-bold">Pago<BR>Enviado</p>
-                        </div>
+                <div class="row d-flex icon-content">
+                    <img class="icon" src="https://i.imgur.com/9nnc9Et.png">
+                    <div class="d-flex flex-column">
+                        <p class="font-weight-bold">Orden<BR>Creada</p>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="row d-flex icon-content">
-                        <img class="icon" src="https://i.imgur.com/TkPm63y.png">
-                        <div class="d-flex flex-column">
-                            <p class="font-weight-bold">Pago<BR>Confirmado</p>
-                        </div>
+
+            </div>
+            <div class="item">
+                <div class="row d-flex icon-content">
+                    <img class="icon" src="https://i.imgur.com/u1AzR7w.png">
+                    <div class="d-flex flex-column">
+                        <p class="font-weight-bold">Pago<BR>Enviado</p>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="row d-flex icon-content">
-                        <img class="icon" src="https://i.imgur.com/HdsziHP.png">
-                        <div class="d-flex flex-column">
-                            <p class="font-weight-bold">Pedido<br>Enviado</p>
-                        </div>
+            </div>
+            <div class="item">
+                <div class="row d-flex icon-content">
+                    <img class="icon" src="https://i.imgur.com/TkPm63y.png">
+                    <div class="d-flex flex-column">
+                        <p class="font-weight-bold">Pago<BR>Confirmado</p>
                     </div>
                 </div>
-                <div *ngFor="let status of estados; index as i">
-                    <h3 style="text-align:center;" *ngIf="this.orders.statusOrderId == i+1">{{status}}</h3>
+            </div>
+            <div class="item">
+                <div class="row d-flex icon-content">
+                    <img class="icon" src="https://i.imgur.com/HdsziHP.png">
+                    <div class="d-flex flex-column">
+                        <p class="font-weight-bold">Pedido<br>Enviado</p>
+                    </div>
                 </div>
+            </div>
+            <div *ngFor="let status of estados; index as i">
+                <h3 style="text-align:center;" *ngIf="this.orders.statusOrderId == i+1">{{status}}</h3>
             </div>
         </div>
     </div>
-
-
+</div>
