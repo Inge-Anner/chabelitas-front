@@ -35,6 +35,7 @@ export class ProductServices {
   buscarProductById(id: any){
     return this.http.get<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
   }
+  
   actualizarProducto(productId: number | undefined, data: productsModel){
     return this.http.put<any>(`${ base_url }/product/${productId}`, data).pipe(catchError((e) => this.manejarError(e)));
   }
