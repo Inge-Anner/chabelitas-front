@@ -27,7 +27,7 @@ export class MttoProductosComponent implements OnInit {
     productName: "",
     productPrice: 0,
     seasonId: 0,
-    statusId: 0,
+    statusId: 1,
   }
 
   mostrar: boolean = false;
@@ -85,7 +85,7 @@ export class MttoProductosComponent implements OnInit {
   }
 
   EliminarProducto(): void{
-    this.productServices.eliminarProducto(this.searchProduct).subscribe((res: any) => {
+    this.productServices.eliminarProducto(this.idProd).subscribe((res: any) => {
       console.log(res)
     });
     this.ObtenerProductos();
@@ -138,5 +138,4 @@ export class MttoProductosComponent implements OnInit {
     this.newProduct = item;
     this.searchProduct = item.productId;
   }
-
 }

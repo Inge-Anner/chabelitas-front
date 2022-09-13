@@ -9,33 +9,21 @@
 
 
 <!-- Boton crear pastel-->
-<button type="button" style="margin: 20px;" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalIdCrear">
-  Crear producto
+<button type="button" style="margin: 20px;" class="btn btn-danger" data-bs-toggle="modal"
+  data-bs-target="#modalIdCrear">
+  Nuevo producto
 </button>
 
-<script>
-  var modalId = document.getElementById('modalId');
 
-  modalId.addEventListener('show.bs.modal', function (event) {
-      // Button that triggered the modal
-      let button = event.relatedTarget;
-      // Extract info from data-bs-* attributes
-      let recipient = button.getAttribute('data-bs-whatever');
-
-    // Use above variables to manipulate the DOM
-  });
-</script>
-
-
-<div class="row mt-4" style="padding: 2% 5% 2% 8%;">
+<div class="row mt-4" style="padding: 1% 5% 2% 8%;">
   <div class="col-md-5 col-lg-4" *ngFor="let product of products">
-    <div class="card sombra" style="width: 301px; height: 550px;">
+    <div class="card sombra" style="width: 301px; height: 98%;">
       <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
       <div class="card-body">
         <h5>Id: {{product.productId}} <BR> Nombre: {{product.productName}}</h5>
         <p>{{product.productDescription}}</p>
       </div>
-      <div class="card-footer" style="width: 300px; height: 100px;">
+      <div class="card-footer" style="width: 100%; height: 15%;">
         <div class="row justify-content-between">
           <div class="mt-2 d-flex justify-content-center align-items-center">
             <button class="btn btn-warning ml-2" data-bs-toggle="modal" data-bs-target="#modalIdEdit"
@@ -110,7 +98,8 @@
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Descripcion</label>
-          <textarea class="form-control" id="Description" [(ngModel)]="this.newProduct.productDescription" rows="5"></textarea>
+          <textarea class="form-control" id="Description" [(ngModel)]="this.newProduct.productDescription"
+            rows="5"></textarea>
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Nombre</label>
@@ -142,18 +131,48 @@
 <div class="modal fade" id="modalIdCrear" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="modalTitleId">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Nuevo producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body">
         <div class="container-fluid">
-          Add rows here
+
+
+          <div class="form-orders">
+            <label class="form-label mt-4">Categoria</label>
+            <input type="tel" class="form-control" id="categoria" [(ngModel)]="this.newProduct.categoryId">
+          </div>
+          <div class="form-orders">
+            <label class="form-label mt-4">Temporada</label>
+            <input type="tel" class="form-control" id="temporada" [(ngModel)]="this.newProduct.seasonId">
+          </div>
+          <div class="form-orders">
+            <label class="form-label mt-4">Nombre</label>
+            <input type="text" class="form-control" id="Nombre" [(ngModel)]="this.newProduct.productName">
+          </div>
+          <div class="form-orders">
+            <label class="form-label mt-4">Descripcion</label>
+            <textarea class="form-control" id="descripcion" [(ngModel)]="this.newProduct.productDescription"
+              rows="3"> </textarea>
+          </div>
+          <div class="form-orders">
+            <label class="form-label mt-4">Precio</label>
+            <input type="text" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newProduct.productPrice">
+          </div>
+          <!--<div class="form-group">
+            <label for="formFile" class="form-label mt-4">Fotografía</label>
+            <input class="form-control" type="file" id="formFile">
+          </div>-->
+          <div class="form-orders">
+            <label class="form-label mt-4">Fotografía</label>
+            <input type="text" class="form-control" id="foto" [(ngModel)]="this.newProduct.productImage">
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" (click)="CrearProducto()">Save</button>
       </div>
     </div>
   </div>
