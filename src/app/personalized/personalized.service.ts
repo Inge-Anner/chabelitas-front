@@ -24,4 +24,9 @@ export class ProductServices {
     return this.http.get<any>(`${ base_url }/product/personalized`).pipe(catchError((e) => this.manejarError(e)));
   }
 
+  cargarToppings(){
+    return this.http.get<any>(`${ base_url }/product/topping`).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+
 }

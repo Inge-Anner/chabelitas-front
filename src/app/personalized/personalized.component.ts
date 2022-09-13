@@ -35,6 +35,13 @@ ObtenerProductos(): void {
     });
   }
 
+  ObtenerToppings(): void {
+    this.productServices.cargarToppings().subscribe((res: any) => {
+      this.products = res.data;
+      this.mostrar = true;
+    });
+  }
+
   mas(): void{
     this.cantidad = this.cantidad + 1;
   }
