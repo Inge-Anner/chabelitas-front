@@ -50,7 +50,7 @@ export class OrdersComponent implements OnInit {
   //   });
   // }
 
-  remover(item: any){
+  remover(item: any) {
     this.carrito = this.carrito.filter((obj) => {
       return obj != item;
     });
@@ -65,6 +65,7 @@ export class OrdersComponent implements OnInit {
     if (this.newOrder.ticketOrder == '') {
       this.newOrder.ticketOrder = '0';
     }
+    
     this.orderServices.ingresarOrders(this.newOrder).subscribe((res: any) => {
       // Inserta en Local Storage
       localStorage.setItem('order', JSON.stringify(res));
