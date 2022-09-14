@@ -9,7 +9,9 @@ import { OrderServices } from '../orders/orders.service';
   styleUrls: ['./tracking.component.scss'],
 })
 export class TrackingComponent implements OnInit {
-  constructor(private OrderServices: OrderServices) {}
+  constructor(private OrderServices: OrderServices,private TrackingServices: TrackingServices ) {}
+
+
   orders: ordersModel = {
     statusOrderId: 0,
     phoneOrder: '',
@@ -21,6 +23,7 @@ export class TrackingComponent implements OnInit {
     dateDeliver: '',
     totalOrder: 0,
   };
+  
 
   estados: string[] = [
     'Creado',
@@ -29,12 +32,14 @@ export class TrackingComponent implements OnInit {
     'Pedido Enviado',
     'Eliminado',
   ];
-  orderId: Number = 0;
+  orderId: number = 0;
   aux1: string = '';
   aux2: string = '';
   aux3: string = '';
   aux4: string = '';
-
+  mostrar: boolean = false;
+  
+  
   ngOnInit(): void {}
 
   ObtenerTracking(): void {
@@ -75,6 +80,21 @@ export class TrackingComponent implements OnInit {
           this.aux4 = '';
           break;
       }
+      this.mostrar = true;
+    });
+  }
+
+  UpdateOrderById(): void {
+    this.TrackingServices.actualizarOrden(this.orderId, this.orders).subscribe((res: any) => {
+      this.ObtenerOrder();
+    });
+  }
+
+  ObtenerOrder(): void {
+    this.TrackingServices.cargarTracking().subscribe((res: any) => {
+      this.orders = res.data;
+      this.mostrar = true;
     });
   }
 }
+  
