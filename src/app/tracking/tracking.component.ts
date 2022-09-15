@@ -38,8 +38,9 @@ export class TrackingComponent implements OnInit {
   aux3: string = '';
   aux4: string = '';
   mostrar: boolean = false;
-  
-  
+  mostrar2: boolean = false;
+  phoneOrder :string = '';
+
   ngOnInit(): void {}
 
   ObtenerTracking(): void {
@@ -85,9 +86,12 @@ export class TrackingComponent implements OnInit {
   }
 
   UpdateOrderById(): void {
-    this.TrackingServices.actualizarOrden(this.orderId, this.orders).subscribe((res: any) => {
-      this.ObtenerOrder();
-    });
+    if (this.orders.statusOrderId ==1) {
+      this.orders.statusOrderId = 2;
+    }
+      this.TrackingServices.actualizarOrden(this.orderId, this.orders).subscribe((res: any) => {
+        this.ObtenerOrder();
+      }); 
   }
 
   ObtenerOrder(): void {
@@ -95,6 +99,12 @@ export class TrackingComponent implements OnInit {
       this.orders = res.data;
       this.mostrar = true;
     });
+  }
+
+  ValidarUsuario():void {
+   if (this.phoneOrder == this.orders.phoneOrder) {
+    this.mostrar2 = true;
+   } 
   }
 }
   
