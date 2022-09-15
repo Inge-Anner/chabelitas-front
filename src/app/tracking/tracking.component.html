@@ -1,10 +1,10 @@
 <h2 style="text-align: center; padding: 2% 10% 2% 10%;">Rastreo de pedidos</h2>
 <div class="input-group mb-3" style="padding: 2% 10% 1% 10%;">
     <input type="text" class="form-control" placeholder="Ingrese ID de pedido" aria-label="Ingrese ID de pedido"
-        aria-describedby="btTracking" [(ngModel)]="this.orderId">
+        aria-describedby="btTracking" [(ngModel)]="this.orderId" id="idbuscado">
     <button class="btn btn-primary" (click)="ObtenerTracking()" type="sumbit" id="btTracking">Rastrear</button>
-</div>
 
+</div>
 
 <div class="container px-1 px-md-4 py-5 mx-auto">
     <div class="card">
@@ -54,8 +54,34 @@
                     </div>
                 </div>
             </div>
-            <div *ngFor="let status of estados; index as i">
-                <h3 style="text-align:center;" *ngIf="this.orders.statusOrderId == i+1">{{status}}</h3>
+
+            <div *ngIf="this.mostrar == true">
+
+                <div *ngFor="let status of estados; index as i">
+                    <h3 style="text-align:center;" *ngIf="this.orders.statusOrderId == i+1">{{status}}</h3>
+                </div>
+
+                <div *ngIf="this.orders.statusOrderId ==1">
+                    <div class="input-group mb-3" style="padding: 1%;">
+                        
+                        <input type="text" class="form-control"
+                            placeholder="Ingrese número de telefono para autenticarse" aria-label="Recipient's username"
+                            aria-describedby="button-addon2" [(ngModel)]="this.phoneOrder">
+                        <button class="btn btn-primary" type="button" id="button-addon2"
+                            (click)="ValidarUsuario()">Validar</button>
+                    </div>
+
+                    <div *ngIf="this.mostrar2 == true">
+                        
+                        <div class="input-group mb-3" style="padding: 1%;">
+                            <input type="text" class="form-control" placeholder="Ingrese número de boleta"
+                                aria-label="Recipient's username" aria-describedby="button-addon2"
+                                [(ngModel)]="this.orders.ticketOrder" >
+                            <button class="btn btn-primary" type="button" id="button-addon2" 
+                                (click)="UpdateOrderById()">Confirmar pedido</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

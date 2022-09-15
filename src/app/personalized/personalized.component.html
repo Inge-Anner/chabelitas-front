@@ -42,6 +42,7 @@
         <div class="form-check form-switch" style="width: 0.1% 5% 2% 5%;"
           *ngFor="let topping of toppings ">
           <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+          <td><img [src]="topping.productImage" style="width: 90px; height: 70px;"></td>
           <label>{{topping.productName}} - Q.{{topping.productPrice}}</label>
         </div>
       </div>
