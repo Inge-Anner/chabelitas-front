@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TrackingServices } from './tracking.service';
 import { ordersModel } from '../models/orders.model';
 import { OrderServices } from '../orders/orders.service';
-
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-tracking',
   templateUrl: './tracking.component.html',
@@ -88,6 +88,9 @@ export class TrackingComponent implements OnInit {
   UpdateOrderById(): void {
     if (this.orders.statusOrderId ==1) {
       this.orders.statusOrderId = 2;
+      const fecha = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US');
+    this.orders.dateConfirmed = fecha;
+    
     }
       this.TrackingServices.actualizarOrden(this.orderId, this.orders).subscribe((res: any) => {
         this.ObtenerOrder();
