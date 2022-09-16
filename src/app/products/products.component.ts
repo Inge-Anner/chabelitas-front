@@ -16,7 +16,21 @@ import { seasonsModel } from '../models/seasons.model';
 })
 export class ProductsComponent implements OnInit {
 
+  public load: boolean = false;
   constructor( private productServices: ProductServices, private categoryServices: CategoryServices, public router: Router , private seasonsServices: SeasonsServices) { }
+  // products: productsModel[] = [
+  //   {
+  //     categoryId: 0,
+  //     productDescription: "",
+  //     productId: 0,
+  //     productImage: "",
+  //     productName: "",
+  //     productPrice: 0,
+  //     seasonId: 0,
+  //     statusId: 0,
+  //     statusSeason: 0
+  //   }
+  // ];
   products: productsModel[] = [];
   categories: categoryModel[] = [];
   seasons: seasonsModel[] = [];
@@ -85,6 +99,9 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
       this.ObtenerProductos();
       this.ObtenerCategorias();
+      setTimeout(() => {
+        this.load = true;
+      }, 1500);
   }
 
   ObtenerCategorias(): void {
@@ -96,44 +113,28 @@ export class ProductsComponent implements OnInit {
 
   ObtenerProductos(): void {
     this.productServices.cargarProductos(this.whereProducts).subscribe((res: any) => {
-      // for(let i = 0; i = res.data.length; i++){
-      //   console.log(res.data[i].productName);
-      // }
       this.products = res.data;
-      console.log(res.data[0].productName);
       this.mostrar = true;
     });
-    // this.validarSeason();
+
+    // this.seasonsServices.cargarSeason().subscribe((res: any) => {
+    //   this.seasons = res.data;
+    // });
+
     // setTimeout(() => {
-    //   this.products.forEach(product => {
-    //     let i = 0;
+    //   this.products.forEach((product, index) => {
     //     this.seasons.forEach(season => {
-    //       if(season.seasonId == product.seasonId){
+    //       if(product.seasonId == season.seasonId){
     //         if(season.statusId == 1){
-    //           console.log("activo");
-    //           product.statusSeason = "activo";
-    //           this.products[i] = product;
-    //           i++;
-    //         }else{
-    //           console.log("inactivo");
-    //           product.statusSeason = "inactivo";
-    //           this.products[i] = product;
-    //           i++;
+    //           this.products[index].statusSeason = 1
+    //         }else {
+    //           this.products[index].statusSeason = 0
     //         }
     //       }
     //     });
     //   });
-    //   console.log(this.products);
-    // }, 3000);
-  }
+    // }, 1400);
 
-  validarSeason(): void{
-    this.seasonsServices.cargarSeason().subscribe((res: any) => {
-      this.seasons = res.data;
-    });
-    setTimeout(() => {
-      console.log(this.seasons)
-    }, 600);
   }
 
   seleccionarCategoria(category: any): void {

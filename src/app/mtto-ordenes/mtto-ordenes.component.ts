@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment-timezone';
 import { detailordersModel } from '../models/detailorders.model';
 import { productsModel } from "../models/products.model";
+import { ProductServices } from '../mtto-productos/mtto-productos.service';
 
 @Component({
   selector: 'app-mtto-ordenes',
@@ -12,11 +13,17 @@ import { productsModel } from "../models/products.model";
   styleUrls: ['./mtto-ordenes.component.scss'],
 })
 export class MttoOrdenesComponent implements OnInit {
-  constructor(public router: Router, private orderServices: OrderServices) { }
-  searchDetalle: number = 0;
+  constructor(public router: Router, private orderServices: OrderServices, private productServices: ProductServices) { }
   orders: ordersModel[] = [];
-  newDetail: detailordersModel[] = [];
   products: productsModel[] = [];
+  newDetail: detailordersModel[] = [
+    {
+      productId: 0,
+      orderId: 0,
+      detailOrderQuantity: 0,
+      orderDetailSubtotal: 0
+    }
+  ];
   currentOrder: ordersModel = {
     orderId: 0,
     statusOrderId: 0,
@@ -31,19 +38,13 @@ export class MttoOrdenesComponent implements OnInit {
     totalOrder: 0,
   };
 
-  // newDetail: detailordersModel = {
-  //   productId: 0,
-  //   orderId: 0,
-  //   detailOrderQuantity: 0,
-  //   orderDetailSubtotal: 0,
-  // };
-
   estado: string = '';
   mostrar: boolean = false;
 
   ngOnInit(): void {
     this.validaSesion();
     this.ObtenerOrder();
+    this.ObtenerProductos();
   }
 
   estados: string[] = [
@@ -59,11 +60,34 @@ export class MttoOrdenesComponent implements OnInit {
   aux3: string = '';
   aux4: string = '';
 
+  consultaDetalle(id: number | undefined): void{
+    this.orderServices.buscarDetalleById(id).subscribe((res: any) => {
+      this.newDetail = res.data;  
+    });
+    setTimeout(() => {
+      this.newDetail.forEach((detalle, index1) => {
+        this.products.forEach((producto, index2) => {
+          if(producto.productId == detalle.productId){
+            console.log(this.products[index2].productName);
+            this.newDetail[index1].productId = producto.productName;
+          }
+        });
+      });
+    }, 625);
+  }
+
   validaSesion(): void {
     const getOrder = localStorage.getItem('sesion');
     if (!getOrder) {
       this.router.navigateByUrl('/login');
     }
+  }
+
+  ObtenerProductos(): void {
+    this.productServices.cargarProductos().subscribe((res: any) => {
+      this.products = res.data;
+      this.mostrar = true;
+    });
   }
 
   cierraSesion(): void {
@@ -148,14 +172,6 @@ export class MttoOrdenesComponent implements OnInit {
     // setTimeout(function () {
     //   window.location.reload();
     // }, 1500);
-  }
-
-
-  consultaDetalle(id: number | undefined): void{
-    this.orderServices.buscarDetalleById(id).subscribe((res: any) => {
-      this.newDetail = res.data;  
-    });
-    
   }
 
 }

@@ -28,88 +28,101 @@
 </div>-->
 
 
-<div class="row mt-3" style="margin: 1% 1% 1% 2%; overflow: hidden;">
-  <div class="col-md-5 col-lg-4" style="padding: 1% 0.1% 0.1% 0.1%; flex:0 0 auto; width: auto;"
-    *ngFor="let category of categories">
-    <button class="btn btn-secondary" style="text-align: center;"
-      (click)="seleccionarCategoria(category.categoryId)">{{category.categoryName}}</button>
+<!-- Mostrando Spinner -->
+<div class="overlay" *ngIf="!load">
+  <div class="spinner ">
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" />
   </div>
-<!--<div style="margin: 20px;">
-  <button type="button" class="btn btn-danger" (click)="router.navigate(['/personalized']);">Pastel personalizado</button>
-</div>-->
 </div>
 
-<div class="row mt-4" style="margin: 2% 5% 2% 8%; overflow: hidden;">
-  <div class="col-md-5 col-lg-4" *ngFor="let product of products">
-    <div class="card sombra" style="width: 301px; height: 98%;">
-      <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
-      <div class="card-body">
-        <h5>{{product.productName}}</h5>
-      </div>
-      <div class="card-footer" style="width: 100%; height: 15%;">
-        <div class="row justify-content-between">
-          <div class="mt-2 d-flex justify-content-center align-items-center">
-            <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ver Imagen"
-              data-bs-toggle="modal" data-bs-target="#cart"><span class="material-icons"
-                (click)="productCart(product)">shopping_cart</span></button>
-            <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" data-bs-toggle="modal"
-              data-bs-target="#visualization" title="Editar Imagen"><span class="material-icons"
-                (click)="productView(product)">visibility</span></button>
+<div *ngIf="load">
+
+  <div class="row mt-3" style="margin: 1% 1% 1% 2%; overflow: hidden;">
+    <div class="col-md-5 col-lg-4" style="padding: 1% 0.1% 0.1% 0.1%; flex:0 0 auto; width: auto;"
+      *ngFor="let category of categories">
+      <button class="btn btn-secondary" style="text-align: center;"
+        (click)="seleccionarCategoria(category.categoryId)">{{category.categoryName}}</button>
+    </div>
+    <!--<div style="margin: 20px;">
+    <button type="button" class="btn btn-danger" (click)="router.navigate(['/personalized']);">Pastel personalizado</button>
+  </div>-->
+  </div>
+
+  <div class="row mt-4" style="margin: 2% 5% 2% 8%; overflow: hidden;">
+    <div class="col-md-5 col-lg-4" *ngFor="let product of products">
+      <div class="card sombra" style="width: 301px; height: 98%;">
+        <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
+        <div class="card-body">
+          <h5>{{product.productName}}</h5>
+        </div>
+        <div class="card-footer" style="width: 100%; height: 15%;">
+          <div class="row justify-content-between">
+            <div class="mt-2 d-flex justify-content-center align-items-center">
+              <button class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Ver Imagen"
+                data-bs-toggle="modal" data-bs-target="#cart"><span class="material-icons"
+                  (click)="productCart(product)">shopping_cart</span></button>
+              <button class="btn btn-warning ml-2" data-toggle="tooltip" data-placement="top" data-bs-toggle="modal"
+                data-bs-target="#visualization" title="Editar Imagen"><span class="material-icons"
+                  (click)="productView(product)">visibility</span></button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <br>
-  </div>
-</div>
-
-<div class="modal fade" id="visualization" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-  role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header justify-content-center align-items-center">
-        <img [src]="this.productVisualization.productImage" style="width: 280px; height: 200px;">
-      </div>
-      <div class="modal-body justify-content-between">
-        <h5>{{this.productVisualization.productName}}</h5>
-        <p>{{this.productVisualization.productDescription}}</p>
-        <p>Su precio es de Q.{{this.productVisualization.productPrice}}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
+      <br>
     </div>
   </div>
-</div>
 
-
-<div class="modal fade" id="cart" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-  aria-labelledby="modalTitleId" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header justify-content-center align-items-center">
-        <img [src]="this.productVisualization.productImage" style="width: 280px; height: 200px;">
-      </div>
-      <div class="modal-body justify-content-between">
-        <h5>{{this.productVisualization.productName}}</h5>
-        <p>{{this.productVisualization.productDescription}}</p>
-        <p>Su precio es de Q.{{this.productVisualization.productPrice}}</p>
-        <p></p>
-        <label for="div-cant" class="form-label mt-4">Cantidad:</label>
-        <div class="input-group mb-3" id="div-cant">
-          <button class="btn btn-info" data-toggle="tooltip" (click)="menos()"><span class="material-icons">remove</span></button>
-          <input type="text" class="form-control" [value]="cantidad">
-          <button class="btn btn-info" data-toggle="tooltip" (click)="mas()"><span class="material-icons">add</span></button>
+  <div class="modal fade" id="visualization" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center align-items-center">
+          <img [src]="this.productVisualization.productImage" style="width: 280px; height: 200px;">
+        </div>
+        <div class="modal-body justify-content-between">
+          <h5>{{this.productVisualization.productName}}</h5>
+          <p>{{this.productVisualization.productDescription}}</p>
+          <p>Su precio es de Q.{{this.productVisualization.productPrice}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="agregarProductoCarrito()">Agregar a Carrito</button>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="cart" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+    aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center align-items-center">
+          <img [src]="this.productVisualization.productImage" style="width: 280px; height: 200px;">
+        </div>
+        <div class="modal-body justify-content-between">
+          <h5>{{this.productVisualization.productName}}</h5>
+          <p>{{this.productVisualization.productDescription}}</p>
+          <p>Su precio es de Q.{{this.productVisualization.productPrice}}</p>
+          <p></p>
+          <label for="div-cant" class="form-label mt-4">Cantidad:</label>
+          <div class="input-group mb-3" id="div-cant">
+            <button class="btn btn-info" data-toggle="tooltip" (click)="menos()"><span
+                class="material-icons">remove</span></button>
+            <input type="text" class="form-control" [value]="cantidad">
+            <button class="btn btn-info" data-toggle="tooltip" (click)="mas()"><span
+                class="material-icons">add</span></button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+            (click)="agregarProductoCarrito()">Agregar a Carrito</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
+</div>
 
 <!-- <input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.categoryId">
 <input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productDescription">
