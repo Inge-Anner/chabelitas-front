@@ -6,6 +6,8 @@ import { categoryModel } from '../models/category.model';
 import { visualizationsModel } from '../models/visualizations.model';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { SeasonsServices } from '../mtto-temporadas/mtto-temporadas.service';
+import { seasonsModel } from '../models/seasons.model';
 
 @Component({
   selector: 'app-products',
@@ -14,9 +16,24 @@ import { Router } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, public router: Router ) { }
+  public load: boolean = false;
+  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, public router: Router , private seasonsServices: SeasonsServices) { }
+  // products: productsModel[] = [
+  //   {
+  //     categoryId: 0,
+  //     productDescription: "",
+  //     productId: 0,
+  //     productImage: "",
+  //     productName: "",
+  //     productPrice: 0,
+  //     seasonId: 0,
+  //     statusId: 0,
+  //     statusSeason: 0
+  //   }
+  // ];
   products: productsModel[] = [];
   categories: categoryModel[] = [];
+  seasons: seasonsModel[] = [];
   visualization: visualizationsModel[] = [];
   
   whereProducts: any = {
@@ -77,9 +94,14 @@ export class ProductsComponent implements OnInit {
   cantidad: number = 1;
   idProd: any;
 
+  seasonActiva: boolean = false;
+
   ngOnInit(): void {
       this.ObtenerProductos();
       this.ObtenerCategorias();
+      setTimeout(() => {
+        this.load = true;
+      }, 1500);
   }
 
   ObtenerCategorias(): void {
@@ -94,6 +116,25 @@ export class ProductsComponent implements OnInit {
       this.products = res.data;
       this.mostrar = true;
     });
+
+    // this.seasonsServices.cargarSeason().subscribe((res: any) => {
+    //   this.seasons = res.data;
+    // });
+
+    // setTimeout(() => {
+    //   this.products.forEach((product, index) => {
+    //     this.seasons.forEach(season => {
+    //       if(product.seasonId == season.seasonId){
+    //         if(season.statusId == 1){
+    //           this.products[index].statusSeason = 1
+    //         }else {
+    //           this.products[index].statusSeason = 0
+    //         }
+    //       }
+    //     });
+    //   });
+    // }, 1400);
+
   }
 
   seleccionarCategoria(category: any): void {

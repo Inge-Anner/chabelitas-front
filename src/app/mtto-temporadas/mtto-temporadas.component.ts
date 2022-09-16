@@ -20,6 +20,7 @@ export class MttoTemporadasComponent implements OnInit {
   searchSeason: number = 0;
   mostrar: boolean = false;
   Clean: string = "";
+  checked: string= "";
 
   ngOnInit(): void {
     this.validaSesion();
@@ -59,6 +60,24 @@ export class MttoTemporadasComponent implements OnInit {
 
   UpdateSeasonById(): void {
     this.seasonsServices.actualizarSeason(this.searchSeason, this.newSeason).subscribe((res: any) => {
+      this.ObtenerSeasons();
+    });
+  }
+
+  activarSeason(id: number | undefined): void{
+    let season: any = {
+      statusId: 1
+    }
+    this.seasonsServices.actualizarSeason(id, season).subscribe((res: any) => {
+      this.ObtenerSeasons();
+    });
+  }
+
+  inactivarSeason(id: number | undefined): void{
+    let season: any = {
+      statusId: 2
+    }
+    this.seasonsServices.actualizarSeason(id, season).subscribe((res: any) => {
       this.ObtenerSeasons();
     });
   }

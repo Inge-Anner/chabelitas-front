@@ -7,4 +7,5 @@ export interface productsModel {
   productPrice: number;
   seasonId: number | undefined | string;
   statusId: number | string;
+  statusSeason?: number;
 }
