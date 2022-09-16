@@ -4,6 +4,7 @@ import { ordersModel } from '../models/orders.model';
 import { Router } from '@angular/router';
 import * as moment from 'moment-timezone';
 import { detailordersModel } from '../models/detailorders.model';
+import { productsModel } from "../models/products.model";
 
 @Component({
   selector: 'app-mtto-ordenes',
@@ -15,6 +16,7 @@ export class MttoOrdenesComponent implements OnInit {
   searchDetalle: number = 0;
   orders: ordersModel[] = [];
   newDetail: detailordersModel[] = [];
+  products: productsModel[] = [];
   currentOrder: ordersModel = {
     orderId: 0,
     statusOrderId: 0,
@@ -150,19 +152,10 @@ export class MttoOrdenesComponent implements OnInit {
 
 
   consultaDetalle(id: number | undefined): void{
-   
     this.orderServices.buscarDetalleById(id).subscribe((res: any) => {
-      
-      this.newDetail = res.data;
-      
+      this.newDetail = res.data;  
     });
-    setTimeout(() => {
-      console.log(this.newDetail);
-    }, 2000);
     
-
   }
-
-
 
 }
