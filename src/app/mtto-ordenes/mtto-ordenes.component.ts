@@ -3,6 +3,7 @@ import { OrderServices } from './mtto-ordenes.service';
 import { ordersModel } from '../models/orders.model';
 import { Router } from '@angular/router';
 import * as moment from 'moment-timezone';
+import { detailordersModel } from '../models/detailorders.model';
 
 @Component({
   selector: 'app-mtto-ordenes',
@@ -10,9 +11,10 @@ import * as moment from 'moment-timezone';
   styleUrls: ['./mtto-ordenes.component.scss'],
 })
 export class MttoOrdenesComponent implements OnInit {
-  constructor(public router: Router,
-              private orderServices: OrderServices) {}
+  constructor(public router: Router, private orderServices: OrderServices) { }
+  searchDetalle: number = 0;
   orders: ordersModel[] = [];
+  newDetail: detailordersModel[] = [];
   currentOrder: ordersModel = {
     orderId: 0,
     statusOrderId: 0,
@@ -26,6 +28,14 @@ export class MttoOrdenesComponent implements OnInit {
     dateDeliver: null,
     totalOrder: 0,
   };
+
+  // newDetail: detailordersModel = {
+  //   productId: 0,
+  //   orderId: 0,
+  //   detailOrderQuantity: 0,
+  //   orderDetailSubtotal: 0,
+  // };
+
   estado: string = '';
   mostrar: boolean = false;
 
@@ -54,7 +64,7 @@ export class MttoOrdenesComponent implements OnInit {
     }
   }
 
-  cierraSesion(): void{
+  cierraSesion(): void {
     localStorage.removeItem('sesion');
     this.router.navigateByUrl('/login');
   }
@@ -95,6 +105,7 @@ export class MttoOrdenesComponent implements OnInit {
     this.currentOrder = order;
   }
 
+
   cambioOrden2: any = {
     orderId: 0,
     statusOrderId: 0,
@@ -102,26 +113,26 @@ export class MttoOrdenesComponent implements OnInit {
 
   cambiarStatus(): void {
     this.cambioOrden2.orderId = this.currentOrder.orderId;
-      switch (this.estado) {
-        case 'Pago Enviado':
-          this.cambioOrden2.statusOrderId = 2;
-          break;
-        case 'Pago Confirmado':
-          this.cambioOrden2.statusOrderId = 3;
-          break;
-        case 'Pedido Enviado':
-          this.cambioOrden2.statusOrderId = 4;
-          break;
-        case 'Eliminado':
-          this.cambioOrden2.statusOrderId = 5;
-          break;
-        default:
-          break;
-      }
-      this.orderServices.actualizarOrden(this.cambioOrden2.orderId, this.cambioOrden2).subscribe((res: any) => {
-        this.orders = res.data;
-        this.ObtenerOrder();
-      });
+    switch (this.estado) {
+      case 'Pago Enviado':
+        this.cambioOrden2.statusOrderId = 2;
+        break;
+      case 'Pago Confirmado':
+        this.cambioOrden2.statusOrderId = 3;
+        break;
+      case 'Pedido Enviado':
+        this.cambioOrden2.statusOrderId = 4;
+        break;
+      case 'Eliminado':
+        this.cambioOrden2.statusOrderId = 5;
+        break;
+      default:
+        break;
+    }
+    this.orderServices.actualizarOrden(this.cambioOrden2.orderId, this.cambioOrden2).subscribe((res: any) => {
+      this.orders = res.data;
+      this.ObtenerOrder();
+    });
 
     // const aux = formatDate(this.currentOrder.dateConfirmed, 'yyyy-MM-dd hh:mm:ss', '0530');
     // console.log(aux);
@@ -132,9 +143,26 @@ export class MttoOrdenesComponent implements OnInit {
     //     this.orders = res.data;
     //     this.ObtenerOrder();
     //   });
-      // setTimeout(function () {
-      //   window.location.reload();
-      // }, 1500);
+    // setTimeout(function () {
+    //   window.location.reload();
+    // }, 1500);
   }
+
+
+  consultaDetalle(id: number | undefined): void{
+   
+    this.orderServices.buscarDetalleById(id).subscribe((res: any) => {
+      
+      this.newDetail = res.data;
+      
+    });
+    setTimeout(() => {
+      console.log(this.newDetail);
+    }, 2000);
+    
+
+  }
+
+
 
 }
