@@ -7,7 +7,8 @@
 
 <h2 style="text-align: center; padding: 2%">Mantenimiento de temporadas</h2>
 
-<div class="form-check form-switch" style="padding: 0.1% 3% 2% 5%; float: left;" *ngFor="let season of seasons">
+
+<div class="form-check form-switch" style="margin: 0.1% 4% 2% 5%; float: left;" *ngFor="let season of seasons">
   <ng-container *ngIf="season.statusId == 1; then activo; else inactivo">
   </ng-container>
 
