@@ -6,6 +6,8 @@ import { categoryModel } from '../models/category.model';
 import { visualizationsModel } from '../models/visualizations.model';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { SeasonsServices } from '../mtto-temporadas/mtto-temporadas.service';
+import { seasonsModel } from '../models/seasons.model';
 
 @Component({
   selector: 'app-products',
@@ -14,9 +16,10 @@ import { Router } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, public router: Router ) { }
+  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, public router: Router , private seasonsServices: SeasonsServices) { }
   products: productsModel[] = [];
   categories: categoryModel[] = [];
+  seasons: seasonsModel[] = [];
   visualization: visualizationsModel[] = [];
   
   whereProducts: any = {
@@ -77,6 +80,8 @@ export class ProductsComponent implements OnInit {
   cantidad: number = 1;
   idProd: any;
 
+  seasonActiva: boolean = false;
+
   ngOnInit(): void {
       this.ObtenerProductos();
       this.ObtenerCategorias();
@@ -91,9 +96,44 @@ export class ProductsComponent implements OnInit {
 
   ObtenerProductos(): void {
     this.productServices.cargarProductos(this.whereProducts).subscribe((res: any) => {
+      // for(let i = 0; i = res.data.length; i++){
+      //   console.log(res.data[i].productName);
+      // }
       this.products = res.data;
+      console.log(res.data[0].productName);
       this.mostrar = true;
     });
+    // this.validarSeason();
+    // setTimeout(() => {
+    //   this.products.forEach(product => {
+    //     let i = 0;
+    //     this.seasons.forEach(season => {
+    //       if(season.seasonId == product.seasonId){
+    //         if(season.statusId == 1){
+    //           console.log("activo");
+    //           product.statusSeason = "activo";
+    //           this.products[i] = product;
+    //           i++;
+    //         }else{
+    //           console.log("inactivo");
+    //           product.statusSeason = "inactivo";
+    //           this.products[i] = product;
+    //           i++;
+    //         }
+    //       }
+    //     });
+    //   });
+    //   console.log(this.products);
+    // }, 3000);
+  }
+
+  validarSeason(): void{
+    this.seasonsServices.cargarSeason().subscribe((res: any) => {
+      this.seasons = res.data;
+    });
+    setTimeout(() => {
+      console.log(this.seasons)
+    }, 600);
   }
 
   seleccionarCategoria(category: any): void {

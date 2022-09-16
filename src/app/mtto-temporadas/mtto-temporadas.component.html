@@ -8,9 +8,21 @@
 <h2 style="text-align: center; padding: 2%">Mantenimiento de temporadas</h2>
 
 <div class="form-check form-switch" style="padding: 0.1% 3% 2% 5%; float: left;" *ngFor="let season of seasons">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
-  <label>{{season.seasonId}} - {{season.seasonName}}</label>
+  <ng-container *ngIf="season.statusId == 1; then activo; else inactivo">
+  </ng-container>
+
+  <ng-template #activo>
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (change)="inactivarSeason(season.seasonId)">
+    <label>{{season.seasonId}} - {{season.seasonName}}</label>
+  </ng-template>
+  <ng-template #inactivo>
+    <div>
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (change)="activarSeason(season.seasonId)">
+      <label>{{season.seasonId}} - {{season.seasonName}}</label>
+    </div>
+  </ng-template>
 </div>
+
 
 <div class="input-group mb-3" style="padding: 2% 40% 2% 15%;">
   <input type="text" class="form-control" placeholder="Ingrese id de temporada" [(ngModel)]="this.searchSeason"
