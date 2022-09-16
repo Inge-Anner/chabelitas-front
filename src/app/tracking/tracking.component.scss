@@ -6,6 +6,10 @@ body {
     background-repeat: no-repeat;
 }
 
+h3 {
+    text-align:center;
+}
+
 .card {
     z-index: 0;
     background-color: #ECEFF1;
@@ -22,12 +26,11 @@ body {
 }
 
 .item{
-    padding: 0.1% 10% 1% 3%;
+    padding: 0.1% 15.5% 1% 3%;
     float: left;
 }
 
 .container {
-
     padding: 1% 2% 0.1% 9%;
     overflow: hidden;
 }
@@ -129,8 +132,22 @@ body {
     padding-bottom: 20px;
     
 }
-
-@media screen and (max-width: 992px) {
+// Ipad
+@media screen and (max-width: 1000px) {
+    .item{
+        padding: 0.1% 12% 1% 0%;
+        float: left;
+    }
+    .icon-content {
+        width: 50%;
+    }
+}
+// iphone
+@media screen and (max-width: 400px) {
+    .item{
+        padding: 0.1% 27% 1% 0%;
+        float: left;
+    }
     .icon-content {
         width: 50%;
     }
