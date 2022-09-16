@@ -20,8 +20,6 @@ export class OrderServices {
     return throwError('Ha ocurrido un error');
   }
 
-
-
   cargarOrders(){
     return this.http.get<any>(`${ base_url }/orders`).pipe(catchError((e) => this.manejarError(e)));
   }
@@ -32,6 +30,10 @@ export class OrderServices {
 
   actualizarOrden(orderId: number | undefined, data: ordersModel){
     return this.http.put<any>(`${ base_url }/order/${orderId}`, data).pipe(catchError((e) => this.manejarError(e)));
+  }
+
+  buscarDetalleById(orderId: number| undefined){
+    return this.http.get<any>(`${ base_url }/detailorder/${orderId}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }
