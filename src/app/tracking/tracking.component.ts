@@ -95,6 +95,9 @@ export class TrackingComponent implements OnInit {
       this.TrackingServices.actualizarOrden(this.orderId, this.orders).subscribe((res: any) => {
         this.ObtenerOrder();
       }); 
+
+      alert("Pedido confirmado con éxito");
+
   }
 
   ObtenerOrder(): void {

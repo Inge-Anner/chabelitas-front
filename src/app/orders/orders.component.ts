@@ -88,6 +88,7 @@ export class OrdersComponent implements OnInit {
     setTimeout(function () {
       window.location.reload();
     }, 2500);
+    alert("Pedido ingresado");
   }
   obtenerCarrito(): void {
     if (localStorage.getItem('carrito') != null) {
