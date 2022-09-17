@@ -96,8 +96,6 @@ export class TrackingComponent implements OnInit {
         this.ObtenerOrder();
       }); 
 
-      alert("Pedido confirmado con éxito");
-
   }
 
   ObtenerOrder(): void {
