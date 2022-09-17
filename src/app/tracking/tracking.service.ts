@@ -17,6 +17,7 @@ export class TrackingServices {
   private manejarError(e: any) {
     console.log(e);
     console.log(e.error.message);
+    alert("Ha ocurrido un error");
     return throwError('Ha ocurrido un error');
   }
 
