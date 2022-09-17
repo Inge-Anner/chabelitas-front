@@ -52,7 +52,7 @@
     </div>-->
   <div class="form-orders">
     <label class="form-label mt-4">Telefono/Celular</label>
-    <input type="tel" class="form-control" id="telefono" pattern="{[0-9]{8}}" maxlength="8"
+    <input type="tel" class="form-control" id="telefono" pattern="/^([0-9]{8})*$/" maxlength="8"
       placeholder="Ingresa tu número" [(ngModel)]="this.newOrder.phoneOrder">
   </div>
   <div class="form-orders">

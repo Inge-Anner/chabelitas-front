@@ -80,6 +80,7 @@ export class OrdersComponent implements OnInit {
       }
       console.log('LA ORDEN CREADA ES:');
       console.log(getOrder);
+      alert(`Su pedido registrado es el ${getOrder.data.orderId}`);
       // Borra un objeto del local Storage
       // localStorage.removeItem('order');
       // Limpia todo el local Storage
