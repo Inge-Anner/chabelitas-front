@@ -6,7 +6,7 @@
   <li *ngFor="let orders of orders">
     {{orders.orderId}} - {{orders.statusOrderId}} - {{orders.phoneOrder}} - {{orders.ticketOrder}} - {{orders.nameOrder}} - {{orders.lastNameOrder}}  - {{orders.adressDeliver}} - {{orders.dateCreated}} - {{orders.dateConfirmed}} - {{orders.dateDeliver}} - {{orders.totalOrder}}
   </li>
-</div>
+</div> 
 -->
 <h2 style="text-align: left; padding: 2%">Carrito</h2>
 <div style="padding: 1% 20% 5% 10%; overflow: auto;">
@@ -21,7 +21,8 @@
     </thead>
     <tbody>
       <tr class="table-light" *ngFor="let item of carrito">
-        <td><button type="button" class="btn btn-danger" (click)="remover(item)"><span class="material-icons">delete</span></button></td>
+        <td><button type="button" class="btn btn-danger" (click)="remover(item)"><span
+              class="material-icons">delete</span></button></td>
         <td><img [src]="item.productImage" style="width: 90px; height: 70px;"></td>
         <td>{{item.productName}}</td>
         <td>Q. {{item.productPrice}}</td>
@@ -38,7 +39,8 @@
   <button type="button" class="btn btn-info" (click)="confirmar()">Confirmar carrito</button>
 </div>
 
-<fieldset style="margin: 0% 10% 2% 15%; padding: 1%; background:#d6d6e0; border-radius: 3%;" *ngIf="this.mostrar == true">
+<fieldset style="margin: 0% 10% 2% 15%; padding: 1%; background:#d6d6e0; border-radius: 3%;"
+  *ngIf="this.mostrar == true">
   <legend>Ingrese la información para realizar su pedido</legend>
   <!--<div class="form-orders row">
     </div>
