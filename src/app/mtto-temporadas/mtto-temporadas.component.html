@@ -26,7 +26,7 @@
 
 
 <div class="input-group mb-3" style="padding: 2% 40% 2% 15%;">
-  <input type="text" class="form-control" placeholder="Ingrese id de temporada" [(ngModel)]="this.searchSeason"
+  <input type="text" class="form-control" placeholder="Ingrese id de temporada" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.searchSeason"
     aria-label="Recipient's username" aria-describedby="button-addon2">
   <button class="btn btn-primary" type="button" id="button-addon2" (click)="ObtenerSeasonById()">Buscar</button>
 </div>
