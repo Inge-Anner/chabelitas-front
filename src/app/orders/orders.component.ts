@@ -89,8 +89,8 @@ export class OrdersComponent implements OnInit {
     setTimeout(function () {
       window.location.reload();
     }, 2500);
-    
   }
+  
   obtenerCarrito(): void {
     if (localStorage.getItem('carrito') != null) {
       let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
@@ -105,6 +105,10 @@ export class OrdersComponent implements OnInit {
     }
   }
   confirmar(): void {
-    this.mostrar = true;
+    if (this.carrito.length == 0){
+      this.mostrar = false;
+    }else if (this.carrito.length >= 1){
+      this.mostrar = true;
+    }
   }
 }
