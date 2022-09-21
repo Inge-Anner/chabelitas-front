@@ -1,7 +1,7 @@
 <h2 style="text-align: center; padding: 2% 10% 2% 10%;">Rastreo de pedidos</h2>
 <div class="input-group mb-3" style="padding: 2% 10% 1% 10%;">
     <input type="text" class="form-control" placeholder="Ingrese ID de pedido" aria-label="Ingrese ID de pedido"
-        aria-describedby="btTracking" [(ngModel)]="this.orderId" id="idbuscado">
+        aria-describedby="btTracking"  maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.orderId" id="idbuscado">
     <button class="btn btn-primary" (click)="ObtenerTracking()" type="sumbit" id="btTracking">Rastrear</button>
 
 </div>
@@ -66,7 +66,7 @@
                         
                         <input type="text" class="form-control"
                             placeholder="Ingrese número de telefono para autenticarse" aria-label="Recipient's username"
-                            aria-describedby="button-addon2" [(ngModel)]="this.phoneOrder">
+                            aria-describedby="button-addon2" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.phoneOrder">
                         <button class="btn btn-primary" type="button" id="button-addon2"
                             (click)="ValidarUsuario()">Validar</button>
                     </div>

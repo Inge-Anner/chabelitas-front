@@ -29,7 +29,7 @@
     </div>
     <div style=" padding: 2% 5% 1% 10%; float: left;">
         <div class="input-group mb-3" style="padding: 3% 1% 2% 15%; float: left;">
-            <input type="text" class="form-control" placeholder="Ingrese id de categoria"
+            <input type="text" class="form-control" placeholder="Ingrese id de categoria" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" 
                 [(ngModel)]="this.searchCategory" aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-primary" type="button" (click)="ObtenerCategoryById()"
                 id="button-addon2">Buscar</button>
