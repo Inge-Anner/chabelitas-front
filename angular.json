@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "moment-timezone"
+            ],
             "outputPath": "dist/chabelitas-front",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -60,7 +63,7 @@
                 "styles": {
                   "minify": true,
                   "inlineCritical": false
-                  },
+                },
                 "fonts": true
               },
               "outputHashing": "all",

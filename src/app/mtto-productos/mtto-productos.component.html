@@ -22,7 +22,10 @@
       <div class="card-body">
         <h5>Id: {{product.productId}} <BR> Nombre: {{product.productName}}</h5>
         <p>{{product.productDescription}}</p>
-        <p *ngIf="product.statusId == 1 else elseBlock">Activo</p><ng-template #elseBlock><p>Inactivo</p></ng-template>
+        <p *ngIf="product.statusId == 1 else elseBlock">Activo</p>
+        <ng-template #elseBlock>
+          <p>Inactivo</p>
+        </ng-template>
       </div>
       <div class="card-footer" style="width: 100%; height: 15%;">
         <div class="row justify-content-between">
@@ -88,7 +91,6 @@
       </div>
       <div class="modal-body">
         <div class="form-product">
-          <!-- <label class="form-label mt-4">Id Categoria</label><input type="text" class="form-control" id="IdCategoria" [(ngModel)]="this.editProduct.categoryId"> -->
           <label for="exampleSelect1" class="form-label mt-4">Categoria</label>
           <select class="form-select" id="exampleSelect1" [(ngModel)]="this.editProduct.categoryId">
             <option *ngFor="let category of categories">{{category.categoryName}}</option>
@@ -108,7 +110,6 @@
           <input type="text" class="form-control" id="Precio" [(ngModel)]="this.editProduct.productPrice">
         </div>
         <div class="form-product">
-          <!-- <label class="form-label mt-4">Id Temporada</label><input type="text" class="form-control" id="IdTemporada" [(ngModel)]="this.editProduct.seasonId"> -->
           <label for="exampleSelect1" class="form-label mt-4">Temporada</label>
           <select class="form-select" id="exampleSelect1" [(ngModel)]="this.editProduct.seasonId">
             <option *ngFor="let season of seasons">{{season.seasonName}}</option>
@@ -121,13 +122,14 @@
         <div class="form-product">
           <label for="exampleSelect1" class="form-label mt-4">Estatus</label>
           <select class="form-select" id="exampleSelect1" [(ngModel)]="this.editProduct.statusId">
-            <option *ngFor="let estado of estados" >{{estado}}</option>
+            <option *ngFor="let estado of estados">{{estado}}</option>
           </select>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="UpdateProductById()">Save</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+          (click)="UpdateProductById()">Save</button>
       </div>
     </div>
   </div>
@@ -168,10 +170,6 @@
             <label class="form-label mt-4">Precio</label>
             <input type="text" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newProduct.productPrice">
           </div>
-          <!--<div class="form-group">
-            <label for="formFile" class="form-label mt-4">Fotografía</label>
-            <input class="form-control" type="file" id="formFile">
-          </div>-->
           <div class="form-orders">
             <label class="form-label mt-4">Fotografía</label>
             <input type="text" class="form-control" id="foto" [(ngModel)]="this.newProduct.productImage">

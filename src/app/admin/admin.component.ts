@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  templateUrl: './admin.component.html'
 })
 export class AdminComponent implements OnInit {
 
@@ -13,7 +12,7 @@ export class AdminComponent implements OnInit {
     this.validaSesion();
   }
 
-  cierraSesion(): void{
+  cierraSesion(): void {
     localStorage.removeItem('sesion');
     this.router.navigateByUrl('/login');
   }

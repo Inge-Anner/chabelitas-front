@@ -5,8 +5,7 @@ import { detailordersModel } from '../models/detailorders.model';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss']
+  templateUrl: './orders.component.html'
 })
 export class OrdersComponent implements OnInit {
 
@@ -43,13 +42,6 @@ export class OrdersComponent implements OnInit {
     this.sumarTotal();
   }
 
-  // ObtenerOrder(): void {
-  //   this.orderServices.cargarOrders().subscribe((res: any) => {
-  //     this.orders = res.data;
-  //     this.mostrar = true;
-  //   });
-  // }
-
   remover(item: any) {
     this.carrito = this.carrito.filter((obj) => {
       return obj != item;
@@ -65,7 +57,7 @@ export class OrdersComponent implements OnInit {
     if (this.newOrder.ticketOrder == '') {
       this.newOrder.ticketOrder = '0';
     }
-    
+
     this.orderServices.ingresarOrders(this.newOrder).subscribe((res: any) => {
       // Inserta en Local Storage
       localStorage.setItem('order', JSON.stringify(res));
@@ -90,7 +82,7 @@ export class OrdersComponent implements OnInit {
       window.location.reload();
     }, 2500);
   }
-  
+
   obtenerCarrito(): void {
     if (localStorage.getItem('carrito') != null) {
       let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
@@ -105,9 +97,9 @@ export class OrdersComponent implements OnInit {
     }
   }
   confirmar(): void {
-    if (this.carrito.length == 0){
+    if (this.carrito.length == 0) {
       this.mostrar = false;
-    }else if (this.carrito.length >= 1){
+    } else if (this.carrito.length >= 1) {
       this.mostrar = true;
     }
   }

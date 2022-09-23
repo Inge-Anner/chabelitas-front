@@ -9,7 +9,7 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./tracking.component.scss'],
 })
 export class TrackingComponent implements OnInit {
-  constructor(private OrderServices: OrderServices,private TrackingServices: TrackingServices ) {}
+  constructor(private OrderServices: OrderServices, private TrackingServices: TrackingServices) { }
 
 
   orders: ordersModel = {
@@ -23,7 +23,7 @@ export class TrackingComponent implements OnInit {
     dateDeliver: '',
     totalOrder: 0,
   };
-  
+
 
   estados: string[] = [
     'Creado',
@@ -39,9 +39,9 @@ export class TrackingComponent implements OnInit {
   aux4: string = '';
   mostrar: boolean = false;
   mostrar2: boolean = false;
-  phoneOrder :string = '';
+  phoneOrder: string = '';
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ObtenerTracking(): void {
     this.OrderServices.buscarOrderById(this.orderId).subscribe((res: any) => {
@@ -86,15 +86,15 @@ export class TrackingComponent implements OnInit {
   }
 
   UpdateOrderById(): void {
-    if (this.orders.statusOrderId ==1) {
+    if (this.orders.statusOrderId == 1) {
       this.orders.statusOrderId = 2;
       const fecha = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US');
-    this.orders.dateConfirmed = fecha;
-    
+      this.orders.dateConfirmed = fecha;
+
     }
-      this.TrackingServices.actualizarOrden(this.orderId, this.orders).subscribe((res: any) => {
-        this.ObtenerOrder();
-      }); 
+    this.TrackingServices.actualizarOrden(this.orderId, this.orders).subscribe((res: any) => {
+      this.ObtenerOrder();
+    });
 
   }
 
@@ -105,10 +105,9 @@ export class TrackingComponent implements OnInit {
     });
   }
 
-  ValidarUsuario():void {
-   if (this.phoneOrder == this.orders.phoneOrder) {
-    this.mostrar2 = true;
-   } 
+  ValidarUsuario(): void {
+    if (this.phoneOrder == this.orders.phoneOrder) {
+      this.mostrar2 = true;
+    }
   }
 }
-  

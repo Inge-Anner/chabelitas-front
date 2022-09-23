@@ -12,7 +12,7 @@ const base_url = environment.url;
 })
 export class OrderServices {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   private manejarError(e: any) {
     console.log(e);
@@ -20,20 +20,20 @@ export class OrderServices {
     return throwError('Ha ocurrido un error');
   }
 
-  cargarOrders(){
-    return this.http.get<any>(`${ base_url }/orders`).pipe(catchError((e) => this.manejarError(e)));
+  cargarOrders() {
+    return this.http.get<any>(`${base_url}/orders`).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  buscarOrderById(order: any){
-    return this.http.get<any>(`${ base_url }/order/${order}`).pipe(catchError((e) => this.manejarError(e)));
+  buscarOrderById(order: any) {
+    return this.http.get<any>(`${base_url}/order/${order}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  actualizarOrden(orderId: number | undefined, data: ordersModel){
-    return this.http.put<any>(`${ base_url }/order/${orderId}`, data).pipe(catchError((e) => this.manejarError(e)));
+  actualizarOrden(orderId: number | undefined, data: ordersModel) {
+    return this.http.put<any>(`${base_url}/order/${orderId}`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  buscarDetalleById(orderId: number| undefined){
-    return this.http.get<any>(`${ base_url }/detailorder/${orderId}`).pipe(catchError((e) => this.manejarError(e)));
+  buscarDetalleById(orderId: number | undefined) {
+    return this.http.get<any>(`${base_url}/detailorder/${orderId}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }
