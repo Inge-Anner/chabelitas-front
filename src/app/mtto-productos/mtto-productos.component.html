@@ -127,7 +127,8 @@
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Porciones minimas</label>
-          <input type="text" class="form-control" id="Precio" [(ngModel)]="this.editProduct.portionsMin">
+          <input type="text" class="form-control" id="Precio" maxlength="9"
+          onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.editProduct.portionsMin">
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Llevara Toppings?</label>
@@ -143,9 +144,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-          (click)="UpdateProductById()">Save</button>
+          (click)="UpdateProductById()">Guardar</button>
       </div>
     </div>
   </div>
@@ -193,7 +194,8 @@
           </div>
           <div class="form-product">
             <label class="form-label mt-4">Porciones minimas</label>
-            <input type="text" class="form-control" id="Precio" [(ngModel)]="this.newProduct.portionsMin">
+            <input type="text" class="form-control" id="Precio" maxlength="9"
+            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.newProduct.portionsMin">
           </div>
           <div class="form-product">
             <label class="form-label mt-4">Llevara Toppings?</label>
