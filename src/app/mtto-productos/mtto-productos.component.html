@@ -106,7 +106,8 @@
         </div>
         <div class="form-product">
           <label class="form-label mt-4">Precio</label>
-          <input type="text" class="form-control" id="Precio" [(ngModel)]="this.editProduct.productPrice">
+          <input type="text" class="form-control" id="Precio" maxlength="9"
+          onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.editProduct.productPrice">
         </div>
         <div class="form-product">
           <label for="exampleSelect1" class="form-label mt-4">Temporada</label>
@@ -183,7 +184,8 @@
           </div>
           <div class="form-orders">
             <label class="form-label mt-4">Precio</label>
-            <input type="text" class="form-control" id="FechaDeEntrega" [(ngModel)]="this.newProduct.productPrice">
+            <input type="text" class="form-control" id="FechaDeEntrega" maxlength="9"
+            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.newProduct.productPrice">
           </div>
           <div class="form-orders">
             <label class="form-label mt-4">Fotografía</label>
