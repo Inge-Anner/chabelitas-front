@@ -1,29 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServices } from './products.service';
-import { CategoryServices } from '../category/category.service';
 import { productsModel } from '../models/products.model';
 import { categoryModel } from '../models/category.model';
 import { visualizationsModel } from '../models/visualizations.model';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
-import { SeasonsServices } from '../mtto-temporadas/mtto-temporadas.service';
 import { seasonsModel } from '../models/seasons.model';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  templateUrl: './products.component.html'
 })
 export class ProductsComponent implements OnInit {
 
-  constructor( private productServices: ProductServices, private categoryServices: CategoryServices, public router: Router , private seasonsServices: SeasonsServices) { }
+  constructor(private productServices: ProductServices, public router: Router) { }
   products: productsModel[] = [];
   categories: categoryModel[] = [];
   seasons: seasonsModel[] = [];
   visualization: visualizationsModel[] = [];
   carrito: any[] = [];
   mostrar: boolean = false;
-  mostrar2: string = '';
   cantidad: number = 1;
   idProd: any;
   seasonActiva: boolean = false;
@@ -31,7 +27,7 @@ export class ProductsComponent implements OnInit {
   whereProducts: any = {
     categoryId: 0,
   }
-  
+
   newProduct: productsModel = {
     categoryId: 0,
     productDescription: "",
@@ -67,38 +63,13 @@ export class ProductsComponent implements OnInit {
     productPrice: 0
   }
 
-  // repetir = [
-  //   {
-  //     nombre: 'Marco',
-  //     apellido: 'Mohr'
-  //   },
-  //   {
-  //     nombre: 'Angel',
-  //     apellido: 'Velasquez'
-  //   },
-  //   {
-  //     nombre: 'Anner',
-  //     apellido: 'Gordillo'
-  //   },
-  //   {
-  //     nombre: 'Camilo',
-  //     apellido: 'Galindo'
-  //   }
-  // ]
-  // repetir2 = [
-  //   "uno",
-  //   "dos",
-  //   "tres",
-  //   "cuatro",
-  // ]
-
   ngOnInit(): void {
-      this.ObtenerProductos();
-      this.ObtenerCategorias();
+    this.ObtenerProductos();
+    this.ObtenerCategorias();
   }
 
   ObtenerCategorias(): void {
-    this.categoryServices.cargarCategory().subscribe((res: any) => {
+    this.productServices.cargarCategory().subscribe((res: any) => {
       this.categories = res.data;
       this.mostrar = true;
     });
@@ -117,24 +88,24 @@ export class ProductsComponent implements OnInit {
     this.ObtenerProductos();
   }
 
-  visualizacion(id: number | undefined): void{
+  visualizacion(id: number | undefined): void {
     const fecha = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en-US');
     this.newVisualization.dateVisualization = fecha;
     this.newVisualization.productId = id;
     this.productServices.insertaVisualizacion(this.newVisualization).subscribe();
   }
 
-  productView(product: productsModel): void{
+  productView(product: productsModel): void {
     this.productVisualization = product;
     this.visualizacion(product.productId);
   }
 
-  productCart(product: productsModel): void{
+  productCart(product: productsModel): void {
     this.productVisualization = product;
   }
 
-  agregarProductoCarrito(): void{
-    if (localStorage.getItem('carrito') == null){
+  agregarProductoCarrito(): void {
+    if (localStorage.getItem('carrito') == null) {
       this.newCarrito.productId = this.productVisualization.productId;
       this.newCarrito.detailOrderQuantity = this.cantidad;
       this.newCarrito.orderDetailSubtotal = this.productVisualization.productPrice * this.cantidad;
@@ -144,7 +115,7 @@ export class ProductsComponent implements OnInit {
       this.carrito.push(this.newCarrito);
       localStorage.setItem('carrito', JSON.stringify(this.carrito));
       this.router.navigateByUrl('/orders');
-    }else if (localStorage.getItem('carrito') != null){
+    } else if (localStorage.getItem('carrito') != null) {
       let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
       this.newCarrito.productId = this.productVisualization.productId;
       this.newCarrito.detailOrderQuantity = this.cantidad;
@@ -158,13 +129,13 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  mas(): void{
+  mas(): void {
     this.cantidad = this.cantidad + 1;
   }
-  
-  menos(): void{
+
+  menos(): void {
     const min: number = 1;
-    if(this.cantidad > min){
+    if (this.cantidad > min) {
       this.cantidad = this.cantidad - 1;
     }
   }

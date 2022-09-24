@@ -12,7 +12,7 @@ const base_url = environment.url;
 })
 export class ProductServices {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   private manejarError(e: any) {
     console.log(e);
@@ -20,23 +20,23 @@ export class ProductServices {
     return throwError('Ha ocurrido un error');
   }
 
-  cargarProductos(){
-    return this.http.get<any>(`${ base_url }/product/All`).pipe(catchError((e) => this.manejarError(e)));
+  cargarProductos() {
+    return this.http.get<any>(`${base_url}/product/All`).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  ingresarProducto(data: productsModel){
-    return this.http.post<any>(`${ base_url }/product`, data).pipe(catchError((e) => this.manejarError(e)));
+  ingresarProducto(data: productsModel) {
+    return this.http.post<any>(`${base_url}/product`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  eliminarProducto(id: any){
-    return this.http.delete<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  eliminarProducto(id: any) {
+    return this.http.delete<any>(`${base_url}/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  buscarProductById(id: any){
-    return this.http.get<any>(`${ base_url }/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
+  buscarProductById(id: any) {
+    return this.http.get<any>(`${base_url}/product/${id}`).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  actualizarProducto(productId: number | undefined, data: productsModel){
-    return this.http.put<any>(`${ base_url }/product/${productId}`, data).pipe(catchError((e) => this.manejarError(e)));
+  actualizarProducto(productId: number | undefined, data: productsModel) {
+    return this.http.put<any>(`${base_url}/product/${productId}`, data).pipe(catchError((e) => this.manejarError(e)));
   }
 }

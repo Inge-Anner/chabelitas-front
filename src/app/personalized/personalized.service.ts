@@ -12,7 +12,7 @@ const base_url = environment.url;
 })
 export class ProductServices {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   private manejarError(e: any) {
     console.log(e);
@@ -20,12 +20,12 @@ export class ProductServices {
     return throwError('Ha ocurrido un error');
   }
 
-  cargarProductos(){
-    return this.http.get<any>(`${ base_url }/product/personalized`).pipe(catchError((e) => this.manejarError(e)));
+  cargarProductos() {
+    return this.http.get<any>(`${base_url}/product/personalized`).pipe(catchError((e) => this.manejarError(e)));
   }
 
-  cargarToppings(){
-    return this.http.get<any>(`${ base_url }/product/topping`).pipe(catchError((e) => this.manejarError(e)));
+  cargarToppings() {
+    return this.http.get<any>(`${base_url}/product/topping`).pipe(catchError((e) => this.manejarError(e)));
   }
 
 

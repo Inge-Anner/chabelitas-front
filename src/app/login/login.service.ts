@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { LoginComponent } from './login.component';
 import { environment } from '../../environments/environment';
 import { usersModel } from '../models/users.model';
 
@@ -12,7 +11,7 @@ const base_url = environment.url;
 })
 export class LoginServices {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   private manejarError(e: any) {
     console.log(e);
@@ -21,8 +20,8 @@ export class LoginServices {
     return throwError('Ha ocurrido un error');
   }
 
-  loginUser(user: usersModel){
-    return this.http.post<any>(`${ base_url }/login`, user).pipe(catchError((e) => this.manejarError(e)));
+  loginUser(user: usersModel) {
+    return this.http.post<any>(`${base_url}/login`, user).pipe(catchError((e) => this.manejarError(e)));
   }
 
 }

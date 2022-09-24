@@ -18,7 +18,7 @@ export class PersonalizedComponent implements OnInit {
   mostrar: boolean = false;
   idProd: any;
   carrito: any[] = [];
-  
+
   newCarrito: any = {
     productId: 0,
     orderId: 0,
@@ -41,7 +41,7 @@ export class PersonalizedComponent implements OnInit {
     toppingsYes: 0,
     categoryTopping: 0
   }
-  
+
   topping: productsModel = {
     categoryId: 0,
     productDescription: "",
@@ -76,9 +76,8 @@ export class PersonalizedComponent implements OnInit {
         this.toppings = this.toppings.filter((topp) => {
           return topp.categoryTopping == 1
         })
-        console.log(this.toppings);
         this.ifToppings = true;
-      }, 480);
+      }, 800);
     } else if (producto.toppingsYes == 0) {
       this.ifToppings = false;
     } else if (producto.toppingsYes == 2) {
@@ -86,14 +85,13 @@ export class PersonalizedComponent implements OnInit {
         this.toppings = this.toppings.filter((topp) => {
           return topp.categoryTopping == 2
         })
-        console.log(this.toppings);
         this.ifToppings = true;
-      }, 480);
+      }, 800);
     }
   }
 
-  productoCarrito(): void{
-    if (localStorage.getItem('carrito') == null){
+  productoCarrito(): void {
+    if (localStorage.getItem('carrito') == null) {
       this.newCarrito.productId = this.product.productId;
       this.newCarrito.detailOrderQuantity = this.cantidad;
       this.newCarrito.orderDetailSubtotal = this.product.productPrice * this.cantidad;
@@ -103,7 +101,7 @@ export class PersonalizedComponent implements OnInit {
       this.carrito.push(this.newCarrito);
       localStorage.setItem('carrito', JSON.stringify(this.carrito));
       this.router.navigateByUrl('/orders');
-    }else if (localStorage.getItem('carrito') != null){
+    } else if (localStorage.getItem('carrito') != null) {
       let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
       this.newCarrito.productId = this.product.productId;
       this.newCarrito.detailOrderQuantity = this.cantidad;
@@ -119,7 +117,7 @@ export class PersonalizedComponent implements OnInit {
 
   seteoTopping(topping: productsModel): void {
     this.topping = topping;
-    if (localStorage.getItem('carrito') == null){
+    if (localStorage.getItem('carrito') == null) {
       this.newCarrito.productId = this.topping.productId;
       this.newCarrito.detailOrderQuantity = 1;
       this.newCarrito.orderDetailSubtotal = this.topping.productPrice * 1;
@@ -128,7 +126,7 @@ export class PersonalizedComponent implements OnInit {
       this.newCarrito.productPrice = this.topping.productPrice;
       this.carrito.push(this.newCarrito);
       localStorage.setItem('carrito', JSON.stringify(this.carrito));
-    }else if (localStorage.getItem('carrito') != null){
+    } else if (localStorage.getItem('carrito') != null) {
       let getCarrito = JSON.parse(localStorage.getItem('carrito')!);
       this.newCarrito.productId = this.topping.productId;
       this.newCarrito.detailOrderQuantity = 1;

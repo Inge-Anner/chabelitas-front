@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mtto-categoria',
-  templateUrl: './mtto-categoria.component.html',
-  styleUrls: ['./mtto-categoria.component.scss']
+  templateUrl: './mtto-categoria.component.html'
 })
 export class MttoCategoriaComponent implements OnInit {
 
@@ -27,7 +26,7 @@ export class MttoCategoriaComponent implements OnInit {
     this.ObtenerCategory();
   }
 
-  cierraSesion(): void{
+  cierraSesion(): void {
     localStorage.removeItem('sesion');
     this.router.navigateByUrl('/login');
   }

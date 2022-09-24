@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mtto-temporadas',
-  templateUrl: './mtto-temporadas.component.html',
-  styleUrls: ['./mtto-temporadas.component.scss']
+  templateUrl: './mtto-temporadas.component.html'
 })
 export class MttoTemporadasComponent implements OnInit {
 
@@ -20,7 +19,7 @@ export class MttoTemporadasComponent implements OnInit {
   searchSeason: number = 0;
   mostrar: boolean = false;
   Clean: string = "";
-  checked: string= "";
+  checked: string = "";
 
   ngOnInit(): void {
     this.validaSesion();
@@ -64,7 +63,7 @@ export class MttoTemporadasComponent implements OnInit {
     });
   }
 
-  activarSeason(id: number | undefined): void{
+  activarSeason(id: number | undefined): void {
     let season: any = {
       statusId: 1
     }
@@ -73,7 +72,7 @@ export class MttoTemporadasComponent implements OnInit {
     });
   }
 
-  inactivarSeason(id: number | undefined): void{
+  inactivarSeason(id: number | undefined): void {
     let season: any = {
       statusId: 2
     }

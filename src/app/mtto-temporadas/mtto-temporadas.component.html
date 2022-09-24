@@ -13,12 +13,14 @@
   </ng-container>
 
   <ng-template #activo>
-    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked (change)="inactivarSeason(season.seasonId)">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked
+      (change)="inactivarSeason(season.seasonId)">
     <label>{{season.seasonId}} - {{season.seasonName}}</label>
   </ng-template>
   <ng-template #inactivo>
     <div>
-      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (change)="activarSeason(season.seasonId)">
+      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+        (change)="activarSeason(season.seasonId)">
       <label>{{season.seasonId}} - {{season.seasonName}}</label>
     </div>
   </ng-template>
@@ -26,8 +28,9 @@
 
 
 <div class="input-group mb-3" style="padding: 2% 40% 2% 15%;">
-  <input type="text" class="form-control" placeholder="Ingrese id de temporada" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" [(ngModel)]="this.searchSeason"
-    aria-label="Recipient's username" aria-describedby="button-addon2">
+  <input type="text" class="form-control" placeholder="Ingrese id de temporada" maxlength="9"
+    onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+    [(ngModel)]="this.searchSeason" aria-label="Recipient's username" aria-describedby="button-addon2">
   <button class="btn btn-primary" type="button" id="button-addon2" (click)="ObtenerSeasonById()">Buscar</button>
 </div>
 
@@ -56,11 +59,6 @@
         disabled="">
     </fieldset>
   </div>
-  <!--<div class="form-seasons">
-    <label class="form-label mt-4">statusID</label>
-    <input type="text" class="form-control" id="statusID" placeholder="" [(ngModel)]="this.newSeason.statusId">
-  </div>
-  <small id="telHelp" class="form-text text-muted">1 activo 2 desactivado</small>-->
   <div class="form-seasons">
     <label class="form-label mt-4">Nombre temporada</label>
     <input type="text" class="form-control" id="Nombre" placeholder="" [(ngModel)]="this.newSeason.seasonName">
@@ -78,3 +76,4 @@
     <button type="submit" (click)="LimpiarBusqueda()" class="btn btn-light">Limpiar</button>
   </div>
   <small id="telHelp" class="form-text text-muted"></small>
+</fieldset>

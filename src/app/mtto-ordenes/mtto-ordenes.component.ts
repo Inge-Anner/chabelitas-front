@@ -9,8 +9,7 @@ import { ProductServices } from '../mtto-productos/mtto-productos.service';
 
 @Component({
   selector: 'app-mtto-ordenes',
-  templateUrl: './mtto-ordenes.component.html',
-  styleUrls: ['./mtto-ordenes.component.scss'],
+  templateUrl: './mtto-ordenes.component.html'
 })
 export class MttoOrdenesComponent implements OnInit {
   constructor(public router: Router, private orderServices: OrderServices, private productServices: ProductServices) { }
@@ -60,14 +59,14 @@ export class MttoOrdenesComponent implements OnInit {
   aux3: string = '';
   aux4: string = '';
 
-  consultaDetalle(id: number | undefined): void{
+  consultaDetalle(id: number | undefined): void {
     this.orderServices.buscarDetalleById(id).subscribe((res: any) => {
-      this.newDetail = res.data;  
+      this.newDetail = res.data;
     });
     setTimeout(() => {
       this.newDetail.forEach((detalle, index1) => {
         this.products.forEach((producto, index2) => {
-          if(producto.productId == detalle.productId){
+          if (producto.productId == detalle.productId) {
             console.log(this.products[index2].productName);
             this.newDetail[index1].productId = producto.productName;
           }
@@ -159,19 +158,6 @@ export class MttoOrdenesComponent implements OnInit {
       this.orders = res.data;
       this.ObtenerOrder();
     });
-
-    // const aux = formatDate(this.currentOrder.dateConfirmed, 'yyyy-MM-dd hh:mm:ss', '0530');
-    // console.log(aux);
-    // console.log(this.currentOrder.dateConfirmed);
-    // console.log(this.cambioOrden);
-
-    // this.orderServices.actualizarOrden(this.currentOrder.orderId, this.currentOrder).subscribe((res: any) => {
-    //     this.orders = res.data;
-    //     this.ObtenerOrder();
-    //   });
-    // setTimeout(function () {
-    //   window.location.reload();
-    // }, 1500);
   }
 
 }

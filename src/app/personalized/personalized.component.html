@@ -5,7 +5,7 @@
 <div class="row mt-4" style="width: 2% 5% 2% 10%; padding: 5%;">
   <div class="col-md-5 col-lg-4" *ngFor="let product of products">
     <button style="background-color: transparent; border-color: transparent;" data-bs-toggle="modal"
-      data-bs-target="#modalId" (click)="ObtenerToppings(product)"> 
+      data-bs-target="#modalId" (click)="ObtenerToppings(product)">
       <div class="card sombra" style="width: 301px; height: 450px;">
         <img [src]="product.productImage" class="card-img-top" alt="" style="width: 300px; height: 300px;">
         <div class="card-body">
@@ -20,8 +20,9 @@
 
 
 <!-- Modal Toppings-->
-<div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+  aria-labelledby="modalTitleId" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitleId">Elija sus toppings</h5>
@@ -37,15 +38,17 @@
             <button class="btn btn-info" data-toggle="tooltip" (click)="mas()"><span
                 class="material-icons">add</span></button>
           </div>
-        </div>
-        <div *ngIf="ifToppings == true">
-          <p>Active todos los toppings que quiera</p>
-          <div class="form-check form-switch" style="width: 0.1% 5% 2% 5%;" *ngFor="let topping of toppings">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (change)="seteoTopping(topping)">
-            <td><img [src]="topping.productImage" style="width: 90px; height: 70px;"></td>
-            <label>{{topping.productName}} - Q.{{topping.productPrice}}</label>
+          <div *ngIf="ifToppings == true">
+            <p>Active todos los toppings que quiera</p>
+            <div class="form-check form-switch" style="width: 0.1% 5% 2% 5%;" *ngFor="let topping of toppings">
+              <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+                (change)="seteoTopping(topping)">
+              <td><img [src]="topping.productImage" style="width: 90px; height: 70px;"></td>
+              <label>{{topping.productName}} - Q.{{topping.productPrice}}</label>
+            </div>
           </div>
         </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

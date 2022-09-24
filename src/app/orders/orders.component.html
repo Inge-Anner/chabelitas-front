@@ -1,14 +1,5 @@
-<!--<input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar2">
-
-<button *ngIf="this.mostrar2 == 'hola'" type="button" (click)="ObtenerOrder()" class="btn btn-warning">Mostrar 2</button>
-
-<div *ngIf="this.mostrar == true">
-  <li *ngFor="let orders of orders">
-    {{orders.orderId}} - {{orders.statusOrderId}} - {{orders.phoneOrder}} - {{orders.ticketOrder}} - {{orders.nameOrder}} - {{orders.lastNameOrder}}  - {{orders.adressDeliver}} - {{orders.dateCreated}} - {{orders.dateConfirmed}} - {{orders.dateDeliver}} - {{orders.totalOrder}}
-  </li>
-</div> 
--->
 <h2 style="text-align: left; padding: 2%">Carrito</h2>
+
 <div style="padding: 1% 20% 5% 10%; overflow: auto;">
   <table class="table table-hover">
     <thead>
@@ -42,16 +33,6 @@
 <fieldset style="margin: 0% 10% 2% 15%; padding: 1%; background:#d6d6e0; border-radius: 3%;"
   *ngIf="this.mostrar == true">
   <legend>Ingrese la información para realizar su pedido</legend>
-  <!--<div class="form-orders row">
-    </div>
-    <div class="form-orders">
-      <label for="idorden" class="form-label mt-4">idorden</label>
-      <input type="number" class="form-control" id="idorden" placeholder="Ingresa tu id" [(ngModel)]="this.newOrder.orderId">
-    </div>
-    <div class="form-orders">
-      <label for="idordenstatus" class="form-label mt-4">idordenstatus</label>
-      <input type="number" class="form-control" id="idordenstatus" placeholder="Ingresa tu id status" [(ngModel)]="this.newOrder.statusOrderId">
-    </div>-->
   <div class="form-orders">
     <label class="form-label mt-4">Telefono/Celular</label>
     <input type="tel" class="form-control" id="telefono" maxlength="9" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
@@ -79,7 +60,7 @@
   </div>
   <div class="form-orders">
     <label class="form-label mt-4">Total del pedido</label>
-    <input type="text" class="form-control" id="FechaDeEntrega" readonly="" [value]="this.total">
+    <input type="text" class="form-control" id="FechaDeEntrega" readonly="" [value]="'Q. ' + this.total">
   </div>
   <div class="form-orders">
     <label class="form-label mt-4">Ingrese el codigo del comprobante del deposito</label>

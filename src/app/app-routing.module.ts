@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
-import { SeasonsComponent } from './seasons/seasons.component';
-import { CategoryComponent } from './category/category.component';
 import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
 import { TrackingComponent } from './tracking/tracking.component';
@@ -13,13 +11,10 @@ import { MttoOrdenesComponent } from './mtto-ordenes/mtto-ordenes.component';
 import { MttoTemporadasComponent } from './mtto-temporadas/mtto-temporadas.component';
 import { MttoCategoriaComponent } from './mtto-categoria/mtto-categoria.component';
 import { PersonalizedComponent } from './personalized/personalized.component';
-import { ToppingsComponent } from './toppings/toppings.component';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'seasons', component: SeasonsComponent },
-  { path: 'category', component: CategoryComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'login', component: LoginComponent},
   { path: 'tracking', component: TrackingComponent},
@@ -29,7 +24,6 @@ const routes: Routes = [
   { path: 'mtto-temporadas', component: MttoTemporadasComponent},
   { path: 'mtto-categoria', component: MttoCategoriaComponent},
   { path: 'personalized', component: PersonalizedComponent },
-  { path: 'toppings', component: ToppingsComponent }
 ];
 
 @NgModule({

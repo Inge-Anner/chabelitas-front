@@ -1,33 +1,3 @@
-<!-- <p>products works!</p> -->
-<!-- <button type="button" class="btn btn-primary">Primary</button>
-<button *ngIf="this.mostrar == true" type="button" class="btn btn-warning">Secundary</button> -->
-<!-- <h4>Con indice y default si es el primero</h4>
-<li *ngFor="let persona of repetir; index as i; first as isFirst">
-  {{i}}-{{persona.nombre}} {{persona.apellido}} <span *ngIf="isFirst">default</span>
-</li>
-<h4>Solo ngFor a arreglo de objetos</h4>
-<li *ngFor="let persona of repetir">
-  {{persona.nombre}} {{persona.apellido}}
-</li>
-
-<h4>Solo ngFor a arreglo Strings</h4>
-<li *ngFor="let dato of repetir2">
-  {{dato}}
-</li>
-
-<input id="base-info" placeholder="Escriba aqui" [(ngModel)]="this.mostrar2"> -->
-
-<!-- <button type="button" (click)="ObtenerProductos()" class="btn btn-warning">Mostrar 2</button> -->
-<!-- <button *ngIf="this.mostrar2 == 'hola'" type="button" () class="btn btn-warning">Mostrar 2</button> -->
-
-<!-- <div *ngIf="this.mostrar == true">
-  <li *ngFor="let product of products">
-    {{product.productId}} - {{product.categoryId}} - {{product.productDescription}} - {{product.productName}} - {{product.productPrice}} - {{product.seasonId}} - {{product.statusId}}
-    <img src="{{product.productImage}}" style="width: 100px; height: 100px;">
-  </li>
-</div>-->
-
-
 <div class="row mt-3" style="margin: 1% 1% 1% 2%; overflow: hidden;">
   <div class="col-md-5 col-lg-4" style="padding: 1% 0.1% 0.1% 0.1%; flex:0 0 auto; width: auto;"
     *ngFor="let category of categories">
@@ -103,19 +73,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-          (click)="agregarProductoCarrito()">Agregar a Carrito</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="agregarProductoCarrito()">Agregar
+          a Carrito</button>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.categoryId">
-<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productDescription">
-<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productImage">
-<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productName">
-<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.productPrice">
-<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.seasonId">
-<input id="base-info" placeholder="Ingrese Categoria" [(ngModel)]="this.newProduct.statusId"> -->
-
-<!-- <button type="button" (click)="CrearProducto()" class="btn btn-warning">Crear Producto</button> -->

@@ -1,8 +1,8 @@
 <div style="float: right;">
     <button type="button" class="btn btn-secondary" (click)="router.navigate(['/admin']);"><span
-        class="material-icons">keyboard_backspace</span></button>
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-        data-bs-target="#cierraSesion"><span class="material-icons">logout</span></button>
+            class="material-icons">keyboard_backspace</span></button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cierraSesion"><span
+            class="material-icons">logout</span></button>
 </div>
 
 <h2 style="text-align: center; padding: 3%;">Mantenimiento de Órdenes</h2>
@@ -37,8 +37,8 @@
                 <td>{{order.dateConfirmed}}</td>
                 <td>{{order.dateDeliver}}</td>
                 <td>Q. {{order.totalOrder}}</td>
-                <td><button type="button" data-bs-toggle="modal" data-bs-target="#modalIddetalle" (click)="consultaDetalle(order.orderId)"
-                    class="btn btn-outline-warning">Detalle</button></td>
+                <td><button type="button" data-bs-toggle="modal" data-bs-target="#modalIddetalle"
+                        (click)="consultaDetalle(order.orderId)" class="btn btn-outline-warning">Detalle</button></td>
                 <td><button type="button" data-bs-toggle="modal" data-bs-target="#modalId" (click)="llenarOrden(order)"
                         class="btn btn-outline-secondary">Cambiar status</button></td>
             </tr>
@@ -93,16 +93,17 @@
 </div>
 
 <!-- Modal detalle de ordenes-->
-<div class="modal fade" id="modalIddetalle" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade" id="modalIddetalle" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-                <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitleId">Detalle</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Detalle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    
+
                     <div style="padding: 1% 5% 1% 5%; font-size: small; ">
                         <table class="table table-hover">
                             <thead>
@@ -114,11 +115,11 @@
                                 </tr>
                             </thead>
                             <tbody style="text-align: left;">
-                                 <tr class="table-light" *ngFor="let detailorder of newDetail">
+                                <tr class="table-light" *ngFor="let detailorder of newDetail">
                                     <th scope="row">{{detailorder.orderId}}</th>
                                     <td>{{detailorder.productId}}</td>
                                     <td>{{detailorder.detailOrderQuantity}}</td>
-                                    <td>Q.{{detailorder.orderDetailSubtotal}}</td> 
+                                    <td>Q.{{detailorder.orderDetailSubtotal}}</td>
                             </tbody>
                         </table>
                     </div>
@@ -127,5 +128,3 @@
         </div>
     </div>
 </div>
-
-
