@@ -32,7 +32,6 @@
           <div class="mt-2 d-flex justify-content-center align-items-center">
             <button class="btn btn-warning ml-2" data-bs-toggle="modal" data-bs-target="#modalIdEdit"
               (click)="seteoProducto(product)"><span class="material-icons">edit</span></button>
-
             <button class="btn btn-danger ml-2" data-toggle="tooltip" data-placement="top" title="Borrar"
               data-bs-toggle="modal" data-bs-target="#modalId" (click)="darValor(product.productId)"><span
                 class="material-icons">delete</span></button>
@@ -125,6 +124,22 @@
             <option *ngFor="let estado of estados">{{estado}}</option>
           </select>
         </div>
+        <div class="form-product">
+          <label class="form-label mt-4">Porciones minimas</label>
+          <input type="text" class="form-control" id="Precio" [(ngModel)]="this.editProduct.portionsMin">
+        </div>
+        <div class="form-product">
+          <label class="form-label mt-4">Llevara Toppings?</label>
+          <select class="form-select" id="exampleSelect1" [(ngModel)]="this.editProduct.toppingsYes">
+            <option *ngFor="let topping of opcionesTopping">{{topping}}</option>
+          </select>
+        </div>
+        <div class="form-product">
+          <label class="form-label mt-4">Categoria del Topping</label>
+          <select class="form-select" id="exampleSelect1" [(ngModel)]="this.editProduct.categoryTopping">
+            <option *ngFor="let tipo of tipoTopping">{{tipo}}</option>
+          </select>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -173,6 +188,22 @@
           <div class="form-orders">
             <label class="form-label mt-4">Fotografía</label>
             <input type="text" class="form-control" id="foto" [(ngModel)]="this.newProduct.productImage">
+          </div>
+          <div class="form-product">
+            <label class="form-label mt-4">Porciones minimas</label>
+            <input type="text" class="form-control" id="Precio" [(ngModel)]="this.newProduct.portionsMin">
+          </div>
+          <div class="form-product">
+            <label class="form-label mt-4">Llevara Toppings?</label>
+            <select class="form-select" id="exampleSelect1" [(ngModel)]="this.newProduct.toppingsYes">
+              <option *ngFor="let topping of opcionesTopping">{{topping}}</option>
+            </select>
+          </div>
+          <div class="form-product">
+            <label class="form-label mt-4">Categoria del Topping</label>
+            <select class="form-select" id="exampleSelect1" [(ngModel)]="this.newProduct.categoryTopping">
+              <option *ngFor="let tipo of tipoTopping">{{tipo}}</option>
+            </select>
           </div>
         </div>
       </div>

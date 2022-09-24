@@ -77,7 +77,7 @@ export class PersonalizedComponent implements OnInit {
           return topp.categoryTopping == 1
         })
         this.ifToppings = true;
-      }, 730);
+      }, 800);
     } else if (producto.toppingsYes == 0) {
       this.ifToppings = false;
     } else if (producto.toppingsYes == 2) {
@@ -86,7 +86,7 @@ export class PersonalizedComponent implements OnInit {
           return topp.categoryTopping == 2
         })
         this.ifToppings = true;
-      }, 1600);
+      }, 800);
     }
   }
 

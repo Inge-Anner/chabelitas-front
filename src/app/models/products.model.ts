@@ -8,6 +8,6 @@ export interface productsModel {
   seasonId: number | undefined | string;
   statusId: number | string;
   portionsMin?: number;
-  toppingsYes?: number | undefined;
-  categoryTopping?: number | undefined;
+  toppingsYes?: number | undefined | string | null;
+  categoryTopping?: number | undefined | string | null;
 }
