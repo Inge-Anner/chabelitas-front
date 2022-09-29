@@ -10,4 +10,6 @@ export interface productsModel {
   portionsMin?: number;
   toppingsYes?: number | undefined | string | null;
   categoryTopping?: number | undefined | string | null;
+  id_categoria?: number | string | undefined;
+  id_temporada?: number | undefined | string;
 }

@@ -77,7 +77,7 @@ export class MttoProductosComponent implements OnInit {
     }
   }
 
-  ObtenerProductos(): void {
+ObtenerProductos(): void {
     this.productServices.cargarProductos().subscribe((res: any) => {
       this.products = res.data;
       this.mostrar = true;
@@ -137,6 +137,9 @@ export class MttoProductosComponent implements OnInit {
         this.newProduct.categoryTopping = null;
         break;
     }
+
+    delete this.editProduct.id_categoria;
+    delete this.editProduct.id_temporada;
 
     this.productServices
       .ingresarProducto(this.newProduct)
@@ -206,6 +209,8 @@ export class MttoProductosComponent implements OnInit {
         this.editProduct.categoryTopping = null;
         break;
     }
+    delete this.editProduct.id_categoria;
+    delete this.editProduct.id_temporada;
 
     this.productServices
       .actualizarProducto(this.searchProduct, this.editProduct)

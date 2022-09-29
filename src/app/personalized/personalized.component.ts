@@ -68,26 +68,23 @@ export class PersonalizedComponent implements OnInit {
     this.productServices.cargarToppings().subscribe((res: any) => {
       this.toppings = res.data;
       this.mostrar = true;
-    });
-    this.cantidad = producto.portionsMin;
-    this.min = producto.portionsMin;
-    if (producto.toppingsYes == 1) {
-      setTimeout(() => {
+      this.cantidad = producto.portionsMin;
+      this.min = producto.portionsMin;
+      if (producto.toppingsYes == 1) {
         this.toppings = this.toppings.filter((topp) => {
           return topp.categoryTopping == 1
         })
         this.ifToppings = true;
-      }, 800);
-    } else if (producto.toppingsYes == 0) {
-      this.ifToppings = false;
-    } else if (producto.toppingsYes == 2) {
-      setTimeout(() => {
+      } else if (producto.toppingsYes == 0) {
+        this.ifToppings = false;
+      } else if (producto.toppingsYes == 2) {
         this.toppings = this.toppings.filter((topp) => {
           return topp.categoryTopping == 2
         })
         this.ifToppings = true;
-      }, 800);
-    }
+      }
+    });
+
   }
 
   productoCarrito(): void {

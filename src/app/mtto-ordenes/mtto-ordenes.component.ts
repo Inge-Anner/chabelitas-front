@@ -59,11 +59,9 @@ export class MttoOrdenesComponent implements OnInit {
   aux3: string = '';
   aux4: string = '';
 
-  consultaDetalle(id: number | undefined): void {
-    this.orderServices.buscarDetalleById(id).subscribe((res: any) => {
+  async consultaDetalle(id: number | undefined): Promise<void> {
+    await this.orderServices.buscarDetalleById(id).subscribe((res: any) => {
       this.newDetail = res.data;
-    });
-    setTimeout(() => {
       this.newDetail.forEach((detalle, index1) => {
         this.products.forEach((producto, index2) => {
           if (producto.productId == detalle.productId) {
@@ -72,7 +70,7 @@ export class MttoOrdenesComponent implements OnInit {
           }
         });
       });
-    }, 625);
+    });
   }
 
   validaSesion(): void {
